@@ -1,11 +1,12 @@
-package com.geekluxun.service.jdk.signature;
+package com.geekluxun.util;
 
-import com.geekluxun.util.FileUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.security.*;
@@ -15,17 +16,29 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
- *
  * @Author: luxun
- * @Create: 2018-06-22 13:40
- * @Description:
+ * @Create: 2018-06-23 12:16
+ * @Description: 数字签名工具类
  * @Other:
  */
-@Service
-public class SignatureServiceImpl implements SignatureServcie {
-    private static final Logger logger = LoggerFactory.getLogger(SignatureServiceImpl.class);
+public class RsaUtils {
+    private static final Logger logger = LoggerFactory.getLogger(RsaUtils.class);
+    /**
+     * 数字签名 密钥算法
+     */
+    public static final String KEY_ALGORITHM = "RSA";
+
+    /**
+     * 数字签名 签名/验证算法
+     */
+    public static final String SIGNATURE_ALGORITHM = "SHA1withRSA";
+    /**
+     * 公钥
+     */
     private static PublicKey publicKey;
+    /**
+     * 私钥
+     */
     private static PrivateKey privateKey;
     private static String publickeyFilePath = "/data/config/keys/pbkey.key";
     private static String privatekeyFilePath = "/data/config/keys/prkey.key";
@@ -37,14 +50,14 @@ public class SignatureServiceImpl implements SignatureServcie {
     }
 
     /**
-     * 对原始数据进行签名
+     * 对原始数据进行签名（RSA2）
      * @param inputStr
      * @return
      */
-    @Override
-    public String sign(String inputStr) {
+    public static String sign(String inputStr) {
         try {
-            Signature signature = Signature.getInstance("SHA1withRSA", "BC");
+            Signature signature = Signature.getInstance(SIGNATURE_ALGORITHM, "BC");
+            // 使用私钥签名
             signature.initSign(privateKey);
             signature.update(inputStr.getBytes("UTF-8"));
             byte[] signed = signature.sign();
@@ -69,10 +82,10 @@ public class SignatureServiceImpl implements SignatureServcie {
      * @param signStr
      * @return
      */
-    @Override
-    public Boolean verifySign(String inputStr, String signStr){
+    public static Boolean verifySign(String inputStr, String signStr){
         try {
-            Signature signature = Signature.getInstance("SHA1withRSA", "BC");
+            Signature signature = Signature.getInstance(SIGNATURE_ALGORITHM, "BC");
+            // 使用公钥验签
             signature.initVerify(publicKey);
             signature.update(inputStr.getBytes("UTF-8"));
             byte[] data = Base64.getDecoder().decode(signStr);
@@ -91,6 +104,52 @@ public class SignatureServiceImpl implements SignatureServcie {
         return false;
     }
 
+    /**
+     * 使用公钥加密
+     * @param data
+     * @return
+     */
+    public static byte[] encryptByPublicKey(byte[] data) throws Exception{
+        Cipher cipher = Cipher.getInstance(KEY_ALGORITHM);
+        cipher.init(Cipher.ENCRYPT_MODE, publicKey);
+        return cipher.doFinal(data);
+    }
+
+    /**
+     * 使用私钥加密
+     * @param data
+     * @return
+     * @throws Exception
+     */
+    public static byte[] encryptByPrivateKey(byte[] data)throws Exception{
+        Cipher cipher = Cipher.getInstance(KEY_ALGORITHM);
+        cipher.init(Cipher.ENCRYPT_MODE, privateKey);
+        return cipher.doFinal(data);
+    }
+
+    /**
+     * 使用公钥解密
+     * @param data
+     * @return
+     */
+    public static byte[] decryptByPublicKey(byte[] data) throws Exception{
+        Cipher cipher = Cipher.getInstance(KEY_ALGORITHM);
+        cipher.init(Cipher.DECRYPT_MODE, publicKey);
+        return cipher.doFinal(data);
+    }
+
+    /**
+     * 使用私钥解密
+     * @param data
+     * @return
+     * @throws Exception
+     */
+    public static byte[] decryptByPrivateKey(byte[] data)throws Exception{
+        Cipher cipher = Cipher.getInstance(KEY_ALGORITHM);
+        cipher.init(Cipher.DECRYPT_MODE, privateKey);
+        return cipher.doFinal(data);
+    }
+
 
     /**
      * 初始化公钥
@@ -104,9 +163,9 @@ public class SignatureServiceImpl implements SignatureServcie {
             logger.error("========打开本地公钥文件失败=======" + publickeyFilePath);
             return publicKey;
         }
-        byte[] data = FileUtil.readFile(file);
+        byte[] data = FileUtils.readFile(file);
         try {
-            KeyFactory kf = KeyFactory.getInstance("RSA");
+            KeyFactory kf = KeyFactory.getInstance(KEY_ALGORITHM);
             X509EncodedKeySpec keySpec = new X509EncodedKeySpec(Base64.getDecoder().decode(data));
             publicKey = kf.generatePublic(keySpec);
         } catch (NoSuchAlgorithmException e) {
@@ -114,7 +173,7 @@ public class SignatureServiceImpl implements SignatureServcie {
         } catch (InvalidKeySpecException e) {
             e.printStackTrace();
         }
-        
+
         return publicKey;
     }
 
@@ -130,11 +189,11 @@ public class SignatureServiceImpl implements SignatureServcie {
             logger.error("========打开本地私钥文件失败=======" + privatekeyFilePath);
             return privateKey;
         }
-        byte[] data = FileUtil.readFile(file);
+        byte[] base64 = FileUtils.readFile(file);
         try {
-            KeyFactory kf = KeyFactory.getInstance("RSA");
-            byte[] data2 = Base64.getDecoder().decode(data);
-            PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(data2);
+            KeyFactory kf = KeyFactory.getInstance(KEY_ALGORITHM);
+            byte[] data = Base64.getDecoder().decode(base64);
+            PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(data);
             privateKey = kf.generatePrivate(keySpec);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
@@ -143,5 +202,5 @@ public class SignatureServiceImpl implements SignatureServcie {
         }
         return privateKey;
     }
-    
+
 }

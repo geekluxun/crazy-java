@@ -10,10 +10,10 @@ import java.io.IOException;
  *
  * @Author: luxun
  * @Create: 2018-06-22 14:13
- * @Description:
+ * @Description: 文件工具类
  * @Other:
  */
-public class FileUtil {
+public class FileUtils {
     
     public static byte[] readFile(File file){
         if (file == null || !file.exists()){
