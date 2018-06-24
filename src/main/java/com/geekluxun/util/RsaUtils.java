@@ -3,13 +3,12 @@ package com.geekluxun.util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
+import javax.crypto.*;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
 import java.security.*;
+import java.security.interfaces.RSAPublicKey;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
@@ -24,12 +23,12 @@ import java.util.Base64;
 public class RsaUtils {
     private static final Logger logger = LoggerFactory.getLogger(RsaUtils.class);
     /**
-     * 数字签名 密钥算法
+     * 密钥算法 加解密使用
      */
     public static final String KEY_ALGORITHM = "RSA";
 
     /**
-     * 数字签名 签名/验证算法
+     * 数字签名算法 签名/验证时使用
      */
     public static final String SIGNATURE_ALGORITHM = "SHA1withRSA";
     /**
@@ -44,7 +43,6 @@ public class RsaUtils {
     private static String privatekeyFilePath = "/data/config/keys/prkey.key";
 
     static {
-        Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
         publicKey = initPublicKey(publickeyFilePath);
         privateKey = initPirvateKey(privatekeyFilePath);
     }
@@ -56,15 +54,13 @@ public class RsaUtils {
      */
     public static String sign(String inputStr) {
         try {
-            Signature signature = Signature.getInstance(SIGNATURE_ALGORITHM, "BC");
+            Signature signature = Signature.getInstance(SIGNATURE_ALGORITHM);
             // 使用私钥签名
             signature.initSign(privateKey);
             signature.update(inputStr.getBytes("UTF-8"));
             byte[] signed = signature.sign();
             return Base64.getEncoder().encodeToString(signed);
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (NoSuchProviderException e) {
             e.printStackTrace();
         } catch (InvalidKeyException e) {
             e.printStackTrace();
@@ -84,15 +80,13 @@ public class RsaUtils {
      */
     public static Boolean verifySign(String inputStr, String signStr){
         try {
-            Signature signature = Signature.getInstance(SIGNATURE_ALGORITHM, "BC");
+            Signature signature = Signature.getInstance(SIGNATURE_ALGORITHM);
             // 使用公钥验签
             signature.initVerify(publicKey);
             signature.update(inputStr.getBytes("UTF-8"));
             byte[] data = Base64.getDecoder().decode(signStr);
             return signature.verify(data);
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (NoSuchProviderException e) {
             e.printStackTrace();
         } catch (InvalidKeyException e) {
             e.printStackTrace();
@@ -148,6 +142,32 @@ public class RsaUtils {
         Cipher cipher = Cipher.getInstance(KEY_ALGORITHM);
         cipher.init(Cipher.DECRYPT_MODE, privateKey);
         return cipher.doFinal(data);
+    }
+
+    /**
+     * 生成密钥对 输出到本地文本文件中
+     * @return
+     */
+    protected static KeyPair generateKeyPair(){
+        try {
+            KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
+            keyPairGenerator.initialize(2048);
+            KeyPair keyPair = keyPairGenerator.generateKeyPair();
+
+            PublicKey publicKey =keyPair.getPublic();
+            byte[] pbkey = publicKey.getEncoded();
+            String pbkeyBase64 = Base64.getEncoder().encodeToString(pbkey);
+            System.out.println("生成的公钥：" + pbkeyBase64);
+
+            PrivateKey priKey =keyPair.getPrivate();
+            byte[] prkey = priKey.getEncoded();
+            String prkeyBase64 = Base64.getEncoder().encodeToString(prkey);
+            System.out.println("生成的私钥：" + prkeyBase64);
+            return keyPair;
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 

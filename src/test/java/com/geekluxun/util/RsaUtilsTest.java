@@ -64,4 +64,12 @@ public class RsaUtilsTest {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * 生成密钥对
+     */
+    @Test
+    public void generateKey(){
+        RsaUtils.generateKeyPair();
+    }
 }
