@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-06-22 14:13
