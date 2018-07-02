@@ -2,6 +2,8 @@ package com.geekluxun;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 /**
  * Copyright,2018-2019,geekluxun Co.,Ltd.
@@ -12,7 +14,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Other:
  */
 @SpringBootApplication
-public class CrazyJavaApplication {
+public class CrazyJavaApplication  extends SpringBootServletInitializer{
+
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+		return builder.sources(CrazyJavaApplication.class);
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(CrazyJavaApplication.class, args);

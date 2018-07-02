@@ -6,7 +6,7 @@
 	<groupId>com.geekluxun</groupId>
 	<artifactId>crazy-java</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>crazy-java</name>
 	<description>疯狂java</description>
