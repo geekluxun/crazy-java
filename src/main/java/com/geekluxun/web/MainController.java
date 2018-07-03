@@ -15,6 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class MainController {
 
+    /**
+     * 测试servlet容器在系统中的路径
+     * @param request
+     * @param response
+     */
     @RequestMapping("/test1")
     public void test(HttpServletRequest request, HttpServletResponse response){
         String path = request.getServletContext().getRealPath("/dd");
