@@ -1,19 +1,17 @@
 package com.geekluxun.guava.reflect;
 
 import com.google.common.reflect.ClassPath;
-import jdk.internal.org.objectweb.asm.commons.Method;
 import org.springframework.util.Assert;
 
 import java.io.IOException;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 
 /**
  * Copyright,2018-2019,xinxindai Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-07-04 16:27
- * @Description:
+ * @Description: ClassPath示例
  * @Other:
  */
 public class ClassPathDemo {

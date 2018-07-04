@@ -10,7 +10,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 /**
  * @Author: luxun
  * @Create: 2018-06-30 14:16
- * @Description:
+ * @Description: 工具类Lists Sets Maps Queues示例
  * @Other:
  */
 public class ListsSetsMapsQueuesDemo {

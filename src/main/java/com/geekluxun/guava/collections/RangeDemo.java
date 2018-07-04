@@ -8,7 +8,7 @@ import com.google.common.primitives.Ints;
  *
  * @Author: luxun
  * @Create: 2018-07-03 14:08
- * @Description:
+ * @Description: 范围类Range示例
  * @Other:
  */
 public class RangeDemo {

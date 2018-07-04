@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @Author: luxun
  * @Create: 2018-06-29 16:58
- * @Description:
+ * @Description: 一个key映射多个value示例
  * @Other:
  */
 public class MultiMapDemo {

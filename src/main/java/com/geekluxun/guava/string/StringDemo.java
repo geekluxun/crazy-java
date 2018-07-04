@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @Author: luxun
  * @Create: 2018-07-02 9:53
- * @Description:
+ * @Description: 字符串连接分割匹配示例
  * @Other:
  */
 public class StringDemo {

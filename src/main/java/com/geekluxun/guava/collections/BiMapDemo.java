@@ -8,7 +8,7 @@ import com.google.common.collect.HashBiMap;
  *
  * @Author: luxun
  * @Create: 2018-06-29 17:32
- * @Description:
+ * @Description: 双向map
  * @Other:
  */
 public class BiMapDemo {
