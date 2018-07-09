@@ -11,8 +11,9 @@ import java.lang.annotation.*;
  * @Other:
  */
 @Documented
-@Target({ElementType.TYPE,ElementType.ANNOTATION_TYPE,ElementType.TYPE_USE, ElementType.METHOD})
+@Target({ElementType.METHOD,ElementType.TYPE_USE})
 @Retention(RetentionPolicy.RUNTIME)
+@TestAnnotation1
 public @interface TestAnnotation2 {
     String value() default "test";
     String attribute1() default "luxun";
