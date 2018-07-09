@@ -12,7 +12,7 @@ import java.lang.annotation.*;
  * @Other:
  */
 
-@Target({ElementType.TYPE,ElementType.ANNOTATION_TYPE,ElementType.TYPE_USE, ElementType.METHOD})
+@Target({ElementType.METHOD,ElementType.TYPE_USE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface TestAnnotation1 {
     String value() default "test";
