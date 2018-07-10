@@ -1,10 +1,8 @@
-package com.geekluxun.apache.commons.lang.AnnotationUtils;
+package com.geekluxun.apache.commons.lang.annotationutils;
 
-import lombok.Data;
 import org.apache.commons.lang3.AnnotationUtils;
 
 import java.lang.annotation.Annotation;
-import java.lang.annotation.Target;
 
 /**
  * Copyright,2018-2019,xinxindai Co.,Ltd.

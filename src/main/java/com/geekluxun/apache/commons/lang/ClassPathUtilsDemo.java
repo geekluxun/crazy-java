@@ -31,5 +31,4 @@ public class ClassPathUtilsDemo {
         
         System.out.println();
     }
-    
 }

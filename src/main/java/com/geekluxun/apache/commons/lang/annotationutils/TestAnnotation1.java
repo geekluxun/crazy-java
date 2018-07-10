@@ -1,4 +1,4 @@
-package com.geekluxun.apache.commons.lang.AnnotationUtils;
+package com.geekluxun.apache.commons.lang.annotationutils;
 
 import java.lang.annotation.*;
 
