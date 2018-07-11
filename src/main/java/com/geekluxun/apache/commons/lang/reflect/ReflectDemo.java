@@ -51,6 +51,7 @@ public class ReflectDemo {
     }
     
     private void demo3(List<String> data){
+        // TODO 这里有问题！！！
         ParameterizedType  type = (ParameterizedType) ArrayList.class.getGenericSuperclass();
         Class<?> classed = getCollectionType(data.getClass().getComponentType());
         System.out.println();
