@@ -5,7 +5,7 @@ import org.apache.commons.lang3.Conversion;
 import java.util.UUID;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-07-09 9:56

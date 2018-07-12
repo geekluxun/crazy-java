@@ -3,7 +3,7 @@ package com.geekluxun.apache.commons.lang;
 import org.apache.commons.lang3.Validate;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-07-10 12:32

@@ -1,7 +1,7 @@
 package com.geekluxun.apache.commons.lang.reflect;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-07-10 17:08

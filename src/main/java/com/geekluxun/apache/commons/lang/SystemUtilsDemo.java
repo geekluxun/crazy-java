@@ -5,7 +5,7 @@ import org.apache.commons.lang3.SystemUtils;
 import java.io.File;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-07-10 11:16

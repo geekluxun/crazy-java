@@ -4,7 +4,7 @@ import com.google.common.collect.Range;
 import com.google.common.primitives.Ints;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-07-03 14:08

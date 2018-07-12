@@ -9,7 +9,7 @@ import java.math.BigInteger;
 import java.util.*;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-07-04 9:08

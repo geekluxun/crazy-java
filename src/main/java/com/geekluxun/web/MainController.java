@@ -1,15 +1,22 @@
 package com.geekluxun.web;
 
 import com.geekluxun.component.httpclient.HttpClientDemo;
+import com.geekluxun.component.sevlet.HttpSevletDemo;
 import org.checkerframework.checker.units.qual.K;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.Map;
-import java.util.Set;
+import javax.servlet.DispatcherType;
+import javax.servlet.ServletException;
+import javax.servlet.ServletInputStream;
+import javax.servlet.http.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.*;
 
 /**
  * @Author: luxun
@@ -21,6 +28,8 @@ import java.util.Set;
 public class MainController {
     @Autowired
     HttpClientDemo httpClientDemo;
+    @Autowired
+    HttpSevletDemo httpSevletDemo;
 
     /**
      * 测试servlet容器在系统中的路径
@@ -29,22 +38,24 @@ public class MainController {
      */
     @RequestMapping("/test1")
     public void test(HttpServletRequest request, HttpServletResponse response){
-        Map para = request.getParameterMap();
-        Set<Map.Entry<K, String>> entries =  para.entrySet();
-        for (Map.Entry map :entries){
-            System.out.println("key:" + map.getKey() + " value:" + map.getValue());
-        }
-        //entries.forEach((a)->System.out.println("key:" + a.getKey() + " value:" + a.getValue()));
         String path = request.getServletContext().getRealPath("/dd");
         System.out.println(path);
     }
 
+    /**
+     * 注意此处加参数response和不加参数response是不同的
+     * 不加的话会500报错，方法的返回值也是用来设置此response的
+     * @param response
+     */
     @RequestMapping("/test2")
-    public void testHttpClient(){
+    public Object testHttpClient(HttpServletRequest request, HttpServletResponse response){
         httpClientDemo.demo1();
+        response.setContentType("dd");
+        httpSevletDemo.demo1(request);
+        httpSevletDemo.demo2(request);
+        // 或者用这种方法
+        return new ResponseEntity("hello",HttpStatus.OK);
     }
-    
-    
 }
 
 

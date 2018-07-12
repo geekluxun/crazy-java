@@ -5,7 +5,7 @@ import com.google.common.math.IntMath;
 import java.math.RoundingMode;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-07-03 17:59

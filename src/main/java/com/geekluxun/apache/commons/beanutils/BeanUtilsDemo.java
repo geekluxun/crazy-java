@@ -8,7 +8,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-07-05 9:03

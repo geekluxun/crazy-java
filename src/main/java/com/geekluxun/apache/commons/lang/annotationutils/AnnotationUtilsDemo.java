@@ -5,7 +5,7 @@ import org.apache.commons.lang3.AnnotationUtils;
 import java.lang.annotation.Annotation;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-07-06 15:09
