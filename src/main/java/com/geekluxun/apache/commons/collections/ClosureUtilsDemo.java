@@ -14,7 +14,7 @@ import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
  *
  * @Author: luxun
  * @Create: 2018-07-12 14:56
- * @Description:
+ * @Description: 闭包工具类
  * @Other:
  */
 public class ClosureUtilsDemo {
@@ -161,42 +161,53 @@ public class ClosureUtilsDemo {
 
         try {
             ClosureUtils.chainedClosure(null, null);
-            //fail();
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) {
+            System.out.println(ex);
+        }
+        
         try {
             ClosureUtils.chainedClosure((Closure[]) null);
-            //fail();
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) {
+            System.out.println(ex);
+        }
+        
         try {
             ClosureUtils.chainedClosure((Collection) null);
-            //fail();
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) {
+            System.out.println(ex);
+        }
+        
         try {
             ClosureUtils.chainedClosure(new Closure[] {null, null});
-            //fail();
-        } catch (IllegalArgumentException ex) {}
+          
+        } catch (IllegalArgumentException ex) {
+            System.out.println(ex);
+        }
+        
         try {
             coll = new ArrayList();
             coll.add(null);
             coll.add(null);
             ClosureUtils.chainedClosure(coll);
-            //fail();
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) {
+            System.out.println(ex);
+        }
     }
     
     public void testSwitchClosure() {
         MockClosure a = new MockClosure();
         MockClosure b = new MockClosure();
+        // 条件为真 执行a
         ClosureUtils.ifClosure(PredicateUtils.truePredicate(), a, b).execute(null);
         Assert.isTrue(1 ==  a.count);
         Assert.isTrue(0 == b.count);
-
+        // 条件为假 执行b
         a = new MockClosure();
         b = new MockClosure();
         ClosureUtils.ifClosure(PredicateUtils.falsePredicate(), a, b).execute(null);
         Assert.isTrue(0 ==  a.count);
         Assert.isTrue(1 ==  b.count);
-
+        // swith
         a = new MockClosure();
         b = new MockClosure();
         ClosureUtils.switchClosure(
@@ -213,6 +224,7 @@ public class ClosureUtilsDemo {
         Assert.isTrue(1 == a.count);
         Assert.isTrue(0 ==  b.count);
 
+        // 数组构造条件谓词 带default的switch
         a = new MockClosure();
         b = new MockClosure();
         MockClosure c = new MockClosure();
@@ -223,6 +235,7 @@ public class ClosureUtilsDemo {
         Assert.isTrue(0 ==  b.count);
         Assert.isTrue(1 ==  c.count);
 
+        // map 构造条件谓词 
         a = new MockClosure();
         b = new MockClosure();
         Map map = new HashMap();
@@ -248,11 +261,11 @@ public class ClosureUtilsDemo {
         map.put(PredicateUtils.equalPredicate("HELLO"), a);
         map.put(PredicateUtils.equalPredicate("THERE"), b);
         map.put(null, c);
+        // 没有
         ClosureUtils.switchClosure(map).execute("WELL");
         Assert.isTrue(0 == a.count);
         Assert.isTrue(0 == b.count);
         Assert.isTrue(1 ==  c.count);
-
         Assert.isTrue(NOPClosure.INSTANCE == ClosureUtils.switchClosure(new Predicate[0], new Closure[0]));
         Assert.isTrue(NOPClosure.INSTANCE == ClosureUtils.switchClosure(new HashMap()));
         map = new HashMap();
@@ -261,26 +274,31 @@ public class ClosureUtilsDemo {
 
         try {
             ClosureUtils.switchClosure(null, null);
-            // fail();
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) {
+            System.out.println(ex);
+        }
         try {
             ClosureUtils.switchClosure((Predicate[]) null, (Closure[]) null);
-            //fail();
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) {
+            System.out.println(ex);
+        }
         try {
             ClosureUtils.switchClosure((Map) null);
-            //fail();
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) {
+            System.out.println(ex);
+        }
         try {
             ClosureUtils.switchClosure(new Predicate[2], new Closure[2]);
-            //fail();
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) {
+            System.out.println(ex);
+        }
         try {
             ClosureUtils.switchClosure(
-                    new Predicate[] {PredicateUtils.truePredicate()},
-                    new Closure[] {a,b});
-            //fail();
-        } catch (IllegalArgumentException ex) {}
+                new Predicate[] {PredicateUtils.truePredicate()},
+                new Closure[] {a,b});
+        } catch (IllegalArgumentException ex) {
+            System.out.println(ex);
+        }
     }
 
     public void testSwitchMapClosure() {
@@ -318,8 +336,9 @@ public class ClosureUtilsDemo {
 
         try {
             ClosureUtils.switchMapClosure(null);
-            //fail();
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) {
+            System.out.println(ex);
+        }
     }
 
     public void testTransformerClosure() {
