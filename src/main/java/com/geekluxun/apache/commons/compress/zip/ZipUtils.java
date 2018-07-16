@@ -67,7 +67,7 @@ public class ZipUtils {
 
                 }
             }
-            zaos.finish();
+   //         zaos.finish();
         } catch (Exception e) {
             throw new RuntimeException(e);
         } finally {
@@ -100,6 +100,7 @@ public class ZipUtils {
         finally {
                 try {
                     if (zaos != null) {
+                        zaos.finish();
                         zaos.close();
                     }
                 } catch (IOException e) {
@@ -133,11 +134,17 @@ public class ZipUtils {
             File[] files = srcfile.listFiles();
             for (File f : files){
                 if (f.isDirectory()){
-                    
+                    String entryName = f.getPath().substring(5);
+                    ZipArchiveEntry entry = new ZipArchiveEntry(f, entryName);
+                    zaos.putArchiveEntry(entry);
+                    zaos.closeArchiveEntry();
                     ziplogic(f.getPath(), zaos);
                 } else {
                     if (f != null) {
-                        ZipArchiveEntry zipArchiveEntry = new ZipArchiveEntry(f, f.getName());
+                        String parent = f.getParent();
+                        String path = f.getPath();
+                        String entryName = path.substring(5);
+                        ZipArchiveEntry zipArchiveEntry = new ZipArchiveEntry(f, entryName);
                         zaos.putArchiveEntry(zipArchiveEntry);
                         InputStream is = null;
                         try {
