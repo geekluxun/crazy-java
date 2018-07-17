@@ -1,22 +1,17 @@
 package com.geekluxun.web;
 
+import com.geekluxun.apache.commons.fileupload.FileUploadDemo;
 import com.geekluxun.component.httpclient.HttpClientDemo;
 import com.geekluxun.component.sevlet.HttpSevletDemo;
-import org.checkerframework.checker.units.qual.K;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.DispatcherType;
-import javax.servlet.ServletException;
-import javax.servlet.ServletInputStream;
-import javax.servlet.http.*;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @Author: luxun
@@ -30,6 +25,8 @@ public class MainController {
     HttpClientDemo httpClientDemo;
     @Autowired
     HttpSevletDemo httpSevletDemo;
+    @Autowired
+    FileUploadDemo fileUploadDemo;
 
     /**
      * 测试servlet容器在系统中的路径
@@ -55,6 +52,22 @@ public class MainController {
         httpSevletDemo.demo2(request);
         // 或者用这种方法
         return new ResponseEntity("hello",HttpStatus.OK);
+    }
+    
+    @RequestMapping("/getuploadfile")
+    public ModelAndView getUpLoadFilePage() {
+        ModelAndView modelAndView = new ModelAndView("uploadfile");
+        return modelAndView;
+    }
+
+    /**
+     * 上传文件示例
+     *
+     * @param request
+     */
+    @RequestMapping("/uploadfile")
+    public void upLoadFile(HttpServletRequest request) {
+        fileUploadDemo.demo2(request);
     }
 }
 

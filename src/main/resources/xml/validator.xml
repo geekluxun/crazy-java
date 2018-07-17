@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<validators>
+    <header name="出生日期">
+        <validator type="reg">
+            <reg>^\d{4}[\/-]\d{1,2}[\/-]\d{1,2}$</reg>
+        </validator>
+    </header>
+
+    <header name="身份证*">
+        <validator type="reg">
+            <reg>^(\d{17})(\d|[xX])$</reg>
+        </validator>
+        <validator type="uniq">
+            <className>com.cnpc.pms.exp.inf.entity.ExpertInfo</className>
+            <filedName>idCardNum</filedName>
+        </validator>
+    </header>
+
+    <header name="推荐单位*">
+        <validator type="refer">
+            <className>com.cnpc.pms.bizbase.rbac.orgview.entity.PurStruOrg</className>
+            <filedName>code</filedName>
+        </validator>
+    </header>
+
+    <header name="评审专业*">
+        <validator type="custom">
+            <className>expImportExcelManager</className>
+            <methodName>verifyCategory</methodName>
+        </validator>
+    </header>
+</validators> 

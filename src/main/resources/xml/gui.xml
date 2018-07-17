@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<gui-definition>
+    <colors>
+        <background>#808080</background>
+        <text>#000000</text>
+        <header>#008000</header>
+        <link normal="#000080" visited="#800080"/>
+        <!-- ????????element-->
+        <default>${colors.header}</default>
+    </colors>
+    <rowsPerPage>15</rowsPerPage>
+    <buttons>
+        <name>OK</name>
+        <name>Cancel</name>
+        <name>Help</name>
+    </buttons>
+    <numberFormat pattern="###,###.##"/>
+</gui-definition>
