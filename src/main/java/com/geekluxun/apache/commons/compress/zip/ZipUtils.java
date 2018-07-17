@@ -15,135 +15,63 @@ import java.util.List;
  *
  * @Author: luxun
  * @Create: 2018-07-16 17:00
- * @Description:
+ * @Description: apache commons compress 实现的zip压缩解压缩
  * @Other:
  */
 public class ZipUtils {
-
     /**
-     * 把文件压缩成zip格式
-     *
-     * @param srcfilesPath
+     * @param srcFilePath
      * @param zipFilePath
      */
-    public static void zip(String[] srcfilesPath, String zipFilePath) {
-        if (srcfilesPath == null || srcfilesPath.length <= 0) {
-            return;
-        }
+    public static void zip(String srcFilePath, String zipFilePath) {
+             
         ZipArchiveOutputStream zaos = null;
+        File zipFile = new File(zipFilePath);
+        if (zipFile.exists()) {
+            zipFile.delete();
+        }
+        File srcfile = new File(srcFilePath);
+        String rootSrcFilePath = srcfile.getPath() + File.separator; 
         try {
-            File zipFile = new File(zipFilePath);
             zaos = new ZipArchiveOutputStream(zipFile);
             zaos.setUseZip64(Zip64Mode.AsNeeded);
-            // 将每个文件用ZipArchiveEntry封装
-            // 再用ZipArchiveOutputStream写到压缩文件中
-            for (String strfile : srcfilesPath) {
-                File file = new File(strfile);
-                if (file != null) {
-                    ZipArchiveEntry zipArchiveEntry = new ZipArchiveEntry(file, file.getName());
-                    zaos.putArchiveEntry(zipArchiveEntry);
-                    // TODO 逻辑不对！！！
-                    if (file.isDirectory()) {
-                        zaos.putArchiveEntry(new ZipArchiveEntry(file.getName()));
-                        zaos.closeArchiveEntry();
-                        continue;
-                    }
-                    InputStream is = null;
-                    try {
-                        is = new BufferedInputStream(new FileInputStream(file));
-                        byte[] buffer = new byte[1024];
-                        int len = -1;
-                        while ((len = is.read(buffer)) != -1) {
-                            // 把缓冲区的字节写入到ZipArchiveEntry
-                            zaos.write(buffer, 0, len);
-                        }
-                        zaos.closeArchiveEntry();
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    } finally {
-                        if (is != null)
-                            is.close();
-                    }
-
-                }
-            }
-   //         zaos.finish();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+            zipLogic(srcfile, zaos, rootSrcFilePath);
+        } catch (IOException e) {
+            e.printStackTrace();
         } finally {
             try {
                 if (zaos != null) {
+                    zaos.finish();
                     zaos.close();
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
-
     }
 
     /**
-     * @param srcDirPath
-     * @param zipFilePath
+     * 递归压缩文件
+     *
+     * @param srcFile
+     * @param zaos
+     * @param rootFilePath
      */
-    public static void zip(String srcDirPath, String zipFilePath) {
-            
-        ZipArchiveOutputStream zaos = null;
-        File zipFile = new File(zipFilePath);
+    private static void zipLogic(File srcFile, ZipArchiveOutputStream zaos, String rootFilePath) {
         try {
-            zaos = new ZipArchiveOutputStream(zipFile);
-            zaos.setUseZip64(Zip64Mode.AsNeeded);
-            ziplogic(srcDirPath, zaos);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        finally {
-                try {
-                    if (zaos != null) {
-                        zaos.finish();
-                        zaos.close();
-                    }
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        
-    }
-    
-    public static void zipDir(String srcDir, String zipFilePath){
-        ZipArchiveOutputStream zaos = null;
-        File zipFile = new File(zipFilePath);
-        try {
-            zaos = new ZipArchiveOutputStream(zipFile);
-            File file = new File(srcDir);
-            zaos.setUseZip64(Zip64Mode.AsNeeded);
-            ZipArchiveEntry entry = new ZipArchiveEntry(file, file.getName());
-            zaos.putArchiveEntry(entry);
-            zaos.closeArchiveEntry();
-            zaos.flush();
-            zaos.finish();
-            zaos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
-    private static void ziplogic(String srcFilePath, ZipArchiveOutputStream zaos){
-        try {
-            File srcfile = new File(srcFilePath);
-            File[] files = srcfile.listFiles();
+            File[] files = srcFile.listFiles();
             for (File f : files){
-                if (f.isDirectory()){
-                    String entryName = f.getPath().substring(5);
+                if (f.isDirectory()) {
+                    //  得到相对此root文件夹的路径
+                    String entryName = f.getPath().substring(rootFilePath.length());
                     ZipArchiveEntry entry = new ZipArchiveEntry(f, entryName);
                     zaos.putArchiveEntry(entry);
                     zaos.closeArchiveEntry();
-                    ziplogic(f.getPath(), zaos);
+                    zipLogic(f, zaos, rootFilePath);
                 } else {
                     if (f != null) {
-                        String parent = f.getParent();
-                        String path = f.getPath();
-                        String entryName = path.substring(5);
+                        //  得到相对此root文件夹的路径
+                        String entryName = f.getPath().substring(rootFilePath.length());
                         ZipArchiveEntry zipArchiveEntry = new ZipArchiveEntry(f, entryName);
                         zaos.putArchiveEntry(zipArchiveEntry);
                         InputStream is = null;
@@ -152,7 +80,6 @@ public class ZipUtils {
                             byte[] buffer = new byte[1024];
                             int len = -1;
                             while ((len = is.read(buffer)) != -1) {
-                                // 把缓冲区的字节写入到ZipArchiveEntry
                                 zaos.write(buffer, 0, len);
                             }
                             zaos.closeArchiveEntry();
@@ -170,7 +97,6 @@ public class ZipUtils {
         }
     }
 
-
     /**
      * 把zip文件解压到指定的文件夹
      *
@@ -185,6 +111,7 @@ public class ZipUtils {
         if (!dir.exists()) {
             dir.mkdirs();
         }
+        
         File file = new File(zipFilePath);
         if (file.exists()) {
             InputStream is = null;
@@ -205,8 +132,7 @@ public class ZipUtils {
                         if (entryFileName.endsWith("/")) {
                             entryFile.mkdirs();
                         } else {
-                            os = new BufferedOutputStream(new FileOutputStream(
-                                    entryFile));
+                            os = new BufferedOutputStream(new FileOutputStream(entryFile));
                             byte[] buffer = new byte[1024];
                             int len = -1;
                             while ((len = zais.read(buffer)) != -1) {
@@ -221,7 +147,6 @@ public class ZipUtils {
                             os.close();
                         }
                     }
-
                 }
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -238,30 +163,5 @@ public class ZipUtils {
                 }
             }
         }
-    }
-
-    /**
-     * 递归取到当前目录所有文件
-     *
-     * @param dir
-     * @return
-     */
-    private static List<String> getFiles(String dir) {
-        List<String> lstFiles = null;
-        if (lstFiles == null) {
-            lstFiles = new ArrayList<>();
-        }
-        File file = new File(dir);
-        File[] files = file.listFiles();
-        for (File f : files) {
-            if (f.isDirectory()) {
-                lstFiles.add(f.getAbsolutePath());
-                lstFiles.addAll(getFiles(f.getAbsolutePath()));
-            } else {
-                String str = f.getAbsolutePath();
-                lstFiles.add(str);
-            }
-        }
-        return lstFiles;
     }
 }
