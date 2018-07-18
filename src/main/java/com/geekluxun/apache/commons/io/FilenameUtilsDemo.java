@@ -1,6 +1,12 @@
 package com.geekluxun.apache.commons.io;
 
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.IOCase;
+import org.apache.poi.util.SystemOutLogger;
+import org.springframework.util.Assert;
+
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Copyright,2018-2019,geekluxun Co.,Ltd.
@@ -14,6 +20,8 @@ public class FilenameUtilsDemo {
     public static void main(String[] argc){
         FilenameUtilsDemo demo = new FilenameUtilsDemo();
         demo.demo1();
+        demo.demo2();
+        demo.demo3();
     }
     
     private void demo1(){
@@ -23,6 +31,42 @@ public class FilenameUtilsDemo {
         path = FilenameUtils.concat("/foo", "C:/bar");
         path = FilenameUtils.concat("/foo", "C:bar");
         path = FilenameUtils.concat("/foo/a/", "../bar");
+        System.out.println();
+    }
+
+    public void demo2(){
+        try {
+            boolean result = FilenameUtils.directoryContains("/a/b", "b");
+            Assert.isTrue(!result, "");
+            result = FilenameUtils.directoryContains("/a", "/a/b");
+            Assert.isTrue(result, "不包含");
+            // 大小写不敏感
+            result = FilenameUtils.equals("/dd/A","/dD/a",true, IOCase.INSENSITIVE);
+
+            System.out.println();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void demo3(){
+        File file = new File("/dd/luxun.txt");
+        String fileName = file.getPath();
+        // -->luxun
+        String str = FilenameUtils.getBaseName(fileName);
+        str = FilenameUtils.getExtension(fileName);
+        // -->/dd/
+        str = FilenameUtils.getFullPath(fileName);
+        // -->/dd
+        str = FilenameUtils.getFullPathNoEndSeparator(fileName);
+        // -->luxun.txt
+        str = FilenameUtils.getName(fileName);
+        // -->dd
+        str = FilenameUtils.getPathNoEndSeparator(fileName);
+        // -->/
+        str = FilenameUtils.getPrefix(fileName);
+
+        int len =  FilenameUtils.getPrefixLength(fileName);
         System.out.println();
     }
 }
