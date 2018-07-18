@@ -4,15 +4,17 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 
 /**
@@ -69,11 +71,15 @@ public class FileUploadDemo {
         String filename = file.getOriginalFilename();
         // 获得输入流：   
         try {
-            InputStream input = file.getInputStream();
-            byte[] buf = new byte[4096];
-            input.read(buf, 0, 4096);
-            String str = new String(buf);
-            System.out.println("文件内容:" + str);
+            // 字节流转成字符流
+//            BufferedReader buf = new BufferedReader(new InputStreamReader(file.getInputStream()));
+//            System.out.println("读取的文件内容:");
+//            String line;
+//            while ((line = buf.readLine()) != null) {
+//                System.out.println(line);
+//            }
+            // 直接把输入流转换成文件！！！
+            FileUtils.copyInputStreamToFile(file.getInputStream(),new File("/3.txt"));
         } catch (IOException e) {
             e.printStackTrace();
         }

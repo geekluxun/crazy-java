@@ -1,6 +1,7 @@
 package com.geekluxun.web;
 
 import com.geekluxun.apache.commons.fileupload.FileUploadDemo;
+import com.geekluxun.apache.commons.io.IOUtilsDemo;
 import com.geekluxun.component.httpclient.HttpClientDemo;
 import com.geekluxun.component.sevlet.HttpSevletDemo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +21,13 @@ import javax.servlet.http.HttpServletResponse;
  * @Other:
  */
 @Controller
+@RequestMapping("/main")
 public class MainController {
     @Autowired
     HttpClientDemo httpClientDemo;
     @Autowired
     HttpSevletDemo httpSevletDemo;
-    @Autowired
-    FileUploadDemo fileUploadDemo;
+
 
     /**
      * 测试servlet容器在系统中的路径
@@ -52,22 +53,6 @@ public class MainController {
         httpSevletDemo.demo2(request);
         // 或者用这种方法
         return new ResponseEntity("hello",HttpStatus.OK);
-    }
-    
-    @RequestMapping("/getuploadfile")
-    public ModelAndView getUpLoadFilePage() {
-        ModelAndView modelAndView = new ModelAndView("uploadfile");
-        return modelAndView;
-    }
-
-    /**
-     * 上传文件示例
-     *
-     * @param request
-     */
-    @RequestMapping("/uploadfile")
-    public void upLoadFile(HttpServletRequest request) {
-        fileUploadDemo.demo2(request);
     }
 }
 
