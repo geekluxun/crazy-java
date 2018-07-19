@@ -1,5 +1,8 @@
 package com.geekluxun.jdk.lang;
 
+import java.util.Map;
+import java.util.Set;
+
 /**
  * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
@@ -12,6 +15,7 @@ public class SystemDemo {
     public static void main(String[] argc) {
         SystemDemo demo = new SystemDemo();
         demo.demo1();
+        demo.demo2();
     }
 
     private void demo1() {
@@ -72,5 +76,17 @@ public class SystemDemo {
         // 用户的当前工作目录
         System.out.println(System.getProperty("user.dir"));
 
+    }
+    
+    private void demo2(){
+        // 所有的环境变量
+        Map env = System.getenv();
+        Set<Map.Entry<String, String >> entries =  env.entrySet();
+        entries.forEach((e)->System.out.println("key:" +e.getKey() + " value:" + e.getValue()));
+    
+        SecurityManager securityManager = System.getSecurityManager();
+        // 指定对象的hashcode
+        int hashcode = System.identityHashCode(this);
+        System.out.println();
     }
 }

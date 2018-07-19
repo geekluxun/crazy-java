@@ -22,6 +22,7 @@ public class FilenameUtilsDemo {
         demo.demo1();
         demo.demo2();
         demo.demo3();
+        demo.demo4();
     }
     
     private void demo1(){
@@ -67,6 +68,20 @@ public class FilenameUtilsDemo {
         str = FilenameUtils.getPrefix(fileName);
 
         int len =  FilenameUtils.getPrefixLength(fileName);
+        int index = FilenameUtils.indexOfExtension(fileName);
+        int pos = FilenameUtils.indexOfLastSeparator(fileName);
+        boolean result = FilenameUtils.isExtension(fileName, ".txt");
+        System.out.println();
+    }
+    
+    public void demo4(){
+        String filename = FilenameUtils.normalize("//server/foo/../bar");
+        // 尾部的分割符删掉
+        filename = FilenameUtils.normalizeNoEndSeparator("//server/foo/../bar/");
+        System.out.println();
+        // 匹配
+        boolean match = FilenameUtils.wildcardMatch("c.txt", "*.txt");
+        match = FilenameUtils.wildcardMatch("c.txt", "*.????");
         System.out.println();
     }
 }
