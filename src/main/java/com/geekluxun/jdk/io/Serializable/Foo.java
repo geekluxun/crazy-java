@@ -3,7 +3,7 @@ package com.geekluxun.jdk.io.Serializable;
 import java.io.Serializable;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-07-19 17:20

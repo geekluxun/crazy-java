@@ -6,7 +6,7 @@ import org.apache.commons.codec.binary.Hex;
 import java.nio.ByteBuffer;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-07-16 9:34

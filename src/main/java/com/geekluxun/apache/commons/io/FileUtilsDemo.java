@@ -1,11 +1,9 @@
 package com.geekluxun.apache.commons.io;
 
-import com.sun.xml.internal.fastinfoset.tools.FI_DOM_Or_XML_DOM_SAX_SAXEvent;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.HexDump;
 import org.apache.commons.io.LineIterator;
 import org.springframework.util.Assert;
-import org.springframework.util.ClassUtils;
 
 import java.io.*;
 import java.net.URL;

@@ -5,7 +5,7 @@ import org.apache.commons.codec.binary.Base64;
 import java.util.Arrays;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-07-16 9:01

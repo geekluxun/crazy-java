@@ -6,7 +6,7 @@ import org.apache.commons.collections4.FactoryUtils;
 import java.math.BigDecimal;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-07-13 13:55
