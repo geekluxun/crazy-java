@@ -21,6 +21,14 @@ import javax.servlet.http.HttpServletResponse;
 public class HttpRequestResponseController {
     @Autowired
     IOUtilsDemo ioUtilsDemo;
+
+
+    @RequestMapping("/test1")
+    public String test1(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("name");
+        int value = request.getSession().getMaxInactiveInterval();
+        return "uploadfile";
+    }
     
     @RequestMapping("/test3")
     public String test3(HttpServletRequest request) {
@@ -50,7 +58,7 @@ public class HttpRequestResponseController {
     }
 
     @RequestMapping("/test9")
-    public String test1(HttpServletRequest request, HttpServletResponse response) {
+    public String test9(HttpServletRequest request, HttpServletResponse response) {
         try {
             ioUtilsDemo.demo9(request, response);
         } catch (Exception e) {
@@ -58,4 +66,24 @@ public class HttpRequestResponseController {
         }
         return "uploadfile";
     }
+
+    @RequestMapping("/getuser")
+    public void getuser(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("sessionId:" + request.getSession().getId());
+        System.out.println("getuser会话超时时间：" + request.getSession().getMaxInactiveInterval());
+        String name = (String) request.getSession().getAttribute("name");
+        System.out.println("name:" + name);
+        if (name == null){
+            System.out.println("会话超时了!!!");
+        }
+    }
+
+    @RequestMapping("/login")
+    public void login(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("sessionId:" + request.getSession().getId());
+        request.getSession().setMaxInactiveInterval(30);
+        request.getSession().setAttribute("name", "luxun");
+        System.out.println("login会话超时时间：" + request.getSession().getMaxInactiveInterval());
+    }
+    
 }
