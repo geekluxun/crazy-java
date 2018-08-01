@@ -1,7 +1,7 @@
 package com.geekluxun.spring.springmvc.thymeleaf.entity;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-07-31 16:02

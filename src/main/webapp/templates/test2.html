@@ -1,0 +1,77 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Good Thymes Virtual Grocery</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../../../css/gtvg.css" th:href="@{/css/gtvg.css}" />
+</head>
+
+<body>
+
+<h1>Product list</h1>
+
+<table>
+    <tr>
+        <th>NAME</th>
+        <th>PRICE</th>
+        <th>IN STOCK</th>
+        <th>Comment</th>
+    </tr>
+    <tr th:each="prod : ${prods}" th:class="${prod.name}? 'odd'">
+        <td th:text="${prod.name}">Onions</td>
+        <td th:text="${prod.price}">2.41</td>
+        <td th:text="${prod.inStock} ? #{true} : #{false}">yes</td>
+
+        <td>
+            <span th:text="${#lists.size(prod.comments)}">2</span>
+            <!-- 显示的前提是评论非空-->
+            <a href="comments.html"
+               th:href="@{/product/comments(prodId=${prod.price})}"
+               th:unless="${#lists.isEmpty(prod.comments)}">view</a>
+        </td>
+
+        <td th:switch="${#lists.size(prod.comments)}">
+            <span th:case="0">empty!!!</span>
+            <span th:case="1">one!!!</span>
+            <span th:case="*">other!!!</span>
+        </td>
+        
+        </tr>
+    
+</table>
+
+<p>
+    <a href="../home.html" th:href="@{/}">Return to home</a>
+</p>
+
+<div th:include="footer :: copy"></div>
+
+<div th:with="pp=${prods}">
+    <p>
+        The name of the first person is <span th:text="${pp.size()}">Julius Caesar</span>.
+    </p>
+</div>
+
+
+<!--/* This code will be removed at thymeleaf parsing time! */-->
+
+<table>
+    <th:block th:each="prod : ${prods}">
+        <tr>
+            <td th:text="${prod.name}">...</td>
+            <td th:text="${prod.price}">...</td>
+        </tr>
+        <tr>
+            <td colspan="2" th:text="${prod.inStock}">...</td>
+        </tr>
+    </th:block>
+</table>
+
+
+</body>
+
+</html>

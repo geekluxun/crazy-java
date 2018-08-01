@@ -3,7 +3,7 @@ package com.geekluxun.spring.springmvc.thymeleaf.entity;
 import java.util.List;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-07-31 17:14

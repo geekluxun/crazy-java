@@ -85,5 +85,6 @@ public class HttpRequestResponseController {
         request.getSession().setAttribute("name", "luxun");
         System.out.println("login会话超时时间：" + request.getSession().getMaxInactiveInterval());
     }
-    
+
+
 }
