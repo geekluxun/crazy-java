@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-08-22 14:14

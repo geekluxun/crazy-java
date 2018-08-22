@@ -3,7 +3,7 @@ package com.geekluxun.apache.commons.csv;
 import java.math.BigDecimal;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-08-20 10:12

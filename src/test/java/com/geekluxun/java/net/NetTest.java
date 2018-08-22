@@ -15,7 +15,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-08-15 10:31

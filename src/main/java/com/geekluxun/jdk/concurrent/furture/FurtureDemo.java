@@ -3,7 +3,7 @@ package com.geekluxun.jdk.concurrent.furture;
 import java.util.concurrent.*;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-08-22 10:09

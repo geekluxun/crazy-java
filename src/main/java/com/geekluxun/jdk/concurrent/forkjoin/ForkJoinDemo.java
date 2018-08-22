@@ -5,7 +5,7 @@ import org.springframework.util.Assert;
 import java.util.concurrent.ForkJoinPool;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-08-22 9:58
