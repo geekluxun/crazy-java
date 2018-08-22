@@ -14,6 +14,7 @@ import java.nio.channels.SocketChannel;
  * @Other:
  */
 public class EchoClient {
+    // 客户端socket通道
     private static SocketChannel client;
     private static EchoClient instance;
     private static ByteBuffer sndBuffer;
