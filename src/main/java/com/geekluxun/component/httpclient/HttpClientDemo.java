@@ -1,13 +1,18 @@
 package com.geekluxun.component.httpclient;
 
+import com.alibaba.fastjson.JSON;
+import org.apache.http.Header;
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -25,6 +30,7 @@ import java.util.List;
  */
 @Service
 public class HttpClientDemo {
+    
     public static void main(String[] argc){
         HttpClientDemo demo = new HttpClientDemo();
         demo.demo1();
@@ -73,5 +79,32 @@ public class HttpClientDemo {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 请求体和响应体都是json格式数据示例
+     */
+    public void postDemo(){
+        HttpPost httpPost = new HttpPost("http://localhost:8081/httptest/user");
+        RequestDto requestDto = new RequestDto();
+        requestDto.setName("luxun");
+        requestDto.setAge(30);
+        try {
+            HttpEntity httpEntity = new StringEntity(JSON.toJSONString(requestDto));
+            ((StringEntity) httpEntity).setContentType("application/json");
+            httpPost.setEntity(httpEntity);
+            
+            HttpClient httpClient = HttpClients.createDefault();
+
+            HttpResponse response = httpClient.execute(httpPost);
+            HttpEntity responseEntity = response.getEntity();
+            String json = EntityUtils.toString(responseEntity);
+            ResponseDto responseDto = JSON.parseObject(json, ResponseDto.class);
+            System.out.print("response:code:" + responseDto.getCode() + " msg:" + responseDto.getMsg() );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        
     }
 }
