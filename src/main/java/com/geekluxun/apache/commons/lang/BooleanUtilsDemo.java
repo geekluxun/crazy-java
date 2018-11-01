@@ -9,12 +9,12 @@ import org.apache.commons.lang3.BooleanUtils;
  * @Other:
  */
 public class BooleanUtilsDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         BooleanUtilsDemo demo = new BooleanUtilsDemo();
         demo.demo1();
     }
 
-    private void demo1(){
+    private void demo1() {
         boolean result = BooleanUtils.and(new boolean[]{true, false, true});
         result = BooleanUtils.and(new Boolean[]{Boolean.TRUE, Boolean.FALSE, Boolean.TRUE});
         System.out.println(result);

@@ -1,4 +1,3 @@
-
 package com.geekluxun.component.jmh;
 
 import org.openjdk.jmh.annotations.*;
@@ -24,7 +23,7 @@ import java.util.concurrent.TimeUnit;
 @Warmup(iterations = 5)
 public class CollectionBenchmark {
 
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         Options options = new OptionsBuilder()
                 .include(CollectionBenchmark.class.getSimpleName())
                 .threads(1)
@@ -45,21 +44,21 @@ public class CollectionBenchmark {
      * 状态类
      */
     @State(Scope.Thread)
-    public static class MyState{
+    public static class MyState {
         private Set<Employee> employeeSet = new HashSet<>();
         private List<Employee> employeeList = new ArrayList<>();
 
 
         private long iterations = 10000;
 
-        private Employee employee = new Employee(100L , "luxun");
+        private Employee employee = new Employee(100L, "luxun");
 
         /**
          * 初始化
          */
         @Setup(Level.Trial)
-        public void setUp(){
-            for (long i = 0; i < iterations; i++){
+        public void setUp() {
+            for (long i = 0; i < iterations; i++) {
                 employeeSet.add(new Employee(i, "geek"));
                 employeeList.add(new Employee(i, "geek"));
             }
@@ -71,21 +70,23 @@ public class CollectionBenchmark {
 
     /**
      * 基准测试list
+     *
      * @param state
      * @return
      */
     @Benchmark
-    public boolean testArrayList(MyState state){
-        return  state.employeeList.contains(state.employee);
+    public boolean testArrayList(MyState state) {
+        return state.employeeList.contains(state.employee);
     }
 
     /**
      * 基准测试set
+     *
      * @param state
      * @return
      */
     @Benchmark
-    public boolean testHashSet(MyState state){
+    public boolean testHashSet(MyState state) {
         return state.employeeSet.contains(state.employee);
     }
 

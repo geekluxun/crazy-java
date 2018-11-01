@@ -5,7 +5,10 @@ import org.apache.commons.io.HexDump;
 import org.apache.commons.io.LineIterator;
 import org.springframework.util.Assert;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.zip.CRC32;
@@ -125,32 +128,32 @@ public class FileUtilsDemo {
     public void demo6() {
         try {
             // 迭代出来的只有文件不包含目录
-            Iterator<File> fileIterator =  FileUtils.iterateFiles(new File("/da"), null, true);
-            while (fileIterator.hasNext()){
-                System.out.println("文件路径:" +fileIterator.next().getPath());
+            Iterator<File> fileIterator = FileUtils.iterateFiles(new File("/da"), null, true);
+            while (fileIterator.hasNext()) {
+                System.out.println("文件路径:" + fileIterator.next().getPath());
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-    public void demo7(){
+
+    public void demo7() {
         try {
             LineIterator iterator = FileUtils.lineIterator(new File("/2.txt"));
-            while (iterator.hasNext()){
+            while (iterator.hasNext()) {
                 System.out.println("文件内容:" + iterator.nextLine());
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-    public void demo8(){
-        byte[] data = new byte[]{1,2,3,4};
+
+    public void demo8() {
+        byte[] data = new byte[]{1, 2, 3, 4};
         try {
-            OutputStream os = new FileOutputStream("/22.txt");  
+            OutputStream os = new FileOutputStream("/22.txt");
             // 16进制形式dump字节数组到输出流中
-            HexDump.dump(data,0, os, 0);
+            HexDump.dump(data, 0, os, 0);
         } catch (Exception e) {
             e.printStackTrace();
         }

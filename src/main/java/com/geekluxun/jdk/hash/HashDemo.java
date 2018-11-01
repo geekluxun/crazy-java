@@ -16,39 +16,39 @@ import java.util.List;
  * @Other:
  */
 public class HashDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         HashDemo demo = new HashDemo();
         demo.demo1();
         demo.demo2();
         demo.demo3();
         demo.demo4();
     }
-    
-    private void demo1(){
+
+    private void demo1() {
         // 定义散列函数（用什么算法散列）
         HashFunction hf = Hashing.md5();
         // 对字符串转换成字节数组用上面的散列函数进行散列
-        HashCode hc = hf.newHasher().putString("luxun",Charsets.UTF_8).hash();
+        HashCode hc = hf.newHasher().putString("luxun", Charsets.UTF_8).hash();
         int code = hc.asInt();
         // 此处生成的hashcode是16字节(128bit)
         byte[] bytes = hc.asBytes();
         System.out.println("hashcode: " + hc.toString());
     }
-    
-    private void demo2(){
+
+    private void demo2() {
         String originalString = "luxun";
         HashFunction hf = Hashing.sha256();
         HashCode hc = hf.hashString(originalString, StandardCharsets.UTF_8);
-        String sha256hex =hc.toString();
+        String sha256hex = hc.toString();
         // 此处生成的hashcode是32字节(256bit)
         byte[] bytes = hc.asBytes();
 
         String md5 = Hashing.md5().hashString("luxun", Charsets.UTF_8).toString();
-        
+
         System.out.println("md5: " + md5);
     }
-    
-    private void demo3(){
+
+    private void demo3() {
         // 把一个对象分解成多个原生类型
         Funnel<Person> personFunnel = new Funnel<Person>() {
             @Override
@@ -58,7 +58,7 @@ public class HashDemo {
                         .putString(person.lastName, Charsets.UTF_8)
                         .putInt(person.birthYear);
             }
-        } ;
+        };
 
         Person person = new Person();
         person.id = 1;
@@ -79,8 +79,8 @@ public class HashDemo {
         String lastName;
         int birthYear;
     }
-    
-    private void demo4(){
+
+    private void demo4() {
         Funnel<Person> personFunnel = new Funnel<Person>() {
             @Override
             public void funnel(Person person, PrimitiveSink primitiveSink) {
@@ -89,9 +89,9 @@ public class HashDemo {
                         .putString(person.lastName, Charsets.UTF_8)
                         .putInt(person.birthYear);
             }
-        } ;
+        };
         List<Person> friendsList = new ArrayList<>();
-        for(int i = 0; i < 10; i++){
+        for (int i = 0; i < 10; i++) {
             Person person = new Person();
             person.id = i + 1;
             person.firstName = "lu";
@@ -105,9 +105,9 @@ public class HashDemo {
         for (Person friend : friendsList) {
             friends.put(friend);
         }
-        
+
         Person person2 = new Person();
-        person2.id =  1;
+        person2.id = 1;
         person2.firstName = "lu";
         person2.lastName = "xun";
         person2.birthYear = 100;

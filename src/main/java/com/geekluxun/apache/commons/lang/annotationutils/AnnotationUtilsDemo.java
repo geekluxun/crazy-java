@@ -15,12 +15,13 @@ import java.lang.annotation.Annotation;
 @TestAnnotation1(value = "luxun")
 
 public class AnnotationUtilsDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         AnnotationUtilsDemo demo = new AnnotationUtilsDemo();
         demo.demo1();
     }
+
     @TestAnnotation1(value = "luxun")
-    public void demo1(){
+    public void demo1() {
         boolean result = false;
         // 注解实例都是代理，两个注解相等需要所有type和method都相等
         Annotation a1 = this.getClass().getAnnotation(TestAnnotation1.class);

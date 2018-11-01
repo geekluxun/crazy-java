@@ -17,13 +17,13 @@ import java.math.BigDecimal;
  * @Other:
  */
 public class EqualsBuilderDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         EqualsBuilderDemo demo = new EqualsBuilderDemo();
         demo.demo1();
         demo.demo2();
     }
-    
-    private void  demo1(){
+
+    private void demo1() {
         EqualsBuilder builder = new EqualsBuilder();
         builder.append(10, 10);
         builder.append('a', 'a');
@@ -36,7 +36,7 @@ public class EqualsBuilderDemo {
     /**
      * 两个对象比较示例
      */
-    private void demo2(){
+    private void demo2() {
         Student student1 = new Student();
         student1.setName("luxun");
         student1.setAge(10);
@@ -49,14 +49,14 @@ public class EqualsBuilderDemo {
         }
         // 因为score不参与比较，所以，忽略其值比较
         student2.setMathScore(BigDecimal.valueOf(99));
-        
+
         Validate.isTrue(student1.compareTo(student2) == 0);
         Validate.isTrue(student1.equals(student2));
         System.out.println();
     }
-    
+
     @Data
-    private static class Student implements Serializable, Comparable<Student>{
+    private static class Student implements Serializable, Comparable<Student> {
         private String name;
         private Integer age;
         // 字段不参与比较和计算hashcode
@@ -66,16 +66,17 @@ public class EqualsBuilderDemo {
 
         @Override
         public boolean equals(Object o) {
-            return  EqualsBuilder.reflectionEquals(this, o);
+            return EqualsBuilder.reflectionEquals(this, o);
         }
 
         @Override
         public int hashCode() {
-           return HashCodeBuilder.reflectionHashCode(this);
+            return HashCodeBuilder.reflectionHashCode(this);
         }
 
         /**
          * 通过反射实现
+         *
          * @param o
          * @return
          */
@@ -84,5 +85,5 @@ public class EqualsBuilderDemo {
             // 成绩不参与比较 exclude
             return CompareToBuilder.reflectionCompare(this, o, "mathScore");
         }
-    }   
+    }
 }

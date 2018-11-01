@@ -8,7 +8,7 @@ package com.geekluxun.apache.commons.lang.reflect;
  * @Description:
  * @Other:
  */
-public class Foo{
+public class Foo {
     static String date;
     private String name;
     private Integer age;

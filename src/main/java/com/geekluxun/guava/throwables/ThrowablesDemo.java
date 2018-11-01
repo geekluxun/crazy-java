@@ -14,13 +14,13 @@ import java.io.UnsupportedEncodingException;
  * @Other:
  */
 public class ThrowablesDemo {
-    
-    public static void main(String[] argc){
+
+    public static void main(String[] argc) {
         ThrowablesDemo throwablesDemo = new ThrowablesDemo();
         throwablesDemo.demo1();
         throwablesDemo.deme3();
     }
-    
+
     private void demo1() {
         try {
             byte[] data = "luxun".getBytes("utf3=");
@@ -29,17 +29,17 @@ public class ThrowablesDemo {
             Throwables.propagateIfPossible(e, MyException.class);
         }
     }
-    
-    private void demo2(){
+
+    private void demo2() {
         try {
             throw new MyException("异常1");
         } catch (Exception e) {
             // 当e是RuntimeException Error 或者MyException时重新抛出异常 此处会抛！！！
-            Throwables.propagateIfPossible(e,  MyException.class);
+            Throwables.propagateIfPossible(e, MyException.class);
         }
     }
-    
-    private void deme3(){
+
+    private void deme3() {
         try {
             throw new MyException("异常2");
         } catch (Exception e) {
@@ -47,5 +47,5 @@ public class ThrowablesDemo {
             Throwables.throwIfUnchecked(e);
         }
     }
-    
+
 }

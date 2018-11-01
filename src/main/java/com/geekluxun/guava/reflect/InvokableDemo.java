@@ -17,18 +17,18 @@ import java.lang.reflect.Modifier;
  * @Other:
  */
 public class InvokableDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         InvokableDemo demo = new InvokableDemo();
         demo.demo1();
     }
-    
-    private void demo1(){
-        
+
+    private void demo1() {
+
         Method method = null;
         try {
             // 只是public方法
             method = CustomClass.class.getMethod("somePublicMethod");
-        } catch (NoSuchMethodException e) { 
+        } catch (NoSuchMethodException e) {
             System.out.println("没有这个方法");
             throw new RuntimeException(e);
         }
@@ -42,7 +42,8 @@ public class InvokableDemo {
             e.printStackTrace();
         }
 
-        Invokable<CustomClass, ?> invokable = new TypeToken<CustomClass>(){}.method(method);
+        Invokable<CustomClass, ?> invokable = new TypeToken<CustomClass>() {
+        }.method(method);
         // 判断是不是公共方法 JDK和Guava两种实现
         System.out.println(Modifier.isPublic(method.getModifiers()));
         System.out.println(invokable.isPublic());
@@ -53,7 +54,8 @@ public class InvokableDemo {
             System.out.println("没有这个方法");
             throw new RuntimeException(e);
         }
-        invokable = new TypeToken<CustomClass>() {}.method(method);
+        invokable = new TypeToken<CustomClass>() {
+        }.method(method);
         // 判断是不是overriade方法 JDK和Guava两种实现
         boolean isOverridableStandardJava = (!(Modifier.isFinal(method.getModifiers())
                 || Modifier.isPrivate(method.getModifiers())
@@ -64,22 +66,22 @@ public class InvokableDemo {
         Assert.isTrue(!isOverridableStandardJava);
         Assert.isTrue(!isOverridableFinalGauava);
 
-        System.out.println(invokable.isPublic()); 
-        System.out.println(invokable.getDeclaringClass()); 
-        System.out.println(invokable.getParameters()); 
-        System.out.println(invokable.getOwnerType()); 
-        System.out.println(invokable.getExceptionTypes()); 
+        System.out.println(invokable.isPublic());
+        System.out.println(invokable.getDeclaringClass());
+        System.out.println(invokable.getParameters());
+        System.out.println(invokable.getOwnerType());
+        System.out.println(invokable.getExceptionTypes());
         System.out.println(invokable.getReturnType());
-        System.out.println(invokable.getModifiers()); 
-        System.out.println(invokable.getName()); 
+        System.out.println(invokable.getModifiers());
+        System.out.println(invokable.getName());
         System.out.println(invokable.isOverridable());
-        System.out.println(invokable.isVarArgs()); 
-        System.out.println(invokable.isPublic()); 
-        System.out.println(invokable.isAbstract()); 
-        System.out.println(invokable.isAccessible()); 
-        System.out.println(invokable.isAnnotationPresent(Override.class)); 
-        System.out.println(invokable.isStatic()); 
-        
+        System.out.println(invokable.isVarArgs());
+        System.out.println(invokable.isPublic());
+        System.out.println(invokable.isAbstract());
+        System.out.println(invokable.isAccessible());
+        System.out.println(invokable.isAnnotationPresent(Override.class));
+        System.out.println(invokable.isStatic());
+
         // 反射调用方法
         try {
             invokable.invoke(new CustomClass());
@@ -89,7 +91,7 @@ public class InvokableDemo {
             e.printStackTrace();
         }
     }
-    
+
     public class CustomClass {
         public void somePublicMethod() {
             System.out.println("======somePublicMethod被调用了======");

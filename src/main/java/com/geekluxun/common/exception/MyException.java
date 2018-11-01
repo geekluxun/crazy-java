@@ -9,13 +9,13 @@ package com.geekluxun.common.exception;
  * @Description:
  * @Other:
  */
-public class MyException extends RuntimeException{
-    
-    public MyException(){
+public class MyException extends RuntimeException {
+
+    public MyException() {
     }
-    
-    public MyException(String message){
+
+    public MyException(String message) {
         super(message);
     }
-    
+
 }

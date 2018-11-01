@@ -1,6 +1,5 @@
 package com.geekluxun.jdk.xml;
 
-import com.sun.org.apache.xerces.internal.parsers.DOMParser;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -9,7 +8,6 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -23,20 +21,20 @@ import java.io.InputStream;
  */
 public class DOMParserDemo {
     static DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
+
     public static void main(String[] args) {
         DOMParserDemo demo = new DOMParserDemo();
         demo.demo1();
     }
-    
-    private void demo1(){
+
+    private void demo1() {
         Document document = null;
         document = parse("books.xml");
         //get root element 
         Element rootElement = document.getDocumentElement();
         //traverse child elements 
         NodeList nodes = rootElement.getChildNodes();
-        for (int i=0; i < nodes.getLength(); i++)
-        {
+        for (int i = 0; i < nodes.getLength(); i++) {
             Node node = nodes.item(i);
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element child = (Element) node;
@@ -45,18 +43,17 @@ public class DOMParserDemo {
         }
 
         NodeList nodeList = rootElement.getElementsByTagName("book");
-        if(nodeList != null)
-        {
-            for (int i = 0 ; i < nodeList.getLength(); i++)
-            {
-                Element element = (Element)nodeList.item(i);
+        if (nodeList != null) {
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                Element element = (Element) nodeList.item(i);
                 String id = element.getAttribute("id");
             }
         }
     }
 
     /**
-     * Load and parse XML file into DOM 
+     * Load and parse XML file into DOM
+     *
      * @param filePath
      * @return
      */
@@ -73,7 +70,7 @@ public class DOMParserDemo {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return document;

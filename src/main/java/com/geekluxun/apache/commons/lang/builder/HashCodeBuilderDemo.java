@@ -11,12 +11,12 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  * @Other:
  */
 public class HashCodeBuilderDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         HashCodeBuilderDemo demo = new HashCodeBuilderDemo();
         demo.demo1();
     }
-    
-    private void demo1(){
+
+    private void demo1() {
         Boolean result = new Boolean(true);
         // 1231
         int hashcode = result.hashCode();

@@ -15,7 +15,8 @@ import java.util.*;
  */
 public class MultiSetDemo {
     private String[] words = {"luxun", "geek", "luxun", "hello", "geek", "world"};
-    public static void main(String[] argc){
+
+    public static void main(String[] argc) {
         MultiSetDemo demo = new MultiSetDemo();
         demo.demo1();
     }
@@ -23,7 +24,7 @@ public class MultiSetDemo {
     /**
      * mulutset介于list set之前（类似两种的混合）， list可以有重复元素，有序， set不重复，但无序
      */
-    private void demo1(){
+    private void demo1() {
         Multiset<String> counts = HashMultiset.create();
         counts.addAll(Arrays.asList(words));
         System.out.println("multiset总数:" + counts.size());
@@ -34,13 +35,13 @@ public class MultiSetDemo {
         Set<Multiset.Entry<String>> set2 = counts.entrySet();
         System.out.println("set2:" + set2);
         // 打印出每个不重复元素值和对应个数
-        set2.forEach((e)-> System.out.println(e.getElement() + ":" + e.getCount()));
+        set2.forEach((e) -> System.out.println(e.getElement() + ":" + e.getCount()));
     }
 
     /**
      * 传统JDK方式统计每个字符串出现次数
      */
-    private void demo2(){
+    private void demo2() {
         Map<String, Integer> counts = new HashMap<String, Integer>(10);
         for (String word : words) {
             Integer count = counts.get(word);

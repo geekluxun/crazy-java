@@ -16,12 +16,12 @@ import java.util.Comparator;
  * @Other:
  */
 public class ComparatorUtilsDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         ComparatorUtilsDemo demo = new ComparatorUtilsDemo();
         demo.demo1();
     }
-    
-    private void demo1(){
+
+    private void demo1() {
         Comparator<Person> comparator = new Comparator<Person>() {
             @Override
             public int compare(Person o1, Person o2) {
@@ -36,7 +36,7 @@ public class ComparatorUtilsDemo {
         // 上面的比较器定义null比所有值都大 返回的value > 0
         int value = java.util.Objects.compare(person1, person2, comparator);
         System.out.println();
-        
+
         // 自然序
         ComparatorUtils.naturalComparator();
         // 颠倒排序规则
@@ -48,13 +48,13 @@ public class ComparatorUtilsDemo {
                 return null;
             }
         });
-        
+
     }
-    
+
     @Data
-    private static class Person{
+    private static class Person {
         String name;
         Integer age;
     }
-    
+
 }

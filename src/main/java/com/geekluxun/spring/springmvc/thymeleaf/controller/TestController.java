@@ -26,7 +26,7 @@ public class TestController {
     private static ServletContext servletContext;
 
     @RequestMapping("/test1")
-    public void test(HttpServletRequest request, HttpServletResponse response){
+    public void test(HttpServletRequest request, HttpServletResponse response) {
         servletContext = request.getServletContext();
         // 初始化模板引擎
         initializeTemplateEngine(request.getServletContext());
@@ -54,7 +54,7 @@ public class TestController {
     private boolean process(String templateName, HttpServletRequest request, HttpServletResponse response)
             throws ServletException {
         try {
-            
+
             /*
              * Query controller/URL mapping and obtain the controller
              * that will process the request. If no controller is available,
@@ -64,7 +64,7 @@ public class TestController {
             if (controller == null) {
                 return false;
             }
-            
+
             /*
              * Write the response headers
              */
@@ -97,7 +97,7 @@ public class TestController {
         // Template cache TTL=1h. If not set, entries would be cached until expelled by LRU
         templateResolver.setCacheTTLMs(3600000L);
         templateResolver.setCharacterEncoding("UTF-8");
-        
+
         templateEngine = new TemplateEngine();
         templateEngine.setTemplateResolver(templateResolver);
     }

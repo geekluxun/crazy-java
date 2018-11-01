@@ -14,14 +14,14 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
  * @Other:
  */
 @SpringBootApplication
-public class CrazyJavaApplication  extends SpringBootServletInitializer{
+public class CrazyJavaApplication extends SpringBootServletInitializer {
 
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return builder.sources(CrazyJavaApplication.class);
-	}
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(CrazyJavaApplication.class);
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(CrazyJavaApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CrazyJavaApplication.class, args);
+    }
 }

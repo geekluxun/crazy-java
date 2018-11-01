@@ -77,13 +77,13 @@ public class SystemDemo {
         System.out.println(System.getProperty("user.dir"));
 
     }
-    
-    private void demo2(){
+
+    private void demo2() {
         // 所有的环境变量
         Map env = System.getenv();
-        Set<Map.Entry<String, String >> entries =  env.entrySet();
-        entries.forEach((e)->System.out.println("key:" +e.getKey() + " value:" + e.getValue()));
-    
+        Set<Map.Entry<String, String>> entries = env.entrySet();
+        entries.forEach((e) -> System.out.println("key:" + e.getKey() + " value:" + e.getValue()));
+
         SecurityManager securityManager = System.getSecurityManager();
         // 指定对象的hashcode
         int hashcode = System.identityHashCode(this);

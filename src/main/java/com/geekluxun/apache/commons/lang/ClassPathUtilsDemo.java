@@ -12,13 +12,13 @@ import org.apache.commons.lang3.StringUtils;
  * @Other:
  */
 public class ClassPathUtilsDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         ClassPathUtilsDemo demo = new ClassPathUtilsDemo();
         demo.demo1();
-                    
+
     }
-    
-    private void demo1(){
+
+    private void demo1() {
         String name, path;
         try {
             name = ClassPathUtils.toFullyQualifiedName(StringUtils.class, "StringUtils.properties");
@@ -28,7 +28,7 @@ public class ClassPathUtilsDemo {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         System.out.println();
     }
 }

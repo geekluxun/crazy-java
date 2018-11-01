@@ -1,6 +1,5 @@
 package com.geekluxun.apache.commons.lang;
 
-import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.event.EventListenerSupport;
 import org.apache.commons.lang3.event.EventUtils;
 import org.springframework.util.Assert;
@@ -23,17 +22,17 @@ import java.util.TreeMap;
  * @Other:
  */
 public class EventUtilsDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         EventUtilsDemo demo = new EventUtilsDemo();
         demo.demo1();
     }
-    
-    private void demo1(){
+
+    private void demo1() {
         final PropertyChangeSource src = new PropertyChangeSource();
         final EventCountingInvociationHandler handler = new EventCountingInvociationHandler();
         final PropertyChangeListener listener = handler
                 .createListener(PropertyChangeListener.class);
-        
+
         Assert.isTrue(0 == handler.getEventCount("propertyChange"));
         EventUtils.addEventListener(src, PropertyChangeListener.class, listener);
         Assert.isTrue(0 == handler.getEventCount("propertyChange"));
@@ -75,7 +74,7 @@ public class EventUtilsDemo {
 
         public <L> L createListener(final Class<L> listenerType) {
             return listenerType.cast(Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
-                    new Class[] { listenerType }, this));
+                    new Class[]{listenerType}, this));
         }
 
         public int getEventCount(final String eventName) {

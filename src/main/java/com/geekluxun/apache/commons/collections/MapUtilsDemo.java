@@ -15,13 +15,13 @@ import java.util.TreeMap;
  * @Other:
  */
 public class MapUtilsDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         MapUtilsDemo demo = new MapUtilsDemo();
         demo.demo1();
     }
 
 
-    private void demo1(){
+    private void demo1() {
         Map map = new TreeMap();
         map.put("key1", 1);
         map.put("key2", 2);
@@ -31,18 +31,18 @@ public class MapUtilsDemo {
         Map map2 = MapUtils.invertMap(map);
 
         // 不需要 entryset就可以迭代map
-        IterableMap iterableMap =MapUtils.iterableMap(map);
+        IterableMap iterableMap = MapUtils.iterableMap(map);
         MapIterator iterator = iterableMap.mapIterator();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             iterator.next();
-            System.out.println("key:" +iterator.getKey());
+            System.out.println("key:" + iterator.getKey());
             iterator.getValue();
         }
 
         // 也是可迭代的
         OrderedMap orderedMap = MapUtils.orderedMap(map);
 
-        orderedMap.nextKey( orderedMap.firstKey());
+        orderedMap.nextKey(orderedMap.firstKey());
 
         // 返回一个不可修改的map(不能add delete)
         map = MapUtils.unmodifiableMap(map);

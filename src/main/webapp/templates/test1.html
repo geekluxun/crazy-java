@@ -5,13 +5,13 @@
 
 <head>
     <title>Good Thymes Virtual Grocery</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" type="text/css" media="all"
-          href="../../css/gtvg.css" th:href="@{/css/gtvg.css}" />
+          href="../../css/gtvg.css" th:href="@{/css/gtvg.css}"/>
 </head>
 
 <p>
-<!-- utext可以不转义其中的特殊字符-->
+    <!-- utext可以不转义其中的特殊字符-->
 <p th:utext="#{home.welcome}">Welcome to our grocery store!</p>
 <!-- 这里引用了httpsession的属性name-->
 <p th:utext="#{home.welcome(${session.name})}">Welcome to our grocery store!</p>
@@ -20,12 +20,12 @@
 <p th:text="${execInfo.templateName}">模板名</p>
 <!--<p th:text="${execInfo.now}">执行模板时间</p>-->
 <!--<p> -->
-    <!--<span th:text="${#locale.country}">US</span>-->
+<!--<span th:text="${#locale.country}">US</span>-->
 <!--</p>-->
 <!--<div th:object="${session.user}">-->
-    <!--<p>Name: <span th:text="${#object.firstName}">Sebastian</span></p>-->
-    <!--<p>Surname: <span th:text="${session.user.lastName}">Pepper</span></p>-->
-    <!--<p>Nationality: <span th:text="*{nationality}">Saturn</span></p>-->
+<!--<p>Name: <span th:text="${#object.firstName}">Sebastian</span></p>-->
+<!--<p>Surname: <span th:text="${session.user.lastName}">Pepper</span></p>-->
+<!--<p>Nationality: <span th:text="*{nationality}">Saturn</span></p>-->
 <!--</div>-->
 <div th:object="${session.user}">
     <p>Name: <span th:text="${session.user.firstName}">Sebastian</span>.</p>
@@ -36,26 +36,26 @@
 <!-- Will produce '/gtvg/order/details?orderId=3' (plus rewriting) -->
 <a href="details.html" th:href="@{/order/details(orderId=${id})}">view</a>
 <div>
-    <span th:utext= "'Welcome to our application, ' + ${session.user.lastName}" >..</span>>
+    <span th:utext="'Welcome to our application, ' + ${session.user.lastName}">..</span>>
 </div>
 
 <div th:if="${id} &gt; 1"
-th:text="'Execution mode is ' + ( (${execMode} == 'dev')? 'Development' : 'Production')"
+     th:text="'Execution mode is ' + ( (${execMode} == 'dev')? 'Development' : 'Production')"
 ></div>
 
 <form action="subscribe.html" th:attr="action=@{/subscribe12}">
     <fieldset>
-        <input type="text" name="email" />
+        <input type="text" name="email"/>
         <input type="submit" value="Subscribe me!" th:attr="value=#{subscribe.submit}"/>
     </fieldset>
 </form>
 <!-- 设置多个属性-->
 <img src="../../images/gtvglogo.png"
-     th:attr="src=@{/images/gtvglogo.png},title=#{logo},alt=#{logo}" />
+     th:attr="src=@{/images/gtvglogo.png},title=#{logo},alt=#{logo}"/>
 
-<input type="button" value="Do it!" class="btn" th:attrappend="class=' ' +${cssStyle}" />
+<input type="button" value="Do it!" class="btn" th:attrappend="class=' ' +${cssStyle}"/>
 
-<input type="checkbox" name="active" th:checked="${active}" />
+<input type="checkbox" name="active" th:checked="${active}"/>
 
 </body>
 

@@ -14,20 +14,20 @@ import java.io.IOException;
  * @Other:
  */
 public class FileUtils {
-    
-    public static byte[] readFile(File file){
-        if (file == null || !file.exists()){
+
+    public static byte[] readFile(File file) {
+        if (file == null || !file.exists()) {
             return null;
         }
-        int len = (int)file.length();
+        int len = (int) file.length();
         byte[] data = new byte[len];
-        
+
         try {
             FileInputStream in = new FileInputStream(file);
             int read = 0;
-            while (read < len){
+            while (read < len) {
                 try {
-                    read += in.read(data,read,len - read);
+                    read += in.read(data, read, len - read);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -35,7 +35,7 @@ public class FileUtils {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        
+
         return data;
     }
 }

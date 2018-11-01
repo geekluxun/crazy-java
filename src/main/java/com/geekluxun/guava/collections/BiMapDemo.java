@@ -12,17 +12,17 @@ import com.google.common.collect.HashBiMap;
  * @Other:
  */
 public class BiMapDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         BiMapDemo demo = new BiMapDemo();
         demo.demo1();
     }
-    
-    private void demo1(){
+
+    private void demo1() {
         BiMap map = HashBiMap.create();
         map.put("luxun", 1);
         map.put("luxun2", 2);
         map = map.inverse();
-        
+
         System.out.println(map);
     }
 }

@@ -16,7 +16,7 @@ import java.util.Date;
  * @Other:
  */
 public class FastDateFormatDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         FastDateFormatDemo demo = new FastDateFormatDemo();
         demo.demo1();
         demo.demo2();
@@ -25,7 +25,7 @@ public class FastDateFormatDemo {
     /**
      * 是JDK中SimpleDataFormat 线程安全版本
      */
-    private void demo1(){
+    private void demo1() {
         FastDateFormat fastDateFormat = FastDateFormat.getInstance();
         String date = fastDateFormat.format(new Date());
 
@@ -42,16 +42,16 @@ public class FastDateFormatDemo {
         fastDateFormat = FastDateFormat.getDateInstance(FastDateFormat.FULL);
         date = fastDateFormat.format(new Date());
 
-        fastDateFormat = FastDateFormat.getDateTimeInstance(FastDateFormat.LONG,FastDateFormat.LONG);
+        fastDateFormat = FastDateFormat.getDateTimeInstance(FastDateFormat.LONG, FastDateFormat.LONG);
         date = fastDateFormat.format(new Date());
 
         // "2018-7-11 14:33:34"
-        fastDateFormat = FastDateFormat.getDateTimeInstance(FastDateFormat.MEDIUM,FastDateFormat.MEDIUM);
+        fastDateFormat = FastDateFormat.getDateTimeInstance(FastDateFormat.MEDIUM, FastDateFormat.MEDIUM);
         date = fastDateFormat.format(new Date());
 
         date = fastDateFormat.format(Calendar.getInstance());
         // 格式化时间戳
-        date =fastDateFormat.format(1531292166000L);
+        date = fastDateFormat.format(1531292166000L);
 
         // 以下两个方法返回的结果一致
         fastDateFormat = FastDateFormat.getInstance("yyyy-MM-dd HH:mm:ss");
@@ -65,7 +65,7 @@ public class FastDateFormatDemo {
     /**
      * 解析时间
      */
-    private void demo2(){
+    private void demo2() {
         // 日期
         FastDateFormat format = FastDateFormat.getInstance("yyyy-MM-dd");
         Date date = null;

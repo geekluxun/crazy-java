@@ -1,6 +1,9 @@
 package com.geekluxun.apache.commons.lang.annotationutils;
 
-import java.lang.annotation.*;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 
 /**
@@ -12,9 +15,10 @@ import java.lang.annotation.*;
  * @Other:
  */
 
-@Target({ElementType.METHOD,ElementType.TYPE_USE})
+@Target({ElementType.METHOD, ElementType.TYPE_USE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface TestAnnotation1 {
     String value() default "test";
+
     String attribute1() default "luxun";
 }

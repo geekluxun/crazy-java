@@ -11,12 +11,12 @@ import org.apache.commons.lang3.mutable.MutableInt;
  * @Other:
  */
 public class MutableDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         MutableDemo demo = new MutableDemo();
         demo.demo1();
     }
-    
-    private void demo1(){
+
+    private void demo1() {
         MutableInt value = new MutableInt(1);
         func1(value);
         System.out.println("value;" + value.getValue());
@@ -24,9 +24,10 @@ public class MutableDemo {
 
     /**
      * 这个方法改变了形参的值
+     *
      * @param value
      */
-    private void func1(MutableInt value){
+    private void func1(MutableInt value) {
         value.add(20);
     }
 }

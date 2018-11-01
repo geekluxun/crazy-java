@@ -6,7 +6,9 @@ import com.google.common.reflect.TypeToken;
 import org.springframework.util.Assert;
 
 import java.math.BigInteger;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Copyright,2018-2019,geekluxun Co.,Ltd.
@@ -17,29 +19,30 @@ import java.util.*;
  * @Other:
  */
 public class TypeTokenDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         TypeTokenDemo demo = new TypeTokenDemo();
         demo.demo1();
         demo.demo2();
         demo.demo3();
         demo.demo4();
     }
-    
-    
-    public void demo1(){
+
+
+    public void demo1() {
         // 类型擦除 运行时类型参数被擦除
         ArrayList<String> stringList = Lists.newArrayList();
         ArrayList<Integer> intList = Lists.newArrayList();
         System.out.println(stringList.getClass().isAssignableFrom(intList.getClass()));
 
         // TypeToken解决这个问题
-        TypeToken<ArrayList<String>> typeToken = new TypeToken<ArrayList<String>>(){};
+        TypeToken<ArrayList<String>> typeToken = new TypeToken<ArrayList<String>>() {
+        };
         // ArrayList只有一个类型参数 所以数组长度是1
         TypeToken<?> genericTypeToken = typeToken.resolveType(ArrayList.class.getTypeParameters()[0]);
         System.out.println(genericTypeToken.getType());
     }
-    
-    private void demo2(){
+
+    private void demo2() {
         TypeToken<String> stringTypeToken = TypeToken.of(String.class);
 
         TypeToken<Map<String, BigInteger>> mapToken = mapToken(
@@ -64,6 +67,7 @@ public class TypeTokenDemo {
 
     /**
      * 构造带两个类型参数的TypeToken
+     *
      * @param keyToken
      * @param valueToken
      * @param <K>
@@ -71,32 +75,40 @@ public class TypeTokenDemo {
      * @return
      */
     <K, V> TypeToken<Map<K, V>> mapToken(TypeToken<K> keyToken, TypeToken<V> valueToken) {
-        return new TypeToken<Map<K, V>>() {}
-                .where(new TypeParameter<K>() {}, keyToken)
-                .where(new TypeParameter<V>() {}, valueToken);
+        return new TypeToken<Map<K, V>>() {
+        }
+                .where(new TypeParameter<K>() {
+                }, keyToken)
+                .where(new TypeParameter<V>() {
+                }, valueToken);
     }
-    
-    private void demo3(){
-        TypeToken<List<Integer>> integerListToken = new TypeToken<List<Integer>>() {};
-        TypeToken<List<? extends Number>> numberTypeToken = new TypeToken<List<? extends Number>>() {};
+
+    private void demo3() {
+        TypeToken<List<Integer>> integerListToken = new TypeToken<List<Integer>>() {
+        };
+        TypeToken<List<? extends Number>> numberTypeToken = new TypeToken<List<? extends Number>>() {
+        };
         Assert.isTrue(integerListToken.isSubtypeOf(numberTypeToken));
-        
+
         System.out.println();
     }
 
-    private void demo4(){
-        ParametrizedClass<String> parametrizedClass = new ParametrizedClass<String>() {};
-        
+    private void demo4() {
+        ParametrizedClass<String> parametrizedClass = new ParametrizedClass<String>() {
+        };
+
         Assert.isTrue(parametrizedClass.type.equals(TypeToken.of(String.class)), "类型参数是String");
-        
+
         System.out.println();
     }
 
     /**
      * 这个类有类型参数 通过 TypeToken来在运行时获取其类型参数
+     *
      * @param <T>
      */
     abstract class ParametrizedClass<T> {
-        TypeToken<T> type = new TypeToken<T>(getClass()) {};
+        TypeToken<T> type = new TypeToken<T>(getClass()) {
+        };
     }
 }

@@ -1,10 +1,12 @@
 package com.geekluxun.apache.commons.lang;
 
-import com.geekluxun.common.dto.RequestDto;
 import lombok.Data;
 import org.apache.commons.lang3.SerializationUtils;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,19 +17,19 @@ import java.util.Map;
  * @Other:
  */
 public class SerialzationUtilsDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         SerialzationUtilsDemo demo = new SerialzationUtilsDemo();
         demo.demo1();
         demo.demo2();
     }
 
-    private void demo1(){
+    private void demo1() {
         Foo foo = new Foo();
         foo.setName("luxun");
         Map address = new HashMap();
         address.put("shanghai", "hello");
         foo.setAddress(address);
-      
+
         Foo foo1 = new Foo();
         Foo foo2 = new Foo();
         try {
@@ -38,7 +40,7 @@ public class SerialzationUtilsDemo {
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
-        
+
         address.put("beijing", "hello");
         foo.setAddress(address);
         // foo1的address也跟着变了
@@ -48,8 +50,8 @@ public class SerialzationUtilsDemo {
         System.out.println();
     }
 
-    
-    private void demo2(){
+
+    private void demo2() {
         Integer value = new Integer(10);
         // 序列化
         byte[] valueArray = SerializationUtils.serialize(value);
@@ -57,15 +59,15 @@ public class SerialzationUtilsDemo {
         Integer value2 = SerializationUtils.deserialize(valueArray);
 
         ByteArrayOutputStream output = new ByteArrayOutputStream();
-        
+
         SerializationUtils.serialize(value, output);
-        
+
         byte[] dd = output.toByteArray();
 
         InputStream inputStream = new ByteArrayInputStream(dd);
         // 反序列化
         Integer value3 = SerializationUtils.deserialize(inputStream);
-        
+
         // 序列化 再反序列化
         Integer vavlue4 = SerializationUtils.roundtrip(value3);
         System.out.println();
@@ -75,10 +77,10 @@ public class SerialzationUtilsDemo {
      * 内部类序列化必须定义成static 否则序列化反序列化会出问题!!!
      */
     @Data
-    static class Foo implements Serializable ,Cloneable{
+    static class Foo implements Serializable, Cloneable {
         String name;
         Map address;
-        
+
         @Override
         public Object clone() throws CloneNotSupportedException {
             return super.clone();

@@ -12,22 +12,23 @@ import java.util.concurrent.RecursiveTask;
  */
 public class MyTask extends RecursiveTask<Integer> {
     Integer n;
-    public MyTask(Integer n){
+
+    public MyTask(Integer n) {
         this.n = n;
     }
-    
+
     @Override
     protected Integer compute() {
         System.out.println("计算线程id:" + Thread.currentThread().getId());
-        if (n <= 1 ){
+        if (n <= 1) {
             return n;
         }
-        int value =  0/0;
+        int value = 0 / 0;
         MyTask myTask = new MyTask(n - 1);
         // 分割任务
         myTask.fork();
-        
+
         // 汇总子任务的计算结果
-        return n * n  + myTask.join();
+        return n * n + myTask.join();
     }
 }

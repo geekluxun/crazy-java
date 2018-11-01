@@ -4,8 +4,6 @@ import org.junit.Test;
 
 import java.io.File;
 
-import static org.junit.Assert.*;
-
 /**
  * Copyright,2018-2019,xinxindai Co.,Ltd.
  *
@@ -15,14 +13,14 @@ import static org.junit.Assert.*;
  * @Other:
  */
 public class FileTest {
-    
-    
+
+
     @Test
     public void test() throws Exception {
         System.out.println("pathSeparator:" + File.pathSeparator);
         System.out.println("pathSeparatorChar:" + File.pathSeparatorChar);
         System.out.println("separator:" + File.separator);
-        System.out.println("separatorChar:" + File.separatorChar);    
+        System.out.println("separatorChar:" + File.separatorChar);
     }
 
 }

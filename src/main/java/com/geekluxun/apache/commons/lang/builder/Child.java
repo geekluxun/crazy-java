@@ -1,7 +1,7 @@
 package com.geekluxun.apache.commons.lang.builder;
 
 import lombok.Data;
-import org.apache.commons.lang3.builder.*;
+import org.apache.commons.lang3.builder.ToStringExclude;
 
 /**
  * Copyright,2018-2019,geekluxun Co.,Ltd.
@@ -12,7 +12,7 @@ import org.apache.commons.lang3.builder.*;
  * @Other:
  */
 @Data
-public class Child extends Parent{
+public class Child extends Parent {
     private String cf1;
     private String cf2;
     // 排除toString中
@@ -21,6 +21,7 @@ public class Child extends Parent{
 
     /**
      * 必须调用super.toString才能打印Parent中pf1字段!!!
+     *
      * @return
      */
     @Override

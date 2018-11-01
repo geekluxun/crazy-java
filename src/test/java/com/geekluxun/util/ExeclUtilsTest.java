@@ -1,12 +1,9 @@
 package com.geekluxun.util;
 
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Copyright,2018-2019,geekluxun Co.,Ltd.
@@ -21,7 +18,7 @@ public class ExeclUtilsTest {
     public void readLocalFile() throws Exception {
         Workbook wookbook = ExeclUtils.readLocalFile("/xxd_voucher_template_czd.xlsx");
         Sheet firstSheet = wookbook.getSheetAt(0);
-        firstSheet.getRow(9).getCell(17).setCellValue("-" );
+        firstSheet.getRow(9).getCell(17).setCellValue("-");
         Assert.assertTrue(true);
     }
 

@@ -1,6 +1,5 @@
 package com.geekluxun.web;
 
-import afu.org.checkerframework.checker.oigj.qual.O;
 import com.geekluxun.apache.commons.io.IOUtilsDemo;
 import com.geekluxun.component.httpclient.HttpClientDemo;
 import com.geekluxun.component.httpclient.RequestDto;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Copyright,2018-2019,geekluxun Co.,Ltd.
@@ -30,7 +28,7 @@ import java.util.Map;
 public class HttpRequestResponseController {
     @Autowired
     IOUtilsDemo ioUtilsDemo;
-    
+
     @Autowired
     HttpClientDemo httpClientDemo;
 
@@ -41,7 +39,7 @@ public class HttpRequestResponseController {
         int value = request.getSession().getMaxInactiveInterval();
         return "uploadfile";
     }
-    
+
     @RequestMapping("/test3")
     public String test3(HttpServletRequest request) {
         try {
@@ -53,14 +51,16 @@ public class HttpRequestResponseController {
 
         return "uploadfile";
     }
+
     /**
      * 响应体由两部分组成，一个是response输出流中的内容，一个是渲染的网页!!!
+     *
      * @param request
      * @param response
      * @return
      */
     @RequestMapping("/test4")
-    public String test4(HttpServletRequest request, HttpServletResponse response){
+    public String test4(HttpServletRequest request, HttpServletResponse response) {
         try {
             ioUtilsDemo.demo4(request, response);
         } catch (Exception e) {
@@ -85,7 +85,7 @@ public class HttpRequestResponseController {
         System.out.println("getuser会话超时时间：" + request.getSession().getMaxInactiveInterval());
         String name = (String) request.getSession().getAttribute("name");
         System.out.println("name:" + name);
-        if (name == null){
+        if (name == null) {
             System.out.println("会话超时了!!!");
         }
     }
@@ -97,20 +97,20 @@ public class HttpRequestResponseController {
         request.getSession().setAttribute("name", "luxun");
         System.out.println("login会话超时时间：" + request.getSession().getMaxInactiveInterval());
     }
-    
+
     @ResponseBody
     @RequestMapping(value = "/user", method = RequestMethod.POST)
-    public Object postTest(HttpServletRequest request, HttpServletResponse response, @RequestBody RequestDto requestDto){
+    public Object postTest(HttpServletRequest request, HttpServletResponse response, @RequestBody RequestDto requestDto) {
         System.out.print("请求参数:" + requestDto.getName() + " age:" + requestDto.getAge());
         ResponseDto responseDto = new ResponseDto();
         responseDto.setCode(12345);
         responseDto.setMsg("成功");
         return responseDto;
     }
-    
+
     @ResponseBody
     @RequestMapping(value = "testpost")
-    public Object testPost(){
+    public Object testPost() {
         httpClientDemo.postDemo();
         return new HashMap<>();
     }

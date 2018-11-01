@@ -19,16 +19,16 @@ public class EchoClient {
     private static EchoClient instance;
     private static ByteBuffer sndBuffer;
     private static ByteBuffer recvBuffer;
-    
-    public static EchoClient start(){
-        if (instance == null){
+
+    public static EchoClient start() {
+        if (instance == null) {
             instance = new EchoClient();
         }
-        
+
         return instance;
     }
-    
-    private EchoClient(){
+
+    private EchoClient() {
         try {
             client = SocketChannel.open(new InetSocketAddress("localhost", 8041));
             sndBuffer = ByteBuffer.allocate(256);
@@ -37,8 +37,8 @@ public class EchoClient {
             e.printStackTrace();
         }
     }
-    
-    public String sendMsg(String msg){
+
+    public String sendMsg(String msg) {
         sndBuffer = ByteBuffer.wrap(msg.getBytes());
         String response = null;
         try {
@@ -51,11 +51,11 @@ public class EchoClient {
         }
         return response;
     }
-    
-    public static void stop() throws IOException{
+
+    public static void stop() throws IOException {
         client.close();
         recvBuffer = null;
         sndBuffer = null;
     }
-    
+
 }

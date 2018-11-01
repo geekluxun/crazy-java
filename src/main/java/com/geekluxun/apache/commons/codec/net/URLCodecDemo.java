@@ -1,6 +1,5 @@
 package com.geekluxun.apache.commons.codec.net;
 
-import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.net.URLCodec;
 
 /**
@@ -12,14 +11,14 @@ import org.apache.commons.codec.net.URLCodec;
  * @Other:
  */
 public class URLCodecDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         URLCodecDemo demo = new URLCodecDemo();
         demo.demo1();
     }
-    
-    private void demo1(){
+
+    private void demo1() {
         URLCodec urlCodec = new URLCodec();
-        String urlencoded ;
+        String urlencoded;
         String url;
         try {
             // 编码

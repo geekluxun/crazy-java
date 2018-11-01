@@ -1,9 +1,11 @@
 package com.geekluxun.jdk.io.net.nio.selector;
 
-import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
-import java.nio.channels.*;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
+import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -12,13 +14,12 @@ import java.util.Set;
  *
  * @Author: luxun
  * @Create: 2018-08-20 15:50
- * @Description:
- * 多路复用io
+ * @Description: 多路复用io
  * @Other:
  */
 public class EchoServer {
-    
-    public static void listen(){
+
+    public static void listen() {
         try {
             Selector selector = Selector.open();
             ServerSocketChannel serverSocket = ServerSocketChannel.open();
@@ -30,24 +31,24 @@ public class EchoServer {
             serverSocket.register(selector, SelectionKey.OP_ACCEPT);
             ByteBuffer recvBuffer = ByteBuffer.allocate(256);
             ByteBuffer sndBuffer = ByteBuffer.allocate(256);
-            
-            
-            while (true){
+
+
+            while (true) {
                 // 阻塞 直到某个通道准备就绪
                 selector.select();
                 // 所有通道已选择键集合（至少有一个准备就绪）
-                Set<SelectionKey>  selectionKeys = selector.selectedKeys();
+                Set<SelectionKey> selectionKeys = selector.selectedKeys();
                 Iterator<SelectionKey> iterator = selectionKeys.iterator();
-                while (iterator.hasNext()){
+                while (iterator.hasNext()) {
                     SelectionKey key = iterator.next();
                     // 处理accept
-                    if (key.isAcceptable()){
+                    if (key.isAcceptable()) {
                         System.out.println("accept!!!");
                         register(selector, serverSocket);
-                    } 
-                    
+                    }
+
                     // 接收数据
-                    if (key.isReadable()){
+                    if (key.isReadable()) {
                         System.out.println("read!!!");
                         handle(recvBuffer, sndBuffer, key);
                     }
@@ -60,16 +61,16 @@ public class EchoServer {
         }
 
     }
-    
-    private static void register(Selector selector, ServerSocketChannel socketChannel) throws Exception{
+
+    private static void register(Selector selector, ServerSocketChannel socketChannel) throws Exception {
         // 接收连接的客户端通道
         SocketChannel client = socketChannel.accept();
         client.configureBlocking(false);
         // 把此通道注册到选择上（对读感兴趣）
         client.register(selector, SelectionKey.OP_READ);
     }
-    
-    private static void handle(ByteBuffer readBuffer, ByteBuffer sendBuffer, SelectionKey key) throws Exception{
+
+    private static void handle(ByteBuffer readBuffer, ByteBuffer sendBuffer, SelectionKey key) throws Exception {
         // 根据selectkey得到此通道
         SocketChannel client = (SocketChannel) key.channel();
         // 从此通道读取数据

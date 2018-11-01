@@ -7,8 +7,6 @@ import org.apache.commons.compress.archivers.zip.ZipArchiveInputStream;
 import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Copyright,2018-2019,geekluxun Co.,Ltd.
@@ -24,14 +22,14 @@ public class ZipUtils {
      * @param zipFilePath
      */
     public static void zip(String srcFilePath, String zipFilePath) {
-             
+
         ZipArchiveOutputStream zaos = null;
         File zipFile = new File(zipFilePath);
         if (zipFile.exists()) {
             zipFile.delete();
         }
         File srcfile = new File(srcFilePath);
-        String rootSrcFilePath = srcfile.getPath() + File.separator; 
+        String rootSrcFilePath = srcfile.getPath() + File.separator;
         try {
             zaos = new ZipArchiveOutputStream(zipFile);
             zaos.setUseZip64(Zip64Mode.AsNeeded);
@@ -60,7 +58,7 @@ public class ZipUtils {
     private static void zipLogic(File srcFile, ZipArchiveOutputStream zaos, String rootFilePath) {
         try {
             File[] files = srcFile.listFiles();
-            for (File f : files){
+            for (File f : files) {
                 if (f.isDirectory()) {
                     //  得到相对此root文件夹的路径
                     String entryName = f.getPath().substring(rootFilePath.length());
@@ -111,7 +109,7 @@ public class ZipUtils {
         if (!dir.exists()) {
             dir.mkdirs();
         }
-        
+
         File file = new File(zipFilePath);
         if (file.exists()) {
             InputStream is = null;

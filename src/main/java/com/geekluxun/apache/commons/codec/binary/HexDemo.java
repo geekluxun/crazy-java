@@ -14,7 +14,7 @@ import java.nio.ByteBuffer;
  * @Other:
  */
 public class HexDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         HexDemo demo = new HexDemo();
         demo.demo1();
     }
@@ -22,12 +22,12 @@ public class HexDemo {
     /**
      * 转换成16进制
      */
-    private void demo1(){
+    private void demo1() {
         char[] src = new char[]{'a', '0', '2', 'f'};
         byte[] hex;
         try {
             // 0xa0 , 0x2f
-            hex  = Hex.decodeHex(src);
+            hex = Hex.decodeHex(src);
             hex = Hex.decodeHex("a02f");
             System.out.println();
         } catch (DecoderException e) {
@@ -40,7 +40,7 @@ public class HexDemo {
         data2 = Hex.encodeHex(data, false);
         String dataStr1 = new String(data2);
         // 16进制字符串(默认小写)
-        String dataStr2 =Hex.encodeHexString(data);
+        String dataStr2 = Hex.encodeHexString(data);
         System.out.println();
     }
 }

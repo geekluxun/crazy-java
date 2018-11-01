@@ -11,10 +11,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.List;
 
 /**
@@ -79,7 +77,7 @@ public class FileUploadDemo {
 //                System.out.println(line);
 //            }
             // 直接把输入流转换成文件！！！
-            FileUtils.copyInputStreamToFile(file.getInputStream(),new File("/3.txt"));
+            FileUtils.copyInputStreamToFile(file.getInputStream(), new File("/3.txt"));
         } catch (IOException e) {
             e.printStackTrace();
         }

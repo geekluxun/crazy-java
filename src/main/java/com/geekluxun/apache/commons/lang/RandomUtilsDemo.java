@@ -12,25 +12,25 @@ import org.apache.commons.lang3.RandomUtils;
  * @Other:
  */
 public class RandomUtilsDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         RandomUtilsDemo demo = new RandomUtilsDemo();
         demo.demo1();
         demo.demo2();
     }
-    
-    private void demo1(){
+
+    private void demo1() {
         String random;
         // 16个字符
         random = RandomStringUtils.random(16);
         // 字母 数字
-        random = RandomStringUtils.random(16,true,true);
-        
-        random = RandomStringUtils.random(16, 'a','b', 'c', 'd');
+        random = RandomStringUtils.random(16, true, true);
+
+        random = RandomStringUtils.random(16, 'a', 'b', 'c', 'd');
         // A-F
-        random = RandomStringUtils.random(16, 65, 70,true, true);
-        
+        random = RandomStringUtils.random(16, 65, 70, true, true);
+
         // 从给定字符集中选取部分字符
-        random = RandomStringUtils.random(16, 1, 3,true,true, 'a', 'b', 'c', 'd');
+        random = RandomStringUtils.random(16, 1, 3, true, true, 'a', 'b', 'c', 'd');
 
         random = RandomStringUtils.randomAlphabetic(10);
 
@@ -43,7 +43,7 @@ public class RandomUtilsDemo {
 
         random = RandomStringUtils.randomNumeric(10);
 
-        random  = RandomStringUtils.randomNumeric(1, 10);
+        random = RandomStringUtils.randomNumeric(1, 10);
 
         random = RandomStringUtils.randomGraph(10);
         // 可打印assii字符 包括空格等
@@ -52,7 +52,7 @@ public class RandomUtilsDemo {
         System.out.println();
     }
 
-    private void demo2(){
+    private void demo2() {
         byte[] array = RandomUtils.nextBytes(10);
         int valueInt = RandomUtils.nextInt(1, 10);
         double valueDouble = RandomUtils.nextDouble(10, 20);

@@ -13,21 +13,21 @@ import java.math.RoundingMode;
  * @Other:
  */
 public class MathDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         MathDemo mathDemo = new MathDemo();
         mathDemo.demo1();
     }
-    
-    private void demo1(){
+
+    private void demo1() {
         // 2的指数
         System.out.println(IntMath.isPowerOfTwo(8));
         System.out.println(IntMath.log2(4, RoundingMode.UP));
         System.out.println(IntMath.log10(100, RoundingMode.DOWN));
-        System.out.println(IntMath.pow(2,4));
+        System.out.println(IntMath.pow(2, 4));
         // 平方根
         System.out.println(IntMath.sqrt(9, RoundingMode.DOWN));
         // 向上取整 4
-        System.out.println(IntMath.divide(10, 3,RoundingMode.UP));
+        System.out.println(IntMath.divide(10, 3, RoundingMode.UP));
         // 取模
         System.out.println(IntMath.mod(10, 6));
         // 最大公约数
@@ -57,7 +57,7 @@ public class MathDemo {
         System.out.println(IntMath.binomial(10, 3));
     }
 
-    private void demo2(){
+    private void demo2() {
 
     }
 }

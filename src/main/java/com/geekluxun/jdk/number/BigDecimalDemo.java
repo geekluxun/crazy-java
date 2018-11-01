@@ -1,6 +1,5 @@
 package com.geekluxun.jdk.number;
 
-import javax.swing.text.Style;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -13,13 +12,13 @@ import java.math.RoundingMode;
  * @Other:
  */
 public class BigDecimalDemo {
-    public static void main(String[] argcs){
+    public static void main(String[] argcs) {
         BigDecimalDemo decimalDemo = new BigDecimalDemo();
         //decimalDemo.demo1();
         decimalDemo.demo2();
     }
-    
-    private void demo1(){
+
+    private void demo1() {
         BigDecimal value1 = new BigDecimal("10.0");
         BigDecimal value2 = new BigDecimal("10.00");
         // equals要求是value和scale都等 才等！！！容易踩得的坑 !!!不要用equals比较值！！！
@@ -28,7 +27,7 @@ public class BigDecimalDemo {
         System.out.println(value1.compareTo(value2) == 0);
     }
 
-    private void demo2(){
+    private void demo2() {
         BigDecimal value1 = new BigDecimal("0.005215511");
         //value1 = value1.setScale(8);
         // 原有精度是9位，此处改成8位，一定要设置Rounding，否则抛异常

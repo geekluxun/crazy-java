@@ -11,16 +11,17 @@ import java.util.concurrent.TimeUnit;
  * @Description:
  * @Other:
  */
-public class ThreadLocalDemo implements Runnable{
+public class ThreadLocalDemo implements Runnable {
     //private static ThreadLocal<Integer> value = new ThreadLocal<>();
     private Integer value;
-    public static void main(String[] argc){
-        for (int i = 0; i < 100; i++){
+
+    public static void main(String[] argc) {
+        for (int i = 0; i < 100; i++) {
             new Thread(new ThreadLocalDemo()).start();
         }
     }
-    
-    
+
+
     @Override
     public void run() {
         try {
@@ -28,7 +29,7 @@ public class ThreadLocalDemo implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        value = (int)(Thread.currentThread().getId());
+        value = (int) (Thread.currentThread().getId());
         System.out.println("value:" + value);
 //        value.set(Integer.valueOf((int)Thread.currentThread().getId()));
 //        System.out.println("value:" + value.get());

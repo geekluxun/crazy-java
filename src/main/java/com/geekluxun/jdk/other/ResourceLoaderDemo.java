@@ -14,13 +14,13 @@ import java.net.URL;
  * @Other:
  */
 public class ResourceLoaderDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         ResourceLoaderDemo demo = new ResourceLoaderDemo();
         demo.demo1();
     }
-    
-    
-    private void demo1(){
+
+
+    private void demo1() {
         InputStream in = ClassLoader.getSystemResourceAsStream("application.properties");
         Assert.isTrue(!(in == null), "文件不存在");
 

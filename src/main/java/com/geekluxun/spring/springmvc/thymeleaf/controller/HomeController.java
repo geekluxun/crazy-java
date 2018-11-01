@@ -76,7 +76,7 @@ public class HomeController {
             Product product = new Product();
             product.setInStock(false);
             product.setName("apple" + i);
-            product.setPrice((i+1)*10);
+            product.setPrice((i + 1) * 10);
             product.setComments(comments);
             products.add(product);
         }

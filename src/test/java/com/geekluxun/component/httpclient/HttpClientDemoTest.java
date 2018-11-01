@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.*;
-
 /**
  * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
@@ -21,10 +19,10 @@ import static org.junit.Assert.*;
 public class HttpClientDemoTest {
     @Autowired
     HttpClientDemo httpClientDemo;
-    
+
     @Test
     public void demo1() throws Exception {
-        httpClientDemo.demo1();    
+        httpClientDemo.demo1();
     }
 
 }

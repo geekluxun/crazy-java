@@ -14,5 +14,5 @@ import lombok.Data;
 public class ResponseDto {
     private Integer code;
     private String msg;
-    
+
 }

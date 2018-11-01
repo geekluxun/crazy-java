@@ -16,29 +16,29 @@ import java.util.StringTokenizer;
  * @Other:
  */
 public class EnumerationUtilsDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         EnumerationUtilsDemo demo = new EnumerationUtilsDemo();
         demo.demo1();
         demo.demo2();
     }
-    
-    private void demo1(){
+
+    private void demo1() {
         Hashtable hashtable = new Hashtable();
         hashtable.put("key1", 1);
         hashtable.put("key2", 2);
         hashtable.put("key3", 3);
         hashtable.put("key4", 4);
         Enumeration<Integer> enumeration = hashtable.elements();
-        
+
         // 转换成list
         List<Integer> list = EnumerationUtils.toList(enumeration);
         System.out.println();
     }
-    
-    private void demo2(){
+
+    private void demo2() {
         String str = " hello,java,delphi,asp,php";
-        StringTokenizer st=new StringTokenizer(str,",");
-        while(st.hasMoreTokens()) {
+        StringTokenizer st = new StringTokenizer(str, ",");
+        while (st.hasMoreTokens()) {
             System.out.println(st.nextToken());
         }
         // StringTokenizer转换成list

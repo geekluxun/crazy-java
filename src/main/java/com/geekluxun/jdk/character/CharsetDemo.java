@@ -15,19 +15,19 @@ import java.util.Map;
  * @Other:
  */
 public class CharsetDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         CharsetDemo charsetDemo = new CharsetDemo();
         charsetDemo.demo1();
     }
-    
-    private void demo1(){
+
+    private void demo1() {
         try {
             // 默认是utf-8编码
             byte[] data = "鲁".getBytes();
             byte[] data2 = "鲁".getBytes("gb2312");
             Assert.isTrue(data.length == 3, "使用UTF-8编码是3个字节");
             Assert.isTrue(data2.length == 2, "使用GB2312编码是2个字节");
-            
+
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

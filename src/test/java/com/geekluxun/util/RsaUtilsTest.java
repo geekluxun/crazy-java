@@ -25,6 +25,7 @@ public class RsaUtilsTest {
 
     /**
      * 签名验签
+     *
      * @throws Exception
      */
     @Test
@@ -38,7 +39,7 @@ public class RsaUtilsTest {
      * 私钥加密 公钥解密
      */
     @Test
-    public void encryptAndDecrypt1(){
+    public void encryptAndDecrypt1() {
         try {
             byte[] encryedData = RsaUtils.encryptByPrivateKey(plainText.getBytes("UTF-8"));
             String base64 = Base64.getEncoder().encodeToString(encryedData);
@@ -46,7 +47,7 @@ public class RsaUtilsTest {
             String decryedStr = new String(decryedData);
             Assert.assertTrue(decryedStr.equals(plainText));
         } catch (Exception e) {
-           throw new RuntimeException(e);
+            throw new RuntimeException(e);
         }
     }
 
@@ -54,7 +55,7 @@ public class RsaUtilsTest {
      * 公钥加密 私钥解密
      */
     @Test
-    public void encryptAndDecrypt2(){
+    public void encryptAndDecrypt2() {
         try {
             byte[] encryedData = RsaUtils.encryptByPublicKey(plainText.getBytes("UTF-8"));
             byte[] decryedData = RsaUtils.decryptByPrivateKey(encryedData);
@@ -69,7 +70,7 @@ public class RsaUtilsTest {
      * 生成密钥对
      */
     @Test
-    public void generateKey(){
+    public void generateKey() {
         RsaUtils.generateKeyPair();
     }
 }

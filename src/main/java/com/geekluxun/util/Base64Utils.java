@@ -11,11 +11,11 @@ import java.util.Base64;
  */
 public class Base64Utils {
 
-    public static String decode(String input){
+    public static String decode(String input) {
         byte[] output = Base64.getDecoder().decode(input);
         String outputStr = null;
         try {
-             outputStr = new String(output, "UTF-8");
+            outputStr = new String(output, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

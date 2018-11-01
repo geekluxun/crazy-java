@@ -13,14 +13,14 @@ import java.io.File;
  * @Other:
  */
 public class SystemUtilsDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         SystemUtilsDemo demo = new SystemUtilsDemo();
         demo.demo1();
     }
-    
-    private void demo1(){
+
+    private void demo1() {
         String name = SystemUtils.getHostName();
-        File file  = SystemUtils.getJavaHome();
+        File file = SystemUtils.getJavaHome();
         file = SystemUtils.getJavaIoTmpDir();
         // 用户目录 E:\workspace\me\crazy-java
         file = SystemUtils.getUserDir();

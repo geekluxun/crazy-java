@@ -13,7 +13,7 @@ import java.util.concurrent.ForkJoinPool;
  * @Other:
  */
 public class ForkJoinDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
 
         System.out.println("main线程id:" + Thread.currentThread().getId());
 
@@ -23,11 +23,11 @@ public class ForkJoinDemo {
             MyTask myTask = new MyTask(4);
             forkJoinPool.execute(myTask);
             //4*4  + 3*3 + 2*2 + 1*1;
-            int result  = myTask.join().intValue();
+            int result = myTask.join().intValue();
             Assert.isTrue(myTask.join().intValue() == 30);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
     }
 }

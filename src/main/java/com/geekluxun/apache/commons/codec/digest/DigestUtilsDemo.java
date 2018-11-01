@@ -5,8 +5,6 @@ import org.springframework.util.ClassUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 
 /**
@@ -18,7 +16,7 @@ import java.net.URL;
  * @Other:
  */
 public class DigestUtilsDemo {
-    public static void main(String[] argc ){
+    public static void main(String[] argc) {
         DigestUtilsDemo demo = new DigestUtilsDemo();
         demo.demo1();
         demo.demo2();
@@ -27,7 +25,7 @@ public class DigestUtilsDemo {
     /**
      * MD5
      */
-    private void demo1(){
+    private void demo1() {
         byte[] md5value2 = DigestUtils.md5("luxun");
         // 当前类所有的绝对路径
         URL url = getClass().getResource("DigestUtilsDemo.class");
@@ -52,7 +50,7 @@ public class DigestUtilsDemo {
     /**
      * SHA
      */
-    private void demo2(){
+    private void demo2() {
         // 20byte 160bit
         String sha = DigestUtils.sha1Hex("luxun");
         // 32byte 256bit

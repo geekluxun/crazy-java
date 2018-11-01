@@ -11,6 +11,7 @@ package com.geekluxun.jdk.util.zip;
 public interface ZipService {
     /**
      * zip压缩
+     *
      * @param srcFiles
      * @param desFile
      * @return

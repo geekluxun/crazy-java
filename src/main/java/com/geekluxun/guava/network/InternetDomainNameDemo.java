@@ -11,12 +11,12 @@ import com.google.common.net.InternetDomainName;
  * @Other:
  */
 public class InternetDomainNameDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         InternetDomainNameDemo demo = new InternetDomainNameDemo();
         demo.demo1();
     }
-    
-    public void demo1(){
+
+    public void demo1() {
         InternetDomainName domainName = InternetDomainName.from("jenkins.xxd.com");
         System.out.println("a: " + domainName.topDomainUnderRegistrySuffix());
         System.out.println("b: " + domainName.topPrivateDomain());

@@ -21,17 +21,18 @@ public class ServletTestController {
 
     /**
      * 通过servlet上下文获取资源文件示例
+     *
      * @param request
      * @param response
      */
     @RequestMapping
-    public void test1(HttpServletRequest request, HttpServletResponse response){
+    public void test1(HttpServletRequest request, HttpServletResponse response) {
         try {
 
             Set<String> paths = request.getServletContext().getResourcePaths("/");
             // servlet获取的资源不能是classes路径的内容!!!,只能是webapp下静态资源!!!
             InputStream in = request.getServletContext().getResourceAsStream("/templates/test1.html");
-            if (in == null){
+            if (in == null) {
                 System.out.println("获取不到资源文件！！！");
             }
             System.out.println();

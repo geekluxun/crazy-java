@@ -11,27 +11,27 @@ import java.util.concurrent.*;
  * @Other:
  */
 public class FurtureDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         FurtureDemo demo = new FurtureDemo();
         demo.demo1();
-        
+
     }
 
     /**
      * 如何interrupt一个任务??
      */
-    private void demo1(){
+    private void demo1() {
         ExecutorService executorService = Executors.newFixedThreadPool(10);
-        
-        Future<String> future = executorService.submit(()->{
+
+        Future<String> future = executorService.submit(() -> {
             System.out.println("hello");
             //int value = 0 / 0;
-            while (true){
+            while (true) {
                 TimeUnit.SECONDS.sleep(1);
             }
             //return "hello world";
         });
-        
+
         try {
             String result = future.get();
             System.out.println();

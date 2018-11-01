@@ -10,7 +10,7 @@ import java.io.Serializable;
  * @Description:
  * @Other:
  */
-public class Foo implements Serializable{
+public class Foo implements Serializable {
     private String name;
 
     public String getName() {
@@ -20,8 +20,8 @@ public class Foo implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
-    
-    public void doSomething(){
+
+    public void doSomething() {
         System.out.println("我被执行了！");
     }
 }

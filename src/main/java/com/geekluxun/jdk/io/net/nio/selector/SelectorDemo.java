@@ -13,13 +13,13 @@ import java.util.concurrent.TimeUnit;
  * @Other:
  */
 public class SelectorDemo {
-    
-    public static void main(String[] argc){
+
+    public static void main(String[] argc) {
         SelectorDemo demo = new SelectorDemo();
         demo.test();
     }
-    
-    private void test(){
+
+    private void test() {
         ExecutorService service = Executors.newSingleThreadExecutor();
         service.execute(new ServerTask());
 
@@ -29,7 +29,7 @@ public class SelectorDemo {
             e.printStackTrace();
         }
         System.out.println();
-        
+
         EchoClient client = EchoClient.start();
         System.out.println();
 
@@ -42,8 +42,8 @@ public class SelectorDemo {
         String response = client.sendMsg("hello!!!");
         System.out.println("server response:" + response);
     }
-    
-    private class ServerTask implements Runnable{
+
+    private class ServerTask implements Runnable {
 
         @Override
         public void run() {

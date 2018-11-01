@@ -29,7 +29,7 @@ public class StringUtilsDemo {
         demo.equalDemo();
         demo.joinDemo();
     }
-    
+
     /**
      * 尾部字符替换
      */
@@ -125,7 +125,7 @@ public class StringUtilsDemo {
     /**
      * 字符串比较 解决了JDK中抛NPE问题 所谓NULL安全版本
      */
-    private void compareDemo(){
+    private void compareDemo() {
         int a;
         try {
             // 此处会抛npe
@@ -135,15 +135,15 @@ public class StringUtilsDemo {
         }
         // 和jdk不同之处在于此处回返回1，前面大
         a = StringUtils.compare("luxun", null);
-        a = StringUtils.compare(null, null); 
-        a = StringUtils.compare(null , "a");  
-        a = StringUtils.compare("a", null);   
-        a = StringUtils.compare("abc", "abc"); 
-        a = StringUtils.compare("a", "b");     
-        a = StringUtils.compare("b", "a");  
+        a = StringUtils.compare(null, null);
+        a = StringUtils.compare(null, "a");
+        a = StringUtils.compare("a", null);
+        a = StringUtils.compare("abc", "abc");
+        a = StringUtils.compare("a", "b");
+        a = StringUtils.compare("b", "a");
         // 返回的是31 不是 1 !!!
         a = "a".compareTo("B");
-        a = StringUtils.compare("a", "B");     
+        a = StringUtils.compare("a", "B");
         a = StringUtils.compare("ab", "abc");
         // 表示null 和任何字符比较都小
         a = StringUtils.compare("a", null, true);
@@ -156,7 +156,7 @@ public class StringUtilsDemo {
 
 
     /**
-     *  JDK中contains NULL安全版本
+     * JDK中contains NULL安全版本
      */
     private void containsDemo() {
         String str = "luxun";
@@ -174,75 +174,75 @@ public class StringUtilsDemo {
         result = StringUtils.contains("abc", "");
         result = StringUtils.contains("abc", "a");
         result = StringUtils.contains("abc", "z");
-        
+
         System.out.println();
-        
+
         // 不包含
         result = StringUtils.containsNone(null, "ab");
         //result = StringUtils.containsNone("ab", null);
-        result = StringUtils.containsNone("", "d");     
-        result = StringUtils.containsNone("ab", ' '); 
+        result = StringUtils.containsNone("", "d");
+        result = StringUtils.containsNone("ab", ' ');
         result = StringUtils.containsNone("abab", 'x');
-        result = StringUtils.containsNone("ab1", 'y');  
+        result = StringUtils.containsNone("ab1", 'y');
         result = StringUtils.containsNone("abz", 'z');
 
         // 返回第一个串开始前n个不重复内容是否包含该在第2个串中
-        result = StringUtils.containsOnly(null, "luxun");      
+        result = StringUtils.containsOnly(null, "luxun");
         //StringUtils.containsOnly("luxun", null);       
-        result = StringUtils.containsOnly("", "luxun");         
+        result = StringUtils.containsOnly("", "luxun");
         result = StringUtils.containsOnly("ab", "");
         // 开始的"abd" 包含在第2个中，返回true
-        result = StringUtils.containsOnly("abdab", "adbc"); 
-        result = StringUtils.containsOnly("ab1", "abc");  
+        result = StringUtils.containsOnly("abdab", "adbc");
+        result = StringUtils.containsOnly("ab1", "abc");
         result = StringUtils.containsOnly("abz", "ddabzc");
-        
+
         result = StringUtils.containsWhitespace("    dd");
-        System.out.println(); 
+        System.out.println();
     }
 
     /**
      * 字符串位置
      */
-    private void indexOfAnyDemo(){
+    private void indexOfAnyDemo() {
         int index;
         index = StringUtils.indexOfAny(null, 'd');
-        index = StringUtils.indexOfAny("", 'a');               
+        index = StringUtils.indexOfAny("", 'a');
         //StringUtils.indexOfAny("dd", null);
         index = StringUtils.indexOfAny("abc", ' ');
-        index = StringUtils.indexOfAny("zzabyycdxx",'z','a');
-        index = StringUtils.indexOfAny("zzabyycdxx",'b','y');
+        index = StringUtils.indexOfAny("zzabyycdxx", 'z', 'a');
+        index = StringUtils.indexOfAny("zzabyycdxx", 'b', 'y');
         index = StringUtils.indexOfAny("aba", 'z');
 
-        index = StringUtils.indexOfAny(null, "luxun");           
-        index = StringUtils.indexOfAny("", "ddd");      
+        index = StringUtils.indexOfAny(null, "luxun");
+        index = StringUtils.indexOfAny("", "ddd");
         // TODO 如何解决？
         //index = StringUtils.indexOfAny("dd", null);           
-        index = StringUtils.indexOfAny("dd", "");             
-        index = StringUtils.indexOfAny("zzabyycdxx", "za"); 
-        index = StringUtils.indexOfAny("zzabyycdxx", "by"); 
-        index = StringUtils.indexOfAny("aba","z");
+        index = StringUtils.indexOfAny("dd", "");
+        index = StringUtils.indexOfAny("zzabyycdxx", "za");
+        index = StringUtils.indexOfAny("zzabyycdxx", "by");
+        index = StringUtils.indexOfAny("aba", "z");
 
         // 任何一个不在前一个参数字符中的index
-        StringUtils.indexOfAnyBut(null, 'a');                        
-        StringUtils.indexOfAnyBut("", 'd');                              
+        StringUtils.indexOfAnyBut(null, 'a');
+        StringUtils.indexOfAnyBut("", 'd');
         //StringUtils.indexOfAnyBut("abc", null);                             
-        StringUtils.indexOfAnyBut("dd", new char[]{});                                
-        StringUtils.indexOfAnyBut("zzabyycdxx", new char[] {'z', 'a'} ) ;
-        StringUtils.indexOfAnyBut("aba", new char[] {'z'} );             
-        StringUtils.indexOfAnyBut("aba", new char[] {'a', 'b'} );        
+        StringUtils.indexOfAnyBut("dd", new char[]{});
+        StringUtils.indexOfAnyBut("zzabyycdxx", new char[]{'z', 'a'});
+        StringUtils.indexOfAnyBut("aba", new char[]{'z'});
+        StringUtils.indexOfAnyBut("aba", new char[]{'a', 'b'});
         System.out.println();
     }
 
     /**
      * subString 安全版本
      */
-    private void subStringDemo(){
+    private void subStringDemo() {
         String s;
         s = StringUtils.substring(null, 3);
         s = StringUtils.substring("", 2);
-        s = StringUtils.substring("abc", 0);  
-        s = StringUtils.substring("abc", 2);  
-        s = StringUtils.substring("abc", 4);  
+        s = StringUtils.substring("abc", 0);
+        s = StringUtils.substring("abc", 2);
+        s = StringUtils.substring("abc", 4);
         s = StringUtils.substring("abc", -2);
         s = StringUtils.substring("abc", -4);
         // 从某个位置开始取len个字符
@@ -260,13 +260,13 @@ public class StringUtilsDemo {
     /**
      * 字符或字符串匹配的次数
      */
-    private void countMatchesDemo(){
+    private void countMatchesDemo() {
         int count;
-        count = StringUtils.countMatches(null, ' ');      
-        count = StringUtils.countMatches("", 'd');       
-        count = StringUtils.countMatches("abba", ' '); 
-        count = StringUtils.countMatches("abba", 'a');   
-        count = StringUtils.countMatches("abba", 'b');  
+        count = StringUtils.countMatches(null, ' ');
+        count = StringUtils.countMatches("", 'd');
+        count = StringUtils.countMatches("abba", ' ');
+        count = StringUtils.countMatches("abba", 'a');
+        count = StringUtils.countMatches("abba", 'b');
         count = StringUtils.countMatches("abba", 'x');
         System.out.println();
     }
@@ -274,7 +274,7 @@ public class StringUtilsDemo {
     /**
      * 各种默认值
      */
-    private void defaultDemo(){
+    private void defaultDemo() {
         String s;
         // blank 表示空白 " "都算空白 empty表示空，空字符串是，但是space不是empty
         s = StringUtils.defaultIfBlank(null, "NULL");
@@ -292,18 +292,18 @@ public class StringUtilsDemo {
         s = StringUtils.defaultString(null);
         s = StringUtils.defaultString("");
         s = StringUtils.defaultString("bat");
-        
+
         s = StringUtils.defaultString(null, "NULL");
         s = StringUtils.defaultString("", "NULL");
         s = StringUtils.defaultString("bat", "NULL");
-                
+
         System.out.println();
     }
 
     /**
      * 返回第2个字符串和第1个字符串不同开始以后的字符串
      */
-    private void differenceDemo(){
+    private void differenceDemo() {
         String s;
         s = StringUtils.difference(null, null);
         s = StringUtils.difference("", "");
@@ -314,11 +314,11 @@ public class StringUtilsDemo {
         s = StringUtils.difference("ab", "abxyz");
         s = StringUtils.difference("abcde", "abxyz");
         s = StringUtils.difference("abcde", "xyz");
-        
+
         System.out.println();
     }
-    
-    private void equalDemo(){
+
+    private void equalDemo() {
         boolean result;
         result = StringUtils.equalsAny(null, (CharSequence[]) null);
         result = StringUtils.equalsAny(null, null, null);
@@ -331,28 +331,28 @@ public class StringUtilsDemo {
     /**
      * 两个字符串的共同前缀
      */
-    private void getCommonPrefix(){
-        String s ;
-        s = StringUtils.getCommonPrefix(null); 
-        s = StringUtils.getCommonPrefix(new String[] {}); 
-        s = StringUtils.getCommonPrefix(new String[] {"abc"});
-        s = StringUtils.getCommonPrefix(new String[] {null, null}); 
-        s = StringUtils.getCommonPrefix(new String[] {"", ""}); 
-        s = StringUtils.getCommonPrefix(new String[] {"", null}); 
-        s = StringUtils.getCommonPrefix(new String[] {"abc", null, null}); 
-        s = StringUtils.getCommonPrefix(new String[] {null, null, "abc"}); 
-        s = StringUtils.getCommonPrefix(new String[] {"", "abc"}); 
-        s = StringUtils.getCommonPrefix(new String[] {"abc", ""}); 
-        s = StringUtils.getCommonPrefix(new String[] {"abc", "abc"}); 
-        s = StringUtils.getCommonPrefix(new String[] {"abc", "a"}); 
-        s = StringUtils.getCommonPrefix(new String[] {"ab", "abxyz"}); 
-        s = StringUtils.getCommonPrefix(new String[] {"abcde", "abxyz"}); 
-        s = StringUtils.getCommonPrefix(new String[] {"abcde", "xyz"}); 
-        s = StringUtils.getCommonPrefix(new String[] {"xyz", "abcde"}); 
-        s = StringUtils.getCommonPrefix(new String[] {"i am a machine", "i am a robot"}); 
+    private void getCommonPrefix() {
+        String s;
+        s = StringUtils.getCommonPrefix(null);
+        s = StringUtils.getCommonPrefix(new String[]{});
+        s = StringUtils.getCommonPrefix(new String[]{"abc"});
+        s = StringUtils.getCommonPrefix(new String[]{null, null});
+        s = StringUtils.getCommonPrefix(new String[]{"", ""});
+        s = StringUtils.getCommonPrefix(new String[]{"", null});
+        s = StringUtils.getCommonPrefix(new String[]{"abc", null, null});
+        s = StringUtils.getCommonPrefix(new String[]{null, null, "abc"});
+        s = StringUtils.getCommonPrefix(new String[]{"", "abc"});
+        s = StringUtils.getCommonPrefix(new String[]{"abc", ""});
+        s = StringUtils.getCommonPrefix(new String[]{"abc", "abc"});
+        s = StringUtils.getCommonPrefix(new String[]{"abc", "a"});
+        s = StringUtils.getCommonPrefix(new String[]{"ab", "abxyz"});
+        s = StringUtils.getCommonPrefix(new String[]{"abcde", "abxyz"});
+        s = StringUtils.getCommonPrefix(new String[]{"abcde", "xyz"});
+        s = StringUtils.getCommonPrefix(new String[]{"xyz", "abcde"});
+        s = StringUtils.getCommonPrefix(new String[]{"i am a machine", "i am a robot"});
     }
-    
-    private void joinDemo(){
+
+    private void joinDemo() {
         String s;
         //StringUtils.join(null, "dd");
         s = StringUtils.join(new byte[]{}, ';');
@@ -362,5 +362,5 @@ public class StringUtilsDemo {
         s = StringUtils.deleteWhitespace(s);
         System.out.println();
     }
-    
+
 }

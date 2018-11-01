@@ -15,16 +15,16 @@ import java.util.List;
  * @Other:
  */
 public class IterableUtilsDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         IterableUtilsDemo demo = new IterableUtilsDemo();
         demo.demo1();
     }
 
     /**
-     *  按照谓词分区
+     * 按照谓词分区
      */
-    private void demo1(){
-        List<Integer> list = Lists.newArrayList(1,3,7,9,10,6,11,10,8,0,3,12);
+    private void demo1() {
+        List<Integer> list = Lists.newArrayList(1, 3, 7, 9, 10, 6, 11, 10, 8, 0, 3, 12);
         Predicate<Integer> predicate = new Predicate<Integer>() {
             @Override
             public boolean evaluate(Integer o) {
@@ -43,9 +43,9 @@ public class IterableUtilsDemo {
         // 两个谓词匹配
         partion = IterableUtils.partition(list, predicate, predicate2);
         System.out.println();
-    
+
         IterableUtils.boundedIterable(list, 5);
-        Iterable iterable  = IterableUtils.chainedIterable(list, list);
+        Iterable iterable = IterableUtils.chainedIterable(list, list);
         IterableUtils.emptyIfNull(null);
         Iterable iterable2 = IterableUtils.filteredIterable(list, predicate);
         // 出现的次数
@@ -53,7 +53,7 @@ public class IterableUtilsDemo {
         IterableUtils.toList(iterable);
         // 去重
         IterableUtils.uniqueIterable(list);
-        
+
         Iterable iterable3 = IterableUtils.zippingIterable(iterable, iterable2);
         System.out.println();
     }

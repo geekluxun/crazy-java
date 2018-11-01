@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class RangeMapDemo {
 
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         RangeMapDemo demo = new RangeMapDemo();
         demo.demo1();
         demo.demo2();
@@ -29,7 +29,7 @@ public class RangeMapDemo {
 
         experienceRangeDesignationMap.put(Range.closed(0, 2), "Associate");
         experienceRangeDesignationMap.put(Range.closed(3, 5), "Senior Associate");
-        experienceRangeDesignationMap.put(Range.closed(6, 8),  "Vice President");
+        experienceRangeDesignationMap.put(Range.closed(6, 8), "Vice President");
         experienceRangeDesignationMap.put(Range.closed(9, 15), "Executive Director");
 
         Assert.isTrue("Vice President".equals(experienceRangeDesignationMap.get(6)));
@@ -38,21 +38,21 @@ public class RangeMapDemo {
 
 
     /**
-     *  获取某一个元素
+     * 获取某一个元素
      */
-    private void demo2(){
-            RangeMap<Integer, String> experienceRangeDesignationMap = TreeRangeMap.create();
+    private void demo2() {
+        RangeMap<Integer, String> experienceRangeDesignationMap = TreeRangeMap.create();
 
-            experienceRangeDesignationMap.put(Range.closed(0, 2), "Associate");
-            experienceRangeDesignationMap.put(Range.closed(3, 5), "Senior Associate");
-            experienceRangeDesignationMap.put(Range.closed(6, 8), "Vice President");
-            experienceRangeDesignationMap.put(Range.closed(9, 15), "Executive Director");
+        experienceRangeDesignationMap.put(Range.closed(0, 2), "Associate");
+        experienceRangeDesignationMap.put(Range.closed(3, 5), "Senior Associate");
+        experienceRangeDesignationMap.put(Range.closed(6, 8), "Vice President");
+        experienceRangeDesignationMap.put(Range.closed(9, 15), "Executive Director");
 
-            Map.Entry<Range<Integer>, String> experienceEntry = experienceRangeDesignationMap.getEntry(10);
+        Map.Entry<Range<Integer>, String> experienceEntry = experienceRangeDesignationMap.getEntry(10);
 
-            Assert.isTrue(Range.closed(9, 15).equals(experienceEntry.getKey()));
-            Assert.isTrue("Executive Director".equals(experienceEntry.getValue()));
+        Assert.isTrue(Range.closed(9, 15).equals(experienceEntry.getKey()));
+        Assert.isTrue("Executive Director".equals(experienceEntry.getValue()));
 
-        }
+    }
 
 }

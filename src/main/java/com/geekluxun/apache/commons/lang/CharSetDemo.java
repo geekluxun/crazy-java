@@ -10,18 +10,18 @@ import org.apache.commons.lang3.CharSetUtils;
  * @Other:
  */
 public class CharSetDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         CharSetDemo demo = new CharSetDemo();
         demo.demo1();
     }
 
-    private void demo1(){
+    private void demo1() {
         CharSet charSet = CharSet.ASCII_ALPHA;
-        boolean result= charSet.contains('a');
+        boolean result = charSet.contains('a');
         result = CharSetUtils.containsAny("luxun", "xyz");
 
         int count = CharSetUtils.count("luxun", "a-z");
-        String  cc = CharSetUtils.delete("hello", "le");
+        String cc = CharSetUtils.delete("hello", "le");
         cc = CharSetUtils.keep("hello", "hl");
         // 挤压重复值
         cc = CharSetUtils.squeeze("hello", "k-p");

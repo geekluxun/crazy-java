@@ -21,9 +21,9 @@ public class ZipServiceImpl implements ZipService {
 
     private static final Logger loggger = LoggerFactory.getLogger(ZipServiceImpl.class);
 
-    private static final int ONE_READ_MAX_LEN = 1024; 
+    private static final int ONE_READ_MAX_LEN = 1024;
     private static final int ONE_READ_OFFSET = 0;
-    
+
     @Override
     public boolean zipCompress(String[] srcFiles, String desFile) {
         boolean isSuccessful = false;
@@ -67,7 +67,8 @@ public class ZipServiceImpl implements ZipService {
     }
 
     /**
-     *  解析文件名
+     * 解析文件名
+     *
      * @param srcFile
      * @return
      */

@@ -6,7 +6,10 @@ import org.apache.commons.collections4.FluentIterable;
 import org.apache.commons.collections4.Predicate;
 import org.apache.commons.collections4.TransformerUtils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Copyright,2018-2019,geekluxun Co.,Ltd.
@@ -17,34 +20,34 @@ import java.util.*;
  * @Other:
  */
 public class FluentIterableDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         FluentIterableDemo demo = new FluentIterableDemo();
         demo.demo1();
         demo.demo2();
     }
-    
+
     private void demo1() {
         // 体验一把流式
-        List<String> list = FluentIterable.of(1,2,3,4,5,6,7,8,9,10).filter(new Predicate<Integer>() {
+        List<String> list = FluentIterable.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).filter(new Predicate<Integer>() {
             @Override
             public boolean evaluate(Integer number) {
                 return number % 2 == 0;
             }
         })
-        .transform(TransformerUtils.stringValueTransformer())
-        .limit(3)
-        .toList();
+                .transform(TransformerUtils.stringValueTransformer())
+                .limit(3)
+                .toList();
         System.out.println();
     }
-    
-    private void demo2(){
-        FluentIterable<Integer> fluent = FluentIterable.of(1,2,3,4,5);
-        fluent = fluent.append(6,8,9,8);
+
+    private void demo2() {
+        FluentIterable<Integer> fluent = FluentIterable.of(1, 2, 3, 4, 5);
+        fluent = fluent.append(6, 8, 9, 8);
         Integer[] array = fluent.toArray(Integer.class);
         Enumeration<Integer> enumeration = fluent.asEnumeration();
-        
+
         // 增加
-        fluent = fluent.collate(Lists.newArrayList(8,9,10));
+        fluent = fluent.collate(Lists.newArrayList(8, 9, 10));
 
         List list = new ArrayList();
         // 拷贝到list

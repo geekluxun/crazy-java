@@ -3,8 +3,6 @@ package com.geekluxun.apache.commons.beanutils;
 import lombok.Data;
 import org.apache.commons.beanutils.BeanUtils;
 
-import java.io.Serializable;
-import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 
 /**
@@ -16,18 +14,18 @@ import java.math.BigDecimal;
  * @Other:
  */
 public class BeanUtilsDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         BeanUtilsDemo demo = new BeanUtilsDemo();
         demo.demo1();
-        
+
     }
-    
-    private void demo1(){
+
+    private void demo1() {
         Foo1 foo1 = new Foo1();
         foo1.setA("luxun");
         foo1.setB(BigDecimal.valueOf(10));
         foo1.setD(2);
-        
+
         Foo2 foo2 = new Foo2();
         try {
             /**
@@ -38,18 +36,18 @@ public class BeanUtilsDemo {
             org.springframework.beans.BeanUtils.copyProperties(foo1, foo2);
         } catch (Exception e) {
             e.printStackTrace();
-        } 
+        }
         System.out.println();
-    } 
-    
+    }
+
     @Data
-    class Foo1{
+    class Foo1 {
         private String a;
         private BigDecimal b;
         private boolean c;
         private int d;
     }
-    
+
     @Data
     class Foo2 {
         private String a;

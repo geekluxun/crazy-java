@@ -13,18 +13,18 @@ import org.apache.commons.math3.util.FastMath;
  * @Other:
  */
 public class StatisticsDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         StatisticsDemo demo = new StatisticsDemo();
         demo.demo1();
         demo.demo2();
     }
-    
-    private void demo1(){
+
+    private void demo1() {
         double inputArray[] = new double[]{1, 2, 3, 4, 5};
         // Get a DescriptiveStatistics instance
         DescriptiveStatistics stats = new DescriptiveStatistics();
         // Add the data from the array
-        for( int i = 0; i < inputArray.length; i++) {
+        for (int i = 0; i < inputArray.length; i++) {
             stats.addValue(inputArray[i]);
         }
         // Compute some statistics
@@ -34,8 +34,8 @@ public class StatisticsDemo {
         double median = stats.getPercentile(50);
         System.out.println();
     }
-    
-    public void demo2(){
+
+    public void demo2() {
         // Compute statistics directly from the array
         // assume values is a double[] array
         double values[] = new double[]{1, 2, 3, 4, 5};

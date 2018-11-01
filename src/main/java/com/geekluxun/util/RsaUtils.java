@@ -3,12 +3,10 @@ package com.geekluxun.util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.crypto.*;
+import javax.crypto.Cipher;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
-import java.math.BigInteger;
 import java.security.*;
-import java.security.interfaces.RSAPublicKey;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
@@ -49,6 +47,7 @@ public class RsaUtils {
 
     /**
      * 对原始数据进行签名（RSA2）
+     *
      * @param inputStr
      * @return
      */
@@ -74,11 +73,12 @@ public class RsaUtils {
 
     /**
      * 验证签名
+     *
      * @param inputStr
      * @param signStr
      * @return
      */
-    public static Boolean verifySign(String inputStr, String signStr){
+    public static Boolean verifySign(String inputStr, String signStr) {
         try {
             Signature signature = Signature.getInstance(SIGNATURE_ALGORITHM);
             // 使用公钥验签
@@ -100,10 +100,11 @@ public class RsaUtils {
 
     /**
      * 使用公钥加密
+     *
      * @param data
      * @return
      */
-    public static byte[] encryptByPublicKey(byte[] data) throws Exception{
+    public static byte[] encryptByPublicKey(byte[] data) throws Exception {
         Cipher cipher = Cipher.getInstance(KEY_ALGORITHM);
         cipher.init(Cipher.ENCRYPT_MODE, publicKey);
         return cipher.doFinal(data);
@@ -111,11 +112,12 @@ public class RsaUtils {
 
     /**
      * 使用私钥加密
+     *
      * @param data
      * @return
      * @throws Exception
      */
-    public static byte[] encryptByPrivateKey(byte[] data)throws Exception{
+    public static byte[] encryptByPrivateKey(byte[] data) throws Exception {
         Cipher cipher = Cipher.getInstance(KEY_ALGORITHM);
         cipher.init(Cipher.ENCRYPT_MODE, privateKey);
         return cipher.doFinal(data);
@@ -123,10 +125,11 @@ public class RsaUtils {
 
     /**
      * 使用公钥解密
+     *
      * @param data
      * @return
      */
-    public static byte[] decryptByPublicKey(byte[] data) throws Exception{
+    public static byte[] decryptByPublicKey(byte[] data) throws Exception {
         Cipher cipher = Cipher.getInstance(KEY_ALGORITHM);
         cipher.init(Cipher.DECRYPT_MODE, publicKey);
         return cipher.doFinal(data);
@@ -134,11 +137,12 @@ public class RsaUtils {
 
     /**
      * 使用私钥解密
+     *
      * @param data
      * @return
      * @throws Exception
      */
-    public static byte[] decryptByPrivateKey(byte[] data)throws Exception{
+    public static byte[] decryptByPrivateKey(byte[] data) throws Exception {
         Cipher cipher = Cipher.getInstance(KEY_ALGORITHM);
         cipher.init(Cipher.DECRYPT_MODE, privateKey);
         return cipher.doFinal(data);
@@ -146,20 +150,21 @@ public class RsaUtils {
 
     /**
      * 生成密钥对 输出到本地文本文件中
+     *
      * @return
      */
-    protected static KeyPair generateKeyPair(){
+    protected static KeyPair generateKeyPair() {
         try {
             KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
             keyPairGenerator.initialize(2048);
             KeyPair keyPair = keyPairGenerator.generateKeyPair();
 
-            PublicKey publicKey =keyPair.getPublic();
+            PublicKey publicKey = keyPair.getPublic();
             byte[] pbkey = publicKey.getEncoded();
             String pbkeyBase64 = Base64.getEncoder().encodeToString(pbkey);
             System.out.println("生成的公钥：" + pbkeyBase64);
 
-            PrivateKey priKey =keyPair.getPrivate();
+            PrivateKey priKey = keyPair.getPrivate();
             byte[] prkey = priKey.getEncoded();
             String prkeyBase64 = Base64.getEncoder().encodeToString(prkey);
             System.out.println("生成的私钥：" + prkeyBase64);
@@ -173,13 +178,14 @@ public class RsaUtils {
 
     /**
      * 初始化公钥
+     *
      * @param publickeyFilePath
      * @return
      */
-    private static PublicKey initPublicKey(String publickeyFilePath){
+    private static PublicKey initPublicKey(String publickeyFilePath) {
         PublicKey publicKey = null;
         File file = new File(publickeyFilePath);
-        if (file == null){
+        if (file == null) {
             logger.error("========打开本地公钥文件失败=======" + publickeyFilePath);
             return publicKey;
         }
@@ -198,14 +204,15 @@ public class RsaUtils {
     }
 
     /**
-     *  初始化私钥
+     * 初始化私钥
+     *
      * @param privatekeyFilePath
      * @return
      */
-    private static PrivateKey initPirvateKey(String privatekeyFilePath){
+    private static PrivateKey initPirvateKey(String privatekeyFilePath) {
         PrivateKey privateKey = null;
         File file = new File(privatekeyFilePath);
-        if (file == null){
+        if (file == null) {
             logger.error("========打开本地私钥文件失败=======" + privatekeyFilePath);
             return privateKey;
         }

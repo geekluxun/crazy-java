@@ -16,13 +16,13 @@ import java.nio.ByteOrder;
  * @Other:
  */
 public class FileDeleteStrategyDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         FileDeleteStrategyDemo demo = new FileDeleteStrategyDemo();
         demo.demo1();
         demo.demo2();
     }
-    
-    private void demo1(){
+
+    private void demo1() {
         File file = new File("/dd2");
         // 强制删除 即使目录非空
         FileDeleteStrategy deleteStrategy = FileDeleteStrategy.FORCE;
@@ -42,8 +42,8 @@ public class FileDeleteStrategyDemo {
         boolean result = deleteStrategy.deleteQuietly(file);
         System.out.println();
     }
-    
-    public void demo2(){
+
+    public void demo2() {
         ByteOrder byteOrder = ByteOrder.nativeOrder();
         ByteOrderParser.parseByteOrder("luxun");
         System.out.println();

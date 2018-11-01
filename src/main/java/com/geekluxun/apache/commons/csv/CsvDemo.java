@@ -28,7 +28,7 @@ public class CsvDemo {
         demo.saveRecords(records, "student.txt");
     }
 
-    
+
     public <T> void saveRecords(List<T> records, String filePath) {
 
         Writer writer;

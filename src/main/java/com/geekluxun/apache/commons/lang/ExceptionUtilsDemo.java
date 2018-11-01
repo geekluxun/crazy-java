@@ -13,14 +13,14 @@ import java.util.List;
  * @Other:
  */
 public class ExceptionUtilsDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         ExceptionUtilsDemo demo = new ExceptionUtilsDemo();
         demo.demo1();
     }
-    
-    private void demo1(){
+
+    private void demo1() {
         Throwable throwable = new RuntimeException("ddd");
-        
+
         String m = ExceptionUtils.getMessage(throwable);
         Throwable root = ExceptionUtils.getRootCause(throwable);
         m = ExceptionUtils.getRootCauseMessage(throwable);

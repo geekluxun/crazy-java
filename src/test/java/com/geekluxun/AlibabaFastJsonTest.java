@@ -20,19 +20,19 @@ import java.util.Map;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class AlibabaFastJsonTest {
-    
+
     @Test
-    public void testJSONlog(){
+    public void testJSONlog() {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("key1", 1);
         jsonObject.put("key2", "luxun");
         jsonObject.put("key3", 3.3f);
-        
+
         System.out.println("print jsonobject:" + jsonObject);
     }
 
     @Test
-    public void testMap2JSONObject(){
+    public void testMap2JSONObject() {
         Map paras = new HashMap();
         paras.put("key1", 10);
         paras.put("key2", "luxun");

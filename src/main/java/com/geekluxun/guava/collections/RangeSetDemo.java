@@ -11,8 +11,8 @@ import org.springframework.util.Assert;
  * @Description:
  * @Other:
  */
-public class RangeSetDemo{
-    public static void main(String[] argc){
+public class RangeSetDemo {
+    public static void main(String[] argc) {
         RangeSetDemo demo = new RangeSetDemo();
         demo.demo1();
         demo.givenRangeSet_whenSubRangeSetIsCalled_returnsSubRangeSucessfully();
@@ -21,7 +21,7 @@ public class RangeSetDemo{
     }
 
 
-    private void demo1(){
+    private void demo1() {
         RangeSet<Integer> rangeSet = TreeRangeSet.create();
 
         // 两头闭
@@ -34,7 +34,7 @@ public class RangeSetDemo{
         Assert.isTrue(rangeSet.contains(3), "包含3");
         Assert.isTrue(!rangeSet.contains(5), "不含5");
 
-        rangeSet.remove(Range.closed( 3, 5));
+        rangeSet.remove(Range.closed(3, 5));
 
         Range<Integer> span = rangeSet.span();
         int min = span.lowerEndpoint().intValue();

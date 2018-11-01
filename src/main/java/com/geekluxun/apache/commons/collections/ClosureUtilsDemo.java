@@ -2,7 +2,6 @@ package com.geekluxun.apache.commons.collections;
 
 import org.apache.commons.collections.*;
 import org.apache.commons.collections.functors.NOPClosure;
-import org.apache.commons.lang3.Validate;
 import org.springframework.util.Assert;
 
 import java.util.*;
@@ -21,13 +20,14 @@ public class ClosureUtilsDemo {
     private static final Object cObject = new Object();
     private static final Object cString = "Hello";
     private static final Object cInteger = new Integer(6);
-    
-    public static void main(String[] argc){
+
+    public static void main(String[] argc) {
         ClosureUtilsDemo demo = new ClosureUtilsDemo();
         demo.testChainedClosure();
         demo.testDoWhileClosure();
         demo.testExceptionClosure();
-        demo.testForClosure();;
+        demo.testForClosure();
+        ;
         demo.testInvokeClosure();
         demo.testNopClosure();
         demo.testSwitchClosure();
@@ -43,6 +43,7 @@ public class ClosureUtilsDemo {
             count++;
         }
     }
+
     static class MockTransformer implements Transformer {
         int count = 0;
 
@@ -51,7 +52,7 @@ public class ClosureUtilsDemo {
             return object;
         }
     }
-    
+
     public void testExceptionClosure() {
         assertNotNull(ClosureUtils.exceptionClosure());
         Assert.isTrue(ClosureUtils.exceptionClosure() == ClosureUtils.exceptionClosure());
@@ -73,16 +74,16 @@ public class ClosureUtilsDemo {
         ClosureUtils.nopClosure().execute("Hello");
         Assert.isTrue("Hello".equals(buf.toString()));
     }
-    
+
     public void testInvokeClosure() {
         StringBuffer buf = new StringBuffer("Hello");
         ClosureUtils.invokerClosure("reverse").execute(buf);
         Assert.isTrue("olleH".equals(buf.toString()));
         buf = new StringBuffer("Hello");
-        ClosureUtils.invokerClosure("setLength", new Class[] {Integer.TYPE}, new Object[] {new Integer(2)}).execute(buf);
+        ClosureUtils.invokerClosure("setLength", new Class[]{Integer.TYPE}, new Object[]{new Integer(2)}).execute(buf);
         Assert.isTrue("He".equals(buf.toString()));
     }
-    
+
     public void testForClosure() {
         MockClosure cmd = new MockClosure();
         ClosureUtils.forClosure(5, cmd).execute(null);
@@ -93,11 +94,11 @@ public class ClosureUtilsDemo {
         Assert.isTrue(NOPClosure.INSTANCE == ClosureUtils.forClosure(3, null));
         Assert.isTrue(cmd == ClosureUtils.forClosure(1, cmd));
     }
-    
+
     public void testWhileClosure() {
         MockClosure cmd = new MockClosure();
         ClosureUtils.whileClosure(PredicateUtils.falsePredicate(), cmd).execute(null);
-        Assert.isTrue(0 ==  cmd.count);
+        Assert.isTrue(0 == cmd.count);
 
         cmd = new MockClosure();
         ClosureUtils.whileClosure(PredicateUtils.uniquePredicate(), cmd).execute(null);
@@ -106,17 +107,20 @@ public class ClosureUtilsDemo {
         try {
             ClosureUtils.whileClosure(null, ClosureUtils.nopClosure());
             //fail();
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) {
+        }
         try {
             ClosureUtils.whileClosure(PredicateUtils.falsePredicate(), null);
             //fail();
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) {
+        }
         try {
             ClosureUtils.whileClosure(null, null);
             //fail();
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) {
+        }
     }
-    
+
 
     public void testDoWhileClosure() {
         MockClosure cmd = new MockClosure();
@@ -130,9 +134,10 @@ public class ClosureUtilsDemo {
         try {
             ClosureUtils.doWhileClosure(null, null);
             //fail();
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) {
+        }
     }
-    
+
     public void testChainedClosure() {
         MockClosure a = new MockClosure();
         MockClosure b = new MockClosure();
@@ -142,9 +147,9 @@ public class ClosureUtilsDemo {
 
         a = new MockClosure();
         b = new MockClosure();
-        ClosureUtils.chainedClosure(new Closure[] {a, b, a}).execute(null);
+        ClosureUtils.chainedClosure(new Closure[]{a, b, a}).execute(null);
         Assert.isTrue(2 == a.count);
-        Assert.isTrue(1 ==  b.count);
+        Assert.isTrue(1 == b.count);
 
         a = new MockClosure();
         b = new MockClosure();
@@ -164,26 +169,26 @@ public class ClosureUtilsDemo {
         } catch (IllegalArgumentException ex) {
             System.out.println(ex);
         }
-        
+
         try {
             ClosureUtils.chainedClosure((Closure[]) null);
         } catch (IllegalArgumentException ex) {
             System.out.println(ex);
         }
-        
+
         try {
             ClosureUtils.chainedClosure((Collection) null);
         } catch (IllegalArgumentException ex) {
             System.out.println(ex);
         }
-        
+
         try {
-            ClosureUtils.chainedClosure(new Closure[] {null, null});
-          
+            ClosureUtils.chainedClosure(new Closure[]{null, null});
+
         } catch (IllegalArgumentException ex) {
             System.out.println(ex);
         }
-        
+
         try {
             coll = new ArrayList();
             coll.add(null);
@@ -193,47 +198,47 @@ public class ClosureUtilsDemo {
             System.out.println(ex);
         }
     }
-    
+
     public void testSwitchClosure() {
         MockClosure a = new MockClosure();
         MockClosure b = new MockClosure();
         // 条件为真 执行a
         ClosureUtils.ifClosure(PredicateUtils.truePredicate(), a, b).execute(null);
-        Assert.isTrue(1 ==  a.count);
+        Assert.isTrue(1 == a.count);
         Assert.isTrue(0 == b.count);
         // 条件为假 执行b
         a = new MockClosure();
         b = new MockClosure();
         ClosureUtils.ifClosure(PredicateUtils.falsePredicate(), a, b).execute(null);
-        Assert.isTrue(0 ==  a.count);
-        Assert.isTrue(1 ==  b.count);
+        Assert.isTrue(0 == a.count);
+        Assert.isTrue(1 == b.count);
         // swith
         a = new MockClosure();
         b = new MockClosure();
         ClosureUtils.switchClosure(
-                new Predicate[] {PredicateUtils.equalPredicate("HELLO"), PredicateUtils.equalPredicate("THERE")},
-                new Closure[] {a, b}).execute("WELL");
+                new Predicate[]{PredicateUtils.equalPredicate("HELLO"), PredicateUtils.equalPredicate("THERE")},
+                new Closure[]{a, b}).execute("WELL");
         Assert.isTrue(0 == a.count);
-        Assert.isTrue(0 ==  b.count);
+        Assert.isTrue(0 == b.count);
 
         a = new MockClosure();
         b = new MockClosure();
         ClosureUtils.switchClosure(
-                new Predicate[] {PredicateUtils.equalPredicate("HELLO"), PredicateUtils.equalPredicate("THERE")},
-                new Closure[] {a, b}).execute("HELLO");
+                new Predicate[]{PredicateUtils.equalPredicate("HELLO"), PredicateUtils.equalPredicate("THERE")},
+                new Closure[]{a, b}).execute("HELLO");
         Assert.isTrue(1 == a.count);
-        Assert.isTrue(0 ==  b.count);
+        Assert.isTrue(0 == b.count);
 
         // 数组构造条件谓词 带default的switch
         a = new MockClosure();
         b = new MockClosure();
         MockClosure c = new MockClosure();
         ClosureUtils.switchClosure(
-                new Predicate[] {PredicateUtils.equalPredicate("HELLO"), PredicateUtils.equalPredicate("THERE")},
-                new Closure[] {a, b}, c).execute("WELL");
-        Assert.isTrue(0 ==  a.count);
-        Assert.isTrue(0 ==  b.count);
-        Assert.isTrue(1 ==  c.count);
+                new Predicate[]{PredicateUtils.equalPredicate("HELLO"), PredicateUtils.equalPredicate("THERE")},
+                new Closure[]{a, b}, c).execute("WELL");
+        Assert.isTrue(0 == a.count);
+        Assert.isTrue(0 == b.count);
+        Assert.isTrue(1 == c.count);
 
         // map 构造条件谓词 
         a = new MockClosure();
@@ -243,7 +248,7 @@ public class ClosureUtilsDemo {
         map.put(PredicateUtils.equalPredicate("THERE"), b);
         ClosureUtils.switchClosure(map).execute(null);
         Assert.isTrue(0 == a.count);
-        Assert.isTrue(0 ==  b.count);
+        Assert.isTrue(0 == b.count);
 
         a = new MockClosure();
         b = new MockClosure();
@@ -265,7 +270,7 @@ public class ClosureUtilsDemo {
         ClosureUtils.switchClosure(map).execute("WELL");
         Assert.isTrue(0 == a.count);
         Assert.isTrue(0 == b.count);
-        Assert.isTrue(1 ==  c.count);
+        Assert.isTrue(1 == c.count);
         Assert.isTrue(NOPClosure.INSTANCE == ClosureUtils.switchClosure(new Predicate[0], new Closure[0]));
         Assert.isTrue(NOPClosure.INSTANCE == ClosureUtils.switchClosure(new HashMap()));
         map = new HashMap();
@@ -294,8 +299,8 @@ public class ClosureUtilsDemo {
         }
         try {
             ClosureUtils.switchClosure(
-                new Predicate[] {PredicateUtils.truePredicate()},
-                new Closure[] {a,b});
+                    new Predicate[]{PredicateUtils.truePredicate()},
+                    new Closure[]{a, b});
         } catch (IllegalArgumentException ex) {
             System.out.println(ex);
         }
@@ -309,7 +314,7 @@ public class ClosureUtilsDemo {
         map.put("THERE", b);
         ClosureUtils.switchMapClosure(map).execute(null);
         Assert.isTrue(0 == a.count);
-        Assert.isTrue(0 ==  b.count);
+        Assert.isTrue(0 == b.count);
 
         a = new MockClosure();
         b = new MockClosure();
@@ -318,7 +323,7 @@ public class ClosureUtilsDemo {
         map.put("THERE", b);
         ClosureUtils.switchMapClosure(map).execute("THERE");
         Assert.isTrue(0 == a.count);
-        Assert.isTrue(1 ==  b.count);
+        Assert.isTrue(1 == b.count);
 
         a = new MockClosure();
         b = new MockClosure();

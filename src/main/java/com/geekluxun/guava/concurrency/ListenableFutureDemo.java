@@ -14,19 +14,17 @@ import java.util.concurrent.TimeUnit;
  * @Author: luxun
  * @Create: 2018-07-02 9:05
  * @Description:
- * @Other:
- * 使用场景 The most important reason to use ListenableFuture is that 
+ * @Other: 使用场景 The most important reason to use ListenableFuture is that
  * it becomes possible to have complex chains of asynchronous operations.
  */
 public class ListenableFutureDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         ListenableFutureDemo demo = new ListenableFutureDemo();
         demo.demo1();
     }
-    
-    
-    
-    private void demo1(){
+
+
+    private void demo1() {
         ListeningExecutorService executorService = MoreExecutors.listeningDecorator(Executors.newCachedThreadPool());
 
         ListenableFuture<Integer> listenableFuture = executorService.submit(new Callable<Integer>() {
@@ -37,7 +35,7 @@ public class ListenableFutureDemo {
                 return 10;
             }
         });
-        
+
         // 方式一 增加一个监听器，会在futrue执行结束后调用
         listenableFuture.addListener(new Runnable() {
             @Override
@@ -64,9 +62,8 @@ public class ListenableFutureDemo {
                 System.out.println("调用失败:" + throwable);
             }
         }, executorService);
-        
+
     }
-    
-    
-    
+
+
 }

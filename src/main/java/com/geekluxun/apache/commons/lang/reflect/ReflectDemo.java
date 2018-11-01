@@ -49,10 +49,10 @@ public class ReflectDemo {
         Assert.isTrue(field != null);
         System.out.println(fields.size());
     }
-    
-    private void demo3(List<String> data){
+
+    private void demo3(List<String> data) {
         // TODO 这里有问题！！！
-        ParameterizedType  type = (ParameterizedType) ArrayList.class.getGenericSuperclass();
+        ParameterizedType type = (ParameterizedType) ArrayList.class.getGenericSuperclass();
         Class<?> classed = getCollectionType(data.getClass().getComponentType());
         System.out.println();
     }
@@ -73,6 +73,6 @@ public class ReflectDemo {
         }
         throw new IllegalArgumentException("Unsupported type: " + type);
     }
-    
+
 
 }  

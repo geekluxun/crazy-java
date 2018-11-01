@@ -13,10 +13,11 @@ public class DigestUtils {
 
     /**
      * 生成MD5消息摘要
+     *
      * @param input
      * @return 16字节数组转换成16进制字符串形式输出
      */
-    public static String md5Str(byte[] input){
+    public static String md5Str(byte[] input) {
         try {
             MessageDigest md5Digest = MessageDigest.getInstance("MD5");
             md5Digest.update(input);
@@ -30,10 +31,11 @@ public class DigestUtils {
 
     /**
      * 生成MD5消息摘要
+     *
      * @param input
      * @return 16字节数组
      */
-    public static byte[] md5(byte[] input){
+    public static byte[] md5(byte[] input) {
         try {
             MessageDigest md5Digest = MessageDigest.getInstance("MD5");
             md5Digest.update(input);
@@ -47,10 +49,11 @@ public class DigestUtils {
 
     /**
      * 生成SHA1消息摘要
+     *
      * @param input
      * @return 20字节转换成16进制字符串形式输出
      */
-    public static String sha(byte[] input){
+    public static String sha(byte[] input) {
         try {
             MessageDigest shaDigest = MessageDigest.getInstance("SHA");
             shaDigest.update(input);
@@ -64,10 +67,11 @@ public class DigestUtils {
 
     /**
      * 生成SHA2(256)消息摘要
+     *
      * @param input
      * @return 32字节转换成16进制字符串形式输出
      */
-    public static String sha256(byte[] input){
+    public static String sha256(byte[] input) {
         try {
             MessageDigest shaDigest = MessageDigest.getInstance("SHA-256");
             shaDigest.update(input);

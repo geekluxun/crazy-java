@@ -15,14 +15,14 @@ import java.io.Serializable;
  * @Other:
  */
 @Data
-public  class Parent implements Serializable {
+public class Parent implements Serializable {
     private String pf1;
 
     @Override
     public String toString() {
         super.toString();
         //return  new ReflectionToStringBuilder(this, new RecursiveToStringStyle()).toString();
-        return   ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
         //return ReflectionToStringBuilder.toString(this); 
     }
 }
