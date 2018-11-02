@@ -36,23 +36,32 @@ public class DynamicProxyDemo {
         foo = Reflection.newProxy(Foo.class, myInvocationHandler);
         foo.doSomething();
 
-        // JDK
+        // JDK 动态代理，只能代理实现了接口的类,不能代理其他普通类
         Foo foo1 = (Foo) Proxy.newProxyInstance(Foo.class.getClassLoader(), new Class<?>[]{Foo.class}, myInvocationHandler);
-        foo1.doSomething();
+        String result = foo1.doSomething();
         System.out.println();
 
     }
 
     public class MyInvocationHandler implements InvocationHandler {
+        // 被代理的目标对象
         private Object proxyed;
 
         public MyInvocationHandler(Object proxyed) {
             this.proxyed = proxyed;
         }
 
+        /**
+         *
+         * @param proxy
+         * @param method
+         * @param args
+         * @return 是目标对象上的调用的目标方法的返回值
+         * @throws Throwable
+         */
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-            System.out.println("**** proxy1111: " + proxy.getClass() + ", method: " + method + ", args: " + args);
+            System.out.println("**** proxy1111: " + proxy.getClass() + ", method: " + method.getName() + ", args: " + args);
             System.out.println("======执行代理类逻辑1111=======");
             // 执行真正的被代理对象方法
             return method.invoke(proxyed, args);
@@ -80,12 +89,13 @@ public class DynamicProxyDemo {
 
     public class FooImpl implements Foo {
         @Override
-        public void doSomething() {
+        public String doSomething() {
             System.out.println("=======doSomething======");
+            return "luxun";
         }
     }
 
     public interface Foo {
-        void doSomething();
+        String doSomething();
     }
 }
