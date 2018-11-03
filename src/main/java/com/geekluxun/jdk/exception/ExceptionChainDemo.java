@@ -1,6 +1,8 @@
 package com.geekluxun.jdk.exception;
 
 
+import org.assertj.core.api.Assertions;
+
 /**
  * @Author: luxun
  * @Create: 2018-11-01 14:11
@@ -10,7 +12,9 @@ package com.geekluxun.jdk.exception;
 public class ExceptionChainDemo {
     public static void main(String[] argc) throws Exception{
         ExceptionChainDemo demo = new ExceptionChainDemo();
-        demo.demo1();
+        // 判断是某一种类型异常
+        Assertions.assertThatThrownBy(() -> demo.demo1()).isInstanceOf(MyException2.class);
+        System.out.println("dd");
     }
 
     private void demo1() throws Exception{
