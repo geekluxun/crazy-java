@@ -11,11 +11,11 @@ public enum PizzaDeliverySystemConfiguration {
 
     private PizzaDeliveryStrategy deliveryStrategy = PizzaDeliveryStrategy.NORMAL;
 
-    PizzaDeliverySystemConfiguration(){
+    PizzaDeliverySystemConfiguration() {
 
     }
 
-    public static PizzaDeliverySystemConfiguration getInstance(){
+    public static PizzaDeliverySystemConfiguration getInstance() {
         return INSTANCE;
     }
 

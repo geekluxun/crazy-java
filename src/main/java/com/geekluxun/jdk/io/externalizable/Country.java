@@ -23,6 +23,7 @@ public class Country implements Externalizable {
 
     /**
      * 自定义序列化
+     *
      * @param out
      * @throws IOException
      */
@@ -35,6 +36,7 @@ public class Country implements Externalizable {
 
     /**
      * 自定义反序列化
+     *
      * @param in
      * @throws IOException
      * @throws ClassNotFoundException

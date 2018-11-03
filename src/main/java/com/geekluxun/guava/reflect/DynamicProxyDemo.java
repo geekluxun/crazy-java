@@ -52,7 +52,6 @@ public class DynamicProxyDemo {
         }
 
         /**
-         *
          * @param proxy
          * @param method
          * @param args

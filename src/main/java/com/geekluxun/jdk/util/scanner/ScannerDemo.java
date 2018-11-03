@@ -13,13 +13,14 @@ public class ScannerDemo {
     private Pattern pattern = Pattern.compile("[b-f]");
 
     private static String input = "a fish b fish 1 fish 2 fish d";
-    public static void main(String[] argc){
+
+    public static void main(String[] argc) {
         ScannerDemo demo = new ScannerDemo();
         demo.demo1();
         demo.demo2();
     }
 
-    public void demo1(){
+    public void demo1() {
         Scanner scanner = new Scanner(input);
         // 分隔符fish扫描
         scanner = scanner.useDelimiter("\\s*fish\\s*");
@@ -31,7 +32,7 @@ public class ScannerDemo {
         }
     }
 
-    public void demo2(){
+    public void demo2() {
         Scanner scanner = new Scanner(input).useDelimiter(pattern);
         String next;
         while (scanner.hasNext()) {

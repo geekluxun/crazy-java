@@ -23,7 +23,7 @@ public class FileEncrypterDecrypter {
         SecretKey secretKey = KeyGenerator.getInstance("AES").generateKey();
         String cipher = "AES/CBC/PKCS5Padding";
         FileEncrypterDecrypter enc = new FileEncrypterDecrypter(secretKey, cipher);
-        enc.encrypt("luxun","1.txt");
+        enc.encrypt("luxun", "1.txt");
         String content = enc.decrypt("1.txt");
         Assert.isTrue(content.equals("luxun"), "加密和解密内容不同");
     }
@@ -36,6 +36,7 @@ public class FileEncrypterDecrypter {
 
     /**
      * 加密文件
+     *
      * @param content
      * @param encFileName
      */
@@ -45,9 +46,9 @@ public class FileEncrypterDecrypter {
         byte[] iv = cipher.getIV();
 
         // try with resources结构 避免finally关闭IO资源问题
-        try ( FileOutputStream fileOut = new FileOutputStream(encFileName);
-              CipherOutputStream cipherOut = new CipherOutputStream(fileOut, cipher)
-            ) {
+        try (FileOutputStream fileOut = new FileOutputStream(encFileName);
+             CipherOutputStream cipherOut = new CipherOutputStream(fileOut, cipher)
+        ) {
             fileOut.write(iv);
             cipherOut.write(content.getBytes());
         }
@@ -55,6 +56,7 @@ public class FileEncrypterDecrypter {
 
     /**
      * 解密文件
+     *
      * @param encFileName
      * @return
      */

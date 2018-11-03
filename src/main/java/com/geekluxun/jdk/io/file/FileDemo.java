@@ -15,15 +15,15 @@ import java.util.List;
  */
 public class FileDemo {
 
-    public static void main(String[] argc){
-        
+    public static void main(String[] argc) {
+
     }
 
 
     public List<String> generateArrayListFromFile(String fileName) throws IOException {
         List<String> result = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-            while (br.ready()){
+            while (br.ready()) {
                 result.add(br.readLine());
             }
             return result;

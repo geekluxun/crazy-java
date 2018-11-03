@@ -7,12 +7,12 @@ package com.geekluxun.jdk.exception;
  * @Other:
  */
 public class MyException1 extends Exception {
-    public MyException1(String msg, Throwable throwable){
+    public MyException1(String msg, Throwable throwable) {
         super(msg, throwable);
     }
 
 
-    public MyException1(String msg){
+    public MyException1(String msg) {
         super(msg);
     }
 }

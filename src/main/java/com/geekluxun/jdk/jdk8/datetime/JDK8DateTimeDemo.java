@@ -1,8 +1,9 @@
 package com.geekluxun.jdk.jdk8.datetime;
 
-import org.apache.commons.configuration2.YAMLConfiguration;
-
-import java.time.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Date;
 
 /**
@@ -12,13 +13,13 @@ import java.util.Date;
  * @Other:
  */
 public class JDK8DateTimeDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         JDK8DateTimeDemo demo = new JDK8DateTimeDemo();
         demo.demo1();
         demo.demo2();
     }
 
-    private void demo1(){
+    private void demo1() {
         LocalDate localDate = LocalDate.now();
         int year = localDate.getYear();
         int month = localDate.getMonthValue();
@@ -26,7 +27,7 @@ public class JDK8DateTimeDemo {
         System.out.println("");
     }
 
-    private void demo2(){
+    private void demo2() {
         LocalDateTime localDateTime = LocalDateTime.now();
         int hour = localDateTime.getHour();
         int minute = localDateTime.getMinute();

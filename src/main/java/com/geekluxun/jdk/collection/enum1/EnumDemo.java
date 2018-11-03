@@ -13,7 +13,7 @@ import java.util.List;
  * @Other:
  */
 public class EnumDemo {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         EnumDemo demo = new EnumDemo();
         demo.demo1();
         demo.demo2();
@@ -21,7 +21,7 @@ public class EnumDemo {
     }
 
 
-    public void demo1(){
+    public void demo1() {
         List<Pizza> pzList = new ArrayList<>();
         Pizza pz1 = new Pizza();
         pz1.setStatus(Pizza.PizzaStatusEnum.DELIVERED);
@@ -47,7 +47,7 @@ public class EnumDemo {
     /**
      * EnumMap示例
      */
-    public void demo2(){
+    public void demo2() {
         List<Pizza> pzList = new ArrayList<>();
         Pizza pz1 = new Pizza();
         pz1.setStatus(Pizza.PizzaStatusEnum.DELIVERED);
@@ -73,7 +73,7 @@ public class EnumDemo {
 
     }
 
-    public void demo3(){
+    public void demo3() {
         Pizza pz = new Pizza();
         pz.setStatus(Pizza.PizzaStatusEnum.READY);
         pz.deliver();

@@ -8,11 +8,11 @@ package com.geekluxun.jdk.exception;
  */
 public class MyException2 extends Exception {
 
-    public MyException2(String msg, Throwable throwable){
+    public MyException2(String msg, Throwable throwable) {
         super(msg, throwable);
     }
 
-    public MyException2(String msg){
+    public MyException2(String msg) {
         super(msg);
     }
 }

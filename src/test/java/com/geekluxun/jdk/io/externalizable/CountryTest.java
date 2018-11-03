@@ -5,8 +5,6 @@ import org.springframework.util.Assert;
 
 import java.io.*;
 
-import static org.junit.Assert.*;
-
 /**
  * @Author: luxun
  * @Create: 2018-11-03 15:36
