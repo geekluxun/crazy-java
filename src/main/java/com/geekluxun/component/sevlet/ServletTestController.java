@@ -1,6 +1,7 @@
 package com.geekluxun.component.sevlet;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +26,7 @@ public class ServletTestController {
      * @param request
      * @param response
      */
-    @RequestMapping
+    @GetMapping("/test")
     public void test1(HttpServletRequest request, HttpServletResponse response) {
         try {
 

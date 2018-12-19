@@ -1,6 +1,7 @@
 package com.geekluxun.spring.springmvc.thymeleaf.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
@@ -25,7 +26,7 @@ public class TestController {
     private static TemplateEngine templateEngine;
     private static ServletContext servletContext;
 
-    @RequestMapping("/test1")
+    @GetMapping("/test1")
     public void test(HttpServletRequest request, HttpServletResponse response) {
         servletContext = request.getServletContext();
         // 初始化模板引擎
@@ -38,7 +39,7 @@ public class TestController {
         }
     }
 
-    @RequestMapping("/test2")
+    @GetMapping("/test2")
     public void test2(HttpServletRequest request, HttpServletResponse response) {
         servletContext = request.getServletContext();
         // 初始化模板引擎

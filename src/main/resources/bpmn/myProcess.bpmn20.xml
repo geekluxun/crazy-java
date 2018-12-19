@@ -10,48 +10,74 @@
         <startEvent id="start" name="StartEvent"/>
         <endEvent id="end" name="EndEvent">
             <extensionElements>
-                <activiti:executionListener class="com.geekluxun.component.activiti.listener.task.DefaultExecuteListener" event="end"/>
+                <activiti:executionListener
+                        class="com.geekluxun.component.activiti.listener.task.DefaultExecuteListener" event="end"/>
             </extensionElements>
         </endEvent>
 
         <userTask activiti:exclusive="true" id="userRegister" name="用户注册">
             <extensionElements>
-                <activiti:taskListener class="com.geekluxun.component.activiti.listener.UserRegisterListener" event="create"/>
-                <activiti:taskListener class="com.geekluxun.component.activiti.listener.UserRegisterListener" event="assignment"/>
-                <activiti:taskListener class="com.geekluxun.component.activiti.listener.UserRegisterListener" event="complete"/>
-                <!--<activiti:executionListener class="com.geekluxun.component.activiti.listener.task.DefaultExecuteListener" event="end"/>-->
-                <!--<activiti:executionListener class="com.geekluxun.component.activiti.listener.task.DefaultExecuteListener" event="start"/>-->
-                <!--<activiti:executionListener class="com.geekluxun.component.activiti.listener.task.DefaultExecuteListener" event="take"/>-->
+                <activiti:taskListener class="com.geekluxun.component.activiti.listener.task.DefaultTaskListener"
+                                       event="create"/>
+                <activiti:taskListener class="com.geekluxun.component.activiti.listener.task.DefaultTaskListener"
+                                       event="assignment"/>
+                <activiti:taskListener class="com.geekluxun.component.activiti.listener.task.DefaultTaskListener"
+                                       event="complete"/>
+                <activiti:executionListener
+                        class="com.geekluxun.component.activiti.listener.execution.DefaultExecuteListener" event="end"/>
+                <activiti:executionListener
+                        class="com.geekluxun.component.activiti.listener.execution.DefaultExecuteListener"
+                        event="start"/>
+                <activiti:executionListener
+                        class="com.geekluxun.component.activiti.listener.execution.DefaultExecuteListener"
+                        event="take"/>
             </extensionElements>
         </userTask>
 
-        <serviceTask activiti:exclusive="true" id="notifyUser" name="短信通知用户" activiti:class="com.geekluxun.component.activiti.servicetask.RegisterNotify">
+        <serviceTask activiti:exclusive="true" id="notifyUser" name="短信通知用户"
+                     activiti:class="com.geekluxun.component.activiti.servicetask.RegisterNotify">
             <extensionElements>
-                <activiti:executionListener class="com.geekluxun.component.activiti.listener.task.DefaultExecuteListener" event="start"/>
-                <activiti:executionListener class="com.geekluxun.component.activiti.listener.task.DefaultExecuteListener" event="end"/>
-                <activiti:taskListener class="com.geekluxun.component.activiti.listener.UserRegisterListener" event="complete"/>
+                <activiti:executionListener
+                        class="com.geekluxun.component.activiti.listener.execution.DefaultExecuteListener"
+                        event="start"/>
+                <activiti:executionListener
+                        class="com.geekluxun.component.activiti.listener.execution.DefaultExecuteListener" event="end"/>
+                <activiti:taskListener class="com.geekluxun.component.activiti.listener.UserRegisterListener"
+                                       event="complete"/>
 
             </extensionElements>
         </serviceTask>
 
-        <serviceTask activiti:exclusive="true" id="addRedPackage" name="用户获取注册红包" activiti:class="com.geekluxun.component.activiti.servicetask.RegisterRedPackage">
+        <serviceTask activiti:exclusive="true" id="addRedPackage" name="用户获取注册红包"
+                     activiti:class="com.geekluxun.component.activiti.servicetask.RegisterRedPackage">
             <extensionElements>
-                <activiti:executionListener class="com.geekluxun.component.activiti.listener.task.DefaultExecuteListener" event="start"/>
-                <activiti:executionListener class="com.geekluxun.component.activiti.listener.task.DefaultExecuteListener" event="end"/>
+                <activiti:executionListener
+                        class="com.geekluxun.component.activiti.listener.execution.DefaultExecuteListener"
+                        event="start"/>
+                <activiti:executionListener
+                        class="com.geekluxun.component.activiti.listener.execution.DefaultExecuteListener" event="end"/>
             </extensionElements>
         </serviceTask>
 
-        <serviceTask activiti:exclusive="true" id="young" name="年轻人" activiti:class="com.geekluxun.component.activiti.servicetask.YoungMan">
+        <serviceTask activiti:exclusive="true" id="young" name="年轻人"
+                     activiti:class="com.geekluxun.component.activiti.servicetask.YoungMan">
             <extensionElements>
-                <activiti:executionListener class="com.geekluxun.component.activiti.listener.task.DefaultExecuteListener" event="start"/>
-                <activiti:executionListener class="com.geekluxun.component.activiti.listener.task.DefaultExecuteListener" event="end"/>
+                <activiti:executionListener
+                        class="com.geekluxun.component.activiti.listener.execution.DefaultExecuteListener"
+                        event="start"/>
+                <activiti:executionListener
+                        class="com.geekluxun.component.activiti.listener.execution.DefaultExecuteListener" event="end"/>
             </extensionElements>
         </serviceTask>
 
-        <serviceTask activiti:exclusive="true" id="old" name="老年人" activiti:class="com.geekluxun.component.activiti.servicetask.OldMan">
+        <serviceTask activiti:exclusive="true" id="old" name="老年人"
+                     activiti:class="com.geekluxun.component.activiti.servicetask.OldMan">
             <extensionElements>
-                <activiti:executionListener class="com.geekluxun.component.activiti.listener.task.DefaultExecuteListener" event="start"/>
-                <activiti:executionListener class="com.geekluxun.component.activiti.listener.task.DefaultExecuteListener" event="end"/>
+                <activiti:executionListener
+                        class="com.geekluxun.component.activiti.listener.execution.DefaultExecuteListener"
+                        event="start"/>
+                <activiti:executionListener
+                        class="com.geekluxun.component.activiti.listener.execution.DefaultExecuteListener" event="end"/>
             </extensionElements>
         </serviceTask>
 
@@ -71,7 +97,7 @@
 
 
     </process>
-    
+
     <bpmndi:BPMNDiagram
             documentation="background=#3C3F41;count=1;horizontalcount=1;orientation=0;width=842.4;height=1195.2;imageableWidth=832.4;imageableHeight=1185.2;imageableX=5.0;imageableY=5.0"
             id="Diagram-_1" name="New Diagram">

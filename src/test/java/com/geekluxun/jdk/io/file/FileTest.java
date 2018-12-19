@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.io.File;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-09-09 11:17

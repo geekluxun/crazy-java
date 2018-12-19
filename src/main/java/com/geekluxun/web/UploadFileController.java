@@ -3,6 +3,7 @@ package com.geekluxun.web;
 import com.geekluxun.apache.commons.fileupload.FileUploadDemo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,7 +23,7 @@ public class UploadFileController {
     @Autowired
     FileUploadDemo fileUploadDemo;
 
-    @RequestMapping("/getuploadfile")
+    @GetMapping("/getuploadfile")
     public ModelAndView getUpLoadFilePage() {
         ModelAndView modelAndView = new ModelAndView("uploadfile");
         return modelAndView;
@@ -33,7 +34,7 @@ public class UploadFileController {
      *
      * @param request
      */
-    @RequestMapping("/uploadfile")
+    @GetMapping("/uploadfile")
     public void upLoadFile(HttpServletRequest request) {
         fileUploadDemo.demo2(request);
     }

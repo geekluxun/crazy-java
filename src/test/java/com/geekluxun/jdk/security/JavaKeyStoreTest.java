@@ -15,8 +15,6 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.Date;
 
-import static org.junit.Assert.*;
-
 /**
  * @Author: luxun
  * @Create: 2018-11-07 15:10
@@ -68,6 +66,7 @@ public class JavaKeyStoreTest {
 
     /**
      * 对称密钥的存储
+     *
      * @throws Exception
      */
     @Test
@@ -90,6 +89,7 @@ public class JavaKeyStoreTest {
 
     /**
      * 非对称密钥的存储
+     *
      * @throws Exception
      */
     @Test
@@ -117,6 +117,7 @@ public class JavaKeyStoreTest {
 
     /**
      * 证书的存储
+     *
      * @throws Exception
      */
     @Test
@@ -170,7 +171,8 @@ public class JavaKeyStoreTest {
     }
 
     /**
-     *  自签名的证书
+     * 自签名的证书
+     *
      * @param keyPair
      * @return
      * @throws CertificateException

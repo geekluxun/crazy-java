@@ -31,7 +31,7 @@ public class JavaKeyStore {
     }
 
     void createEmptyKeyStore() throws KeyStoreException, CertificateException, NoSuchAlgorithmException, IOException {
-        if(keyStoreType ==null || keyStoreType.isEmpty()){
+        if (keyStoreType == null || keyStoreType.isEmpty()) {
             keyStoreType = KeyStore.getDefaultType();
         }
         keyStore = KeyStore.getInstance(keyStoreType);
@@ -47,6 +47,7 @@ public class JavaKeyStore {
 
     /**
      * 从文件中加载keystore(keystore本身通过密码保护)
+     *
      * @throws IOException
      * @throws KeyStoreException
      * @throws CertificateException
@@ -59,6 +60,7 @@ public class JavaKeyStore {
 
     /**
      * 设置对称密钥条目
+     *
      * @param alias
      * @param secretKeyEntry
      * @param protectionParameter
@@ -76,6 +78,7 @@ public class JavaKeyStore {
 
     /**
      * 设置非对称的私钥 条目
+     *
      * @param alias
      * @param privateKey
      * @param keyPassword
@@ -88,6 +91,7 @@ public class JavaKeyStore {
 
     /**
      * 设置证书条目
+     *
      * @param alias
      * @param certificate
      * @throws KeyStoreException
@@ -106,6 +110,7 @@ public class JavaKeyStore {
 
     /**
      * 删除keystore中所有条目
+     *
      * @throws KeyStoreException
      * @throws IOException
      */

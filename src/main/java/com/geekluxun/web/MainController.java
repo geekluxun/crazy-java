@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +33,7 @@ public class MainController {
      * @param request
      * @param response
      */
-    @RequestMapping("/test1")
+    @GetMapping("/test1")
     public void test(HttpServletRequest request, HttpServletResponse response) {
         String path = request.getServletContext().getRealPath("/dd");
         System.out.println(path);
@@ -44,7 +45,7 @@ public class MainController {
      *
      * @param response
      */
-    @RequestMapping("/test2")
+    @GetMapping("/test2")
     public Object testHttpClient(HttpServletRequest request, HttpServletResponse response) {
         httpClientDemo.demo1();
         response.setContentType("dd");
