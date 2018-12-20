@@ -15,7 +15,7 @@ import org.activiti.engine.delegate.JavaDelegate;
 @Slf4j
 public class RegisterNotify implements JavaDelegate {
     @Override
-    public void execute(DelegateExecution delegateExecution) throws Exception {
+    public void execute(DelegateExecution delegateExecution)  {
         log.info("======RegisterNotify通知用户注册成功处理======");
     }
 }

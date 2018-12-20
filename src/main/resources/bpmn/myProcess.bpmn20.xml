@@ -10,40 +10,27 @@
         <startEvent id="start" name="StartEvent"/>
         <endEvent id="end" name="EndEvent">
             <extensionElements>
-                <activiti:executionListener
-                        class="com.geekluxun.component.activiti.listener.task.DefaultExecuteListener" event="end"/>
+                <activiti:executionListener class="com.geekluxun.component.activiti.listener.task.DefaultExecuteListener" event="end"/>
             </extensionElements>
         </endEvent>
 
         <userTask activiti:exclusive="true" id="userRegister" name="用户注册">
             <extensionElements>
-                <activiti:taskListener class="com.geekluxun.component.activiti.listener.task.DefaultTaskListener"
-                                       event="create"/>
-                <activiti:taskListener class="com.geekluxun.component.activiti.listener.task.DefaultTaskListener"
-                                       event="assignment"/>
-                <activiti:taskListener class="com.geekluxun.component.activiti.listener.task.DefaultTaskListener"
-                                       event="complete"/>
-                <activiti:executionListener
-                        class="com.geekluxun.component.activiti.listener.execution.DefaultExecuteListener" event="end"/>
-                <activiti:executionListener
-                        class="com.geekluxun.component.activiti.listener.execution.DefaultExecuteListener"
-                        event="start"/>
-                <activiti:executionListener
-                        class="com.geekluxun.component.activiti.listener.execution.DefaultExecuteListener"
-                        event="take"/>
+                <activiti:taskListener class="com.geekluxun.component.activiti.listener.task.DefaultTaskListener" event="create"/>
+                <activiti:taskListener class="com.geekluxun.component.activiti.listener.task.DefaultTaskListener" event="assignment"/>
+                <activiti:taskListener class="com.geekluxun.component.activiti.listener.task.DefaultTaskListener" event="complete"/>
+                <activiti:executionListener class="com.geekluxun.component.activiti.listener.execution.DefaultExecuteListener" event="end"/>
+                <activiti:executionListener class="com.geekluxun.component.activiti.listener.execution.DefaultExecuteListener" event="start"/>
+                <activiti:executionListener class="com.geekluxun.component.activiti.listener.execution.DefaultExecuteListener" event="take"/>
             </extensionElements>
         </userTask>
 
         <serviceTask activiti:exclusive="true" id="notifyUser" name="短信通知用户"
                      activiti:class="com.geekluxun.component.activiti.servicetask.RegisterNotify">
             <extensionElements>
-                <activiti:executionListener
-                        class="com.geekluxun.component.activiti.listener.execution.DefaultExecuteListener"
-                        event="start"/>
-                <activiti:executionListener
-                        class="com.geekluxun.component.activiti.listener.execution.DefaultExecuteListener" event="end"/>
-                <activiti:taskListener class="com.geekluxun.component.activiti.listener.UserRegisterListener"
-                                       event="complete"/>
+                <activiti:executionListener class="com.geekluxun.component.activiti.listener.execution.DefaultExecuteListener" event="start"/>
+                <activiti:executionListener class="com.geekluxun.component.activiti.listener.execution.DefaultExecuteListener" event="end"/>
+                <activiti:taskListener class="com.geekluxun.component.activiti.listener.UserRegisterListener" event="complete"/>
 
             </extensionElements>
         </serviceTask>
@@ -80,14 +67,13 @@
                         class="com.geekluxun.component.activiti.listener.execution.DefaultExecuteListener" event="end"/>
             </extensionElements>
         </serviceTask>
-
-
+        
         <exclusiveGateway id="sex"></exclusiveGateway>
-
         <sequenceFlow id="flow1" sourceRef="start" targetRef="userRegister"/>
         <sequenceFlow id="flow2" sourceRef="userRegister" targetRef="notifyUser"/>
         <sequenceFlow id="flow3" sourceRef="notifyUser" targetRef="addRedPackage"/>
         <sequenceFlow id="flow4" sourceRef="addRedPackage" targetRef="sex"/>
+        
         <sequenceFlow id="flow5" sourceRef="sex" targetRef="young">
             <conditionExpression xsi:type="tFormalExpression">  <![CDATA[${age <= 20 }]]> </conditionExpression>
         </sequenceFlow>

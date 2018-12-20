@@ -24,7 +24,7 @@
         <java.version>1.8</java.version>
         <jmh-core.version>1.19</jmh-core.version>
         <jmh-generator-annprocess.version>1.19</jmh-generator-annprocess.version>
-        <activiti.version>5.18.0</activiti.version>
+        <activiti.version>6.0.0</activiti.version>
     </properties>
 
     <dependencies>
@@ -226,6 +226,19 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.7.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+            <version>5.1.32</version>
         </dependency>
     </dependencies>
 

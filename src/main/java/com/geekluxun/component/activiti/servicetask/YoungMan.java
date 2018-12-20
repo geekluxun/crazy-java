@@ -16,7 +16,7 @@ import org.activiti.engine.delegate.JavaDelegate;
 public class YoungMan implements JavaDelegate {
 
     @Override
-    public void execute(DelegateExecution delegateExecution) throws Exception {
+    public void execute(DelegateExecution delegateExecution) {
         log.info("=====进入年轻人流程======");
     }
 }

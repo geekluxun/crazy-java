@@ -15,7 +15,7 @@ import org.activiti.engine.delegate.JavaDelegate;
 @Slf4j
 public class OldMan implements JavaDelegate {
     @Override
-    public void execute(DelegateExecution delegateExecution) throws Exception {
+    public void execute(DelegateExecution delegateExecution) {
         log.info("=====进入老年人流程======");
     }
 }

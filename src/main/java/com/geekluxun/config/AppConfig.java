@@ -12,6 +12,6 @@ import org.springframework.context.annotation.ImportResource;
  * @Other:
  */
 @Configuration
-@ImportResource(locations = {"classpath*:/spring/activiti-config.xml"})
+@ImportResource(locations = {"classpath*:/spring/activiti-config.xml", "classpath*:/spring/spring-datasource.xml"})
 public class AppConfig {
 }
