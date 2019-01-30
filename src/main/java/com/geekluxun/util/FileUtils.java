@@ -1,9 +1,13 @@
 package com.geekluxun.util;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Copyright,2018-2019,geekluxun Co.,Ltd.
@@ -13,7 +17,12 @@ import java.io.IOException;
  * @Description: 文件工具类
  * @Other:
  */
+@Slf4j
 public class FileUtils {
+
+    public static void main(String[] argc) {
+        readFileAndSort("D:\\22.txt");
+    }
 
     public static byte[] readFile(File file) {
         if (file == null || !file.exists()) {
@@ -37,5 +46,54 @@ public class FileUtils {
         }
 
         return data;
+    }
+
+
+    /**
+     * 读取文件然后排序
+     * @param fileName
+     * @return
+     */
+    public static String readFileAndSort(String fileName) {
+        File file = new File(fileName);
+        if (!file.exists()) {
+            throw new RuntimeException("文件不存在");
+        }
+
+        List<LineValue> myValueList = new ArrayList<LineValue>();
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(fileName));
+            while (reader.ready()) {
+                String line = reader.readLine();
+                String[] values = line.split(",");
+                LineValue value = new LineValue();
+                value.setCount(values[0]);
+                value.setDate(Long.valueOf(values[1]));
+                myValueList.add(value);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        log.info("排序前所有的数据");
+        for (LineValue data : myValueList) {
+            System.out.println(data.getDate() + " " + data.getCount());
+        }
+
+        myValueList = myValueList.stream().sorted(Comparator.comparing(LineValue::getDate)).collect(Collectors.toList());
+        log.info("排序后所有的数据");
+        for (LineValue data : myValueList) {
+            System.out.println(data.getDate() + " " + data.getCount());
+        }
+        return null;
+
+    }
+
+
+    @Data
+    public static class LineValue {
+        private String count;
+        private Long date;
     }
 }
