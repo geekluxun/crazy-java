@@ -1,7 +1,7 @@
 package com.geekluxun.design.patterns.command;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2019-01-30 17:04

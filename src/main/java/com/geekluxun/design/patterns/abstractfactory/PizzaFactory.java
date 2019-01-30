@@ -1,7 +1,7 @@
 package com.geekluxun.design.patterns.abstractfactory;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2019-01-30 15:55

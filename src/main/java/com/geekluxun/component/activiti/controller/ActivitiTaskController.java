@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-12-19 17:52

@@ -3,7 +3,7 @@ package com.geekluxun.design.patterns.abstractfactory;
 import com.geekluxun.design.patterns.factorymethod.Pizza;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2019-01-30 14:25
