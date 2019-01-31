@@ -8,17 +8,17 @@ package com.geekluxun.design.patterns.docorator;
  * @Description: 装饰者具体类(加了糖的饮料)
  * @Other:
  */
-public class Sugar extends  Decorator {
+public class Sugar extends Decorator {
     /**
      * 被装饰者（饮料）
      */
     private Beverage beverage;
-  
-    
-    public Sugar(Beverage beverage){
-        this.beverage = beverage;    
+
+
+    public Sugar(Beverage beverage) {
+        this.beverage = beverage;
     }
-    
+
     @Override
     public String getDesc() {
         return beverage.getDesc() + "另外加了糖";

@@ -9,16 +9,17 @@ package com.geekluxun.design.patterns.singleton;
  * @Other:
  */
 public class Singleton {
-    private volatile static Singleton uniqueSingleton ;
+    private volatile static Singleton uniqueSingleton;
 
     /**
      * 双重加锁实现线程安全的单例
+     *
      * @return
      */
-    public static Singleton createInstance(){
-        if (uniqueSingleton == null){
-            synchronized (Singleton.class){
-                if (uniqueSingleton == null){
+    public static Singleton createInstance() {
+        if (uniqueSingleton == null) {
+            synchronized (Singleton.class) {
+                if (uniqueSingleton == null) {
                     uniqueSingleton = new Singleton();
                 }
             }

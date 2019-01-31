@@ -10,7 +10,7 @@ package com.geekluxun.design.patterns.factorymethod;
  */
 public class ConcretePizza1 extends Pizza {
 
-    public ConcretePizza1(){
+    public ConcretePizza1() {
         setName("芝士披萨");
         setCost(50f);
     }

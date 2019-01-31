@@ -9,10 +9,10 @@ package com.geekluxun.design.patterns.observer;
  * @Other:
  */
 public class ConcreteObserver implements Observer {
-    
-    
+
+
     @Override
     public void update(float temp) {
-        System.out.println("收到通知，当前温度:"+ temp );
+        System.out.println("收到通知，当前温度:" + temp);
     }
 }

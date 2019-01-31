@@ -11,15 +11,15 @@ package com.geekluxun.design.patterns.abstractfactory;
 public abstract class Pizza {
     private Flour flour;
     private Flavor flavor;
-    
-    
+
+
     abstract void prepare();
 
     protected Flavor getFlavor() {
         return flavor;
     }
-    
-    protected Flour getFlour(){
+
+    protected Flour getFlour() {
         return flour;
     }
 

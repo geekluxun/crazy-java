@@ -8,6 +8,6 @@ package com.geekluxun.design.patterns.docorator;
  * @Description: 装饰者抽象类
  * @Other:
  */
-public abstract class Decorator extends Beverage{
+public abstract class Decorator extends Beverage {
     public abstract String getDesc();
 }

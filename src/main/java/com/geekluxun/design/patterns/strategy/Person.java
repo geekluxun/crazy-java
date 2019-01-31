@@ -9,14 +9,15 @@ package com.geekluxun.design.patterns.strategy;
 public class Person {
     private Travel travel;
 
-    public Person(Travel travel){
+    public Person(Travel travel) {
         this.travel = travel;
     }
+
     public void setTravel(Travel travel) {
         this.travel = travel;
     }
 
-    public void travel(){
+    public void travel() {
         travel.travel();
     }
 }

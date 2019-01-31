@@ -29,11 +29,12 @@ public class RemoteControlWithUndo {
 
     /**
      * 设置某一个插槽的命令
+     *
      * @param slot
      * @param onCommand
      * @param offCommand
      */
-    public void setCommand(int slot , Command onCommand , Command offCommand){
+    public void setCommand(int slot, Command onCommand, Command offCommand) {
         this.onCommand[slot] = onCommand;
         this.offCommand[slot] = offCommand;
     }

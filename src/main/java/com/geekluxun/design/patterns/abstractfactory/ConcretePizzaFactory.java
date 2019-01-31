@@ -9,7 +9,7 @@ package com.geekluxun.design.patterns.abstractfactory;
  * @Other:
  */
 public class ConcretePizzaFactory extends PizzaFactory {
-    
+
     @Override
     public Flavor createFlavor() {
         return new ConcreteFlavor1();

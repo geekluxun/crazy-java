@@ -9,7 +9,7 @@ package com.geekluxun.design.patterns.singleton;
  * @Other:
  */
 public class DemoClient {
-    public static void main(){
+    public static void main() {
         Singleton singleton = Singleton.createInstance();
     }
 }

@@ -7,7 +7,7 @@ package com.geekluxun.design.patterns.strategy;
  * @Other:
  */
 public class DemoClient {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         Person person = new Person(new CarTarvel());
         person.travel();
 

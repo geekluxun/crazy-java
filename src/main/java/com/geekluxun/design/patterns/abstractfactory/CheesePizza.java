@@ -13,8 +13,8 @@ public class CheesePizza extends Pizza {
      * 抽象工厂
      */
     private PizzaFactory pizzaFactory;
-    
-    public CheesePizza(PizzaFactory pizzaFactory){
+
+    public CheesePizza(PizzaFactory pizzaFactory) {
         this.pizzaFactory = pizzaFactory;
         prepare();
     }
@@ -27,7 +27,7 @@ public class CheesePizza extends Pizza {
         setFlavor(pizzaFactory.createFlavor());
         setFlour(pizzaFactory.createFlour());
 
-    }    
+    }
 
     @Override
     public String toString() {

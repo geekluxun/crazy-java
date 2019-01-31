@@ -8,7 +8,8 @@ package com.geekluxun.design.patterns.factorymethod;
  * @Description: 工厂方法具体类
  * @Other:
  */
-public class ConcretePizzaCreator extends PizzaCreator {    /**
+public class ConcretePizzaCreator extends PizzaCreator {
+    /**
      * 对象的实例化推迟到子类完成
      *
      * @param type
@@ -23,5 +24,5 @@ public class ConcretePizzaCreator extends PizzaCreator {    /**
         }
         return null;
     }
-    
+
 }

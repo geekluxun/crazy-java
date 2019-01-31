@@ -7,8 +7,8 @@ package com.geekluxun.design.patterns.adapter;
  * @Other:
  */
 public class DemoClient {
-    public static void main(String[] argc){
-        HighVoltage highVoltage =new  HighVoltageAdapter();
+    public static void main(String[] argc) {
+        HighVoltage highVoltage = new HighVoltageAdapter();
         highVoltage.useHighVoltage();
     }
 }

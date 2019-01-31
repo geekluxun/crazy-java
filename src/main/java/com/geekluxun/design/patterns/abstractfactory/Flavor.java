@@ -8,5 +8,5 @@ package com.geekluxun.design.patterns.abstractfactory;
  * @Description: 调料抽象类
  * @Other:
  */
-public abstract class  Flavor {
+public abstract class Flavor {
 }

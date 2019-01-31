@@ -9,12 +9,12 @@ package com.geekluxun.design.patterns.command;
  * @Other:
  */
 public class Light {
-    
-    public void on(){
+
+    public void on() {
         System.out.println("灯打开");
     }
-    
-    public void off(){
+
+    public void off() {
         System.out.println("灯关闭");
     }
 }

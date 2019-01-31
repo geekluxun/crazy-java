@@ -8,7 +8,7 @@ package com.geekluxun.design.patterns.factorymethod;
  * @Description:
  * @Other:
  */
-public class DemoClient  {
+public class DemoClient {
     public static void main(String[] argc) {
         ConcretePizzaCreator productCreator = new ConcretePizzaCreator();
         Pizza pizza = productCreator.orderProduct("haixian");

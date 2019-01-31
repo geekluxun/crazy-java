@@ -17,29 +17,29 @@ public class ConcreteSubject implements Subject {
      * 这是观察者感兴趣的订阅的数据（温度）
      */
     private float temp;
-    
-    
-    public ConcreteSubject(){
+
+
+    public ConcreteSubject() {
         observers = new ArrayList<Observer>();
     }
-    
+
     @Override
     public void registerObserver(Observer observer) {
-        if (observer != null){
+        if (observer != null) {
             observers.add(observer);
         }
     }
 
     @Override
     public void removeObserver(Observer observer) {
-        if (observer != null && observers.contains(observer)){
+        if (observer != null && observers.contains(observer)) {
             observers.remove(observer);
         }
     }
-    
+
     @Override
     public void notifyObservers() {
-        for (Observer observer : observers){
+        for (Observer observer : observers) {
             observer.update(temp);
         }
     }

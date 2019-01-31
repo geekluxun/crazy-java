@@ -11,12 +11,14 @@ package com.geekluxun.design.patterns.docorator;
 public abstract class Beverage {
     /**
      * 饮料描述
+     *
      * @return
      */
     public abstract String getDesc();
 
     /**
      * 饮料价格
+     *
      * @return
      */
     public abstract float getCost();

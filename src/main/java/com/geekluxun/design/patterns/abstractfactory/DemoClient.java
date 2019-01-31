@@ -9,7 +9,7 @@ package com.geekluxun.design.patterns.abstractfactory;
  * @Other:
  */
 public class DemoClient {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         ConcretePizzaFactory factory = new ConcretePizzaFactory();
         Pizza pizza = new CheesePizza(factory);
         System.out.println("披萨:" + pizza);

@@ -9,12 +9,12 @@ package com.geekluxun.design.patterns.observer;
  * @Other:
  */
 public class DemoClient {
-    public static void main(String[] argc){
+    public static void main(String[] argc) {
         ConcreteSubject subject = new ConcreteSubject();
         ConcreteObserver observer = new ConcreteObserver();
-        
+
         subject.registerObserver(observer);
-        
+
         subject.setTemp(1.55f);
         subject.notifyObservers();
     }

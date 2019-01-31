@@ -9,7 +9,7 @@ package com.geekluxun.design.patterns.docorator;
  * @Other:
  */
 public class AppleJuice extends Beverage {
-    
+
     @Override
     public String getDesc() {
         return "苹果汁";
