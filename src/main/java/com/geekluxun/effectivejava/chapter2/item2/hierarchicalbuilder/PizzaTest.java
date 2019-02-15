@@ -1,7 +1,8 @@
 package com.geekluxun.effectivejava.chapter2.item2.hierarchicalbuilder;
 
-import static effectivejava.chapter2.item2.hierarchicalbuilder.NyPizza.Size.*;
-import static effectivejava.chapter2.item2.hierarchicalbuilder.Pizza.Topping.*;
+
+import static com.geekluxun.effectivejava.chapter2.item2.hierarchicalbuilder.NyPizza.Size.SMALL;
+import static com.geekluxun.effectivejava.chapter2.item2.hierarchicalbuilder.Pizza.Topping.*;
 
 // Using the hierarchical builder (Page 16)
 public class PizzaTest {

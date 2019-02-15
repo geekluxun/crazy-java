@@ -27,6 +27,10 @@ public abstract class Pizza {
         protected abstract T self();
     }
 
+    /**
+     * 使用了保护性拷贝
+     * @param builder
+     */
     Pizza(Builder<?> builder) {
         toppings = builder.toppings.clone(); // See Item 50
     }
