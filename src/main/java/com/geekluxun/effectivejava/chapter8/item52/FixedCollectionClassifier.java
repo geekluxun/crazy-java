@@ -6,7 +6,7 @@ import java.util.*;
 // Repaired  static classifier method. (Page 240)
 public class FixedCollectionClassifier {
     public static String classify(Collection<?> c) {
-        return c instanceof Set  ? "Set" :
+        return c instanceof Set ? "Set" :
                 c instanceof List ? "List" : "Unknown Collection";
     }
 

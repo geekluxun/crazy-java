@@ -1,7 +1,5 @@
 package com.geekluxun.effectivejava.chapter8.item53;
 
-import java.util.stream.IntStream;
-
 // Sample uses of varargs (Pages 245-6)
 public class Varargs {
     // Simple use of varargs (Page 245)

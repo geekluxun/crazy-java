@@ -1,6 +1,7 @@
 package com.geekluxun.effectivejava.chapter8.item52;
+
+import java.math.BigInteger;
 import java.util.*;
-import java.math.*;
 
 // Broken! - What does this program print?  (Page 238)
 public class CollectionClassifier {

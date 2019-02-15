@@ -1,8 +1,9 @@
 package com.geekluxun.effectivejava.chapter12.item85;
-import static effectivejava.chapter12.Util.*;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import static effectivejava.chapter12.Util.*;
 
 // Deserialization bomb - deserializing this stream takes forever - Page 340
 public class DeserializationBomb {

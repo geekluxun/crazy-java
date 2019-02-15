@@ -2,11 +2,12 @@ package com.geekluxun.effectivejava.chapter7.item46;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 import java.util.stream.Stream;
 
 import static java.util.Comparator.comparing;
-import static java.util.stream.Collectors.*;
 import static java.util.stream.Collectors.*;
 
 // Frequency table examples showing improper and proper use of stream (Page 210-11)

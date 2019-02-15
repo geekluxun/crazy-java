@@ -1,5 +1,6 @@
 package com.geekluxun.effectivejava.chapter11.item78.fixedstopthread1;
-import java.util.concurrent.*;
+
+import java.util.concurrent.TimeUnit;
 
 // Properly synchronized cooperative thread termination
 public class StopThread {

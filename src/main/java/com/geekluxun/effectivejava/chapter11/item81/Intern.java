@@ -1,5 +1,7 @@
 package com.geekluxun.effectivejava.chapter11.item81;
-import java.util.concurrent.*;
+
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 // Concurrent canonicalizing map atop ConcurrentMap - Pages 273-274
 public class Intern {

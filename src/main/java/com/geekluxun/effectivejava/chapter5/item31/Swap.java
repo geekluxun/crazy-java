@@ -1,5 +1,7 @@
 package com.geekluxun.effectivejava.chapter5.item31;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.List;
 
 // Private helper method for wildcard capture (Page 145)
 public class Swap {

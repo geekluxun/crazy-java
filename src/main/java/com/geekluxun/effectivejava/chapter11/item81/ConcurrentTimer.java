@@ -1,15 +1,18 @@
 package com.geekluxun.effectivejava.chapter11.item81;
-import java.util.concurrent.*;
+
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executor;
 
 // Simple framework for timing concurrent execution 327
 public class ConcurrentTimer {
-    private ConcurrentTimer() { } // Noninstantiable
+    private ConcurrentTimer() {
+    } // Noninstantiable
 
     public static long time(Executor executor, int concurrency,
                             Runnable action) throws InterruptedException {
         CountDownLatch ready = new CountDownLatch(concurrency);
         CountDownLatch start = new CountDownLatch(1);
-        CountDownLatch done  = new CountDownLatch(concurrency);
+        CountDownLatch done = new CountDownLatch(concurrency);
 
         for (int i = 0; i < concurrency; i++) {
             executor.execute(() -> {

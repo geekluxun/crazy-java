@@ -1,5 +1,8 @@
 package com.geekluxun.effectivejava.chapter5.item33;
-import java.util.*;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 // Typesafe heterogeneous container pattern (Pages 151-4)
 public class Favorites {

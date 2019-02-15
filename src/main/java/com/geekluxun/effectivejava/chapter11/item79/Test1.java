@@ -1,5 +1,6 @@
 package com.geekluxun.effectivejava.chapter11.item79;
-import java.util.*;
+
+import java.util.HashSet;
 
 // Simple test of ObservableSet - Page 318
 public class Test1 {

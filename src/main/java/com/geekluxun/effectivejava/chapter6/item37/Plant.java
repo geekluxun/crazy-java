@@ -1,5 +1,7 @@
 package com.geekluxun.effectivejava.chapter6.item37;
+
 import java.util.*;
+
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toSet;
 
@@ -7,7 +9,7 @@ import static java.util.stream.Collectors.toSet;
 
 // Simplistic class representing a plant (Page 171)
 class Plant {
-    enum LifeCycle { ANNUAL, PERENNIAL, BIENNIAL }
+    enum LifeCycle {ANNUAL, PERENNIAL, BIENNIAL}
 
     final String name;
     final LifeCycle lifeCycle;
@@ -17,18 +19,19 @@ class Plant {
         this.lifeCycle = lifeCycle;
     }
 
-    @Override public String toString() {
+    @Override
+    public String toString() {
         return name;
     }
 
     public static void main(String[] args) {
         Plant[] garden = {
-            new Plant("Basil",    LifeCycle.ANNUAL),
-            new Plant("Carroway", LifeCycle.BIENNIAL),
-            new Plant("Dill",     LifeCycle.ANNUAL),
-            new Plant("Lavendar", LifeCycle.PERENNIAL),
-            new Plant("Parsley",  LifeCycle.BIENNIAL),
-            new Plant("Rosemary", LifeCycle.PERENNIAL)
+                new Plant("Basil", LifeCycle.ANNUAL),
+                new Plant("Carroway", LifeCycle.BIENNIAL),
+                new Plant("Dill", LifeCycle.ANNUAL),
+                new Plant("Lavendar", LifeCycle.PERENNIAL),
+                new Plant("Parsley", LifeCycle.BIENNIAL),
+                new Plant("Rosemary", LifeCycle.PERENNIAL)
         };
 
         // Using ordinal() to index into an array - DON'T DO THIS!  (Page 171)

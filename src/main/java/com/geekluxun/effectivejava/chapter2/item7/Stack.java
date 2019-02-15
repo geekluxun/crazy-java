@@ -1,5 +1,6 @@
 package com.geekluxun.effectivejava.chapter2.item7;
-import java.util.*;
+
+import java.util.Arrays;
 
 // Can you spot the "memory leak"?  (Pages 26-27)
 public class Stack {

@@ -1,5 +1,6 @@
 package com.geekluxun.effectivejava.chapter9.item61;
-import java.util.*;
+
+import java.util.Comparator;
 
 // Broken comparator - can you spot the flaw? - Page 273
 public class BrokenComparator {
@@ -8,7 +9,7 @@ public class BrokenComparator {
 //        Comparator<Integer> naturalOrder =
 //                (i, j) -> (i < j) ? -1 : (i == j ? 0 : 1);
 
-       // Fixed Comparator - Page 274
+        // Fixed Comparator - Page 274
         Comparator<Integer> naturalOrder = (iBoxed, jBoxed) -> {
             int i = iBoxed, j = jBoxed; // Auto-unboxing
             return i < j ? -1 : (i == j ? 0 : 1);

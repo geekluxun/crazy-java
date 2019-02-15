@@ -1,5 +1,8 @@
 package com.geekluxun.effectivejava.chapter3.item14;
-import java.util.*;
+
+import java.util.Collections;
+import java.util.Set;
+import java.util.TreeSet;
 
 // The benefits of implementing Comparable (Page 66)
 public class WordList {
