@@ -1,6 +1,5 @@
 package com.geekluxun.jdk.objects;
 
-import sun.misc.ASCIICaseInsensitiveComparator;
 
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -55,7 +54,7 @@ public class ObjectsDemo {
 
     private static void demo3() {
         // 使用大小写敏感的比较器
-        int result = Objects.compare("ab", "aa", new ASCIICaseInsensitiveComparator());
+        int result = 0;//Objects.compare("ab", "aa", new ASCIICaseInsensitiveComparator());
         System.out.println("compare:" + result);
     }
 

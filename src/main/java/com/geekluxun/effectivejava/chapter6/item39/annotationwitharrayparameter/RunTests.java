@@ -1,6 +1,7 @@
 package com.geekluxun.effectivejava.chapter6.item39.annotationwitharrayparameter;
 
-import effectivejava.chapter6.item39.markerannotation.Test;
+
+import com.geekluxun.effectivejava.chapter6.item39.markerannotation.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
