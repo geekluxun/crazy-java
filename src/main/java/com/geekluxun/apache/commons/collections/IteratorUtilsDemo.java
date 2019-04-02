@@ -109,7 +109,7 @@ public class IteratorUtilsDemo {
                     return input;
                 }
                 if (input instanceof Branch) {
-                    return ((Branch) input).getLeaves().iterator();
+                    return null;//((Branch) input).getLeaves().iterator();
                 }
                 if (input instanceof Tree) {
                     return ((Tree) input).getBranches().iterator();

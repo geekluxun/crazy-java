@@ -15,6 +15,7 @@ public class Chooser<T> {
     }
 
     public T choose() {
+        // Random本身不是线程安全的，此处使用了ThreadLocalRandom来保证了Random的线程安全性
         Random rnd = ThreadLocalRandom.current();
         return choiceList.get(rnd.nextInt(choiceList.size()));
     }

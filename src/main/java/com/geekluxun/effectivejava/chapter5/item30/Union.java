@@ -7,6 +7,14 @@ import java.util.Set;
 public class Union {
 
     // Generic method
+
+    /**
+     * 泛型方法示例
+     * @param s1
+     * @param s2
+     * @param <E>
+     * @return
+     */
     public static <E> Set<E> union(Set<E> s1, Set<E> s2) {
         Set<E> result = new HashSet<>(s1);
         result.addAll(s2);

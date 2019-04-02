@@ -26,8 +26,8 @@ public class Stack<E> {
             throw new EmptyStackException();
 
         // push requires elements to be of type E, so cast is correct
-        @SuppressWarnings("unchecked") E result =
-                (E) elements[--size];
+        @SuppressWarnings("unchecked") 
+        E result = (E) elements[--size];
 
         elements[size] = null; // Eliminate obsolete reference
         return result;

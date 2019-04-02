@@ -5,7 +5,8 @@ package com.geekluxun.design.patterns.docorator;
  *
  * @Author: luxun
  * @Create: 2019-01-30 14:15
- * @Description:
+ * @Description: 装饰器提供了对现有类提供新的行为的一种方式，通过类似一层层装饰的方法，
+ * client调用的是最完成装饰器，类似"俄罗斯套娃"，客户端使用的是最完成的套娃
  * @Other:
  */
 public class DemoClient {
