@@ -19,7 +19,7 @@ import java.util.Map;
 public class DefaultExecuteListener implements ExecutionListener {
 
     @Override
-    public void notify(DelegateExecution delegateExecution)  {
+    public void notify(DelegateExecution delegateExecution) {
         log.info("当前执行任务所有信息：" + getExecutionInfo(delegateExecution));
         //delegateExecution.getEngineServices().getTaskService();
         switch (delegateExecution.getEventName()) {

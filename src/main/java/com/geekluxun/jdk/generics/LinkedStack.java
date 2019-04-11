@@ -9,7 +9,7 @@ package com.geekluxun.jdk.generics;
  * @Other:
  */
 public class LinkedStack<U> {
-    private static class Node<T>{
+    private static class Node<T> {
         T item;
         Node<T> next;
     }

@@ -10,6 +10,7 @@ public class Union {
 
     /**
      * 泛型方法示例
+     *
      * @param s1
      * @param s2
      * @param <E>

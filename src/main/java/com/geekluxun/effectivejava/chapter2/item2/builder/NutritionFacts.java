@@ -30,6 +30,7 @@ public class NutritionFacts {
 
         /**
          * 必选字段（域）
+         *
          * @param servingSize
          * @param servings
          */
@@ -60,6 +61,7 @@ public class NutritionFacts {
 
         /**
          * 这个build方法来构造outer类示例
+         *
          * @return
          */
         public NutritionFacts build() {

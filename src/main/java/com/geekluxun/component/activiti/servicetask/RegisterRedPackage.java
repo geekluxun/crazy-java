@@ -15,7 +15,7 @@ import org.activiti.engine.delegate.JavaDelegate;
 @Slf4j
 public class RegisterRedPackage implements JavaDelegate {
     @Override
-    public void execute(DelegateExecution delegateExecution)  {
+    public void execute(DelegateExecution delegateExecution) {
         log.info("======RegisterRedPackage用户注册增加红包处理======");
         delegateExecution.setVariable("age", "30");
     }

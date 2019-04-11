@@ -1,8 +1,5 @@
 package com.geekluxun.common;
 
-import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
-
 /**
  * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
