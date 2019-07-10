@@ -26,8 +26,8 @@
         <jmh-generator-annprocess.version>1.19</jmh-generator-annprocess.version>
         <activiti.version>6.0.0</activiti.version>
         <!-- 使用JDK9编译和运行此项目-->
-        <maven.compiler.source>1.9</maven.compiler.source>
-        <maven.compiler.target>1.9</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencies>
