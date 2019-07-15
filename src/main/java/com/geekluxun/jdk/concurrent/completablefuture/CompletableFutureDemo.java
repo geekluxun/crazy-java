@@ -106,23 +106,23 @@ public class CompletableFutureDemo {
 
 
     static void completeExceptionallyExample() {
-        CompletableFuture<String> cf = CompletableFuture.completedFuture("message").thenApplyAsync(String::toUpperCase,
-                CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS));
+//        CompletableFuture<String> cf = CompletableFuture.completedFuture("message").thenApplyAsync(String::toUpperCase,
+//                CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS));
 
-        CompletableFuture<String> exceptionHandler = cf.handle((s, th) -> {
-            return (th != null) ? "message upon cancel" : "";
-        });
-
-        cf.completeExceptionally(new RuntimeException("completed exceptionally"));
-        Assert.isTrue(cf.isCompletedExceptionally());
-
-        try {
-            cf.join();
-            //fail("Should have thrown an exception");
-        } catch (CompletionException ex) { // just for testing
-            Assert.isTrue("completed exceptionally".equals(ex.getCause().getMessage()));
-        }
-        Assert.isTrue("message upon cancel".equals(exceptionHandler.join()));
+//        CompletableFuture<String> exceptionHandler = cf.handle((s, th) -> {
+//            return (th != null) ? "message upon cancel" : "";
+//        });
+//
+//        cf.completeExceptionally(new RuntimeException("completed exceptionally"));
+//        Assert.isTrue(cf.isCompletedExceptionally());
+//
+//        try {
+//            cf.join();
+//            //fail("Should have thrown an exception");
+//        } catch (CompletionException ex) { // just for testing
+//            Assert.isTrue("completed exceptionally".equals(ex.getCause().getMessage()));
+//        }
+//        Assert.isTrue("message upon cancel".equals(exceptionHandler.join()));
     }
 
     /**
@@ -130,13 +130,13 @@ public class CompletableFutureDemo {
      */
     static void cancelExample() {
         // 延迟1秒计算
-        CompletableFuture cf = CompletableFuture.completedFuture("message").thenApplyAsync(String::toUpperCase,
-                CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS));
+//        CompletableFuture cf = CompletableFuture.completedFuture("message").thenApplyAsync(String::toUpperCase,
+//                CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS));
 
-        CompletableFuture cf2 = cf.exceptionally(throwable -> "canceled message");
-        Assert.isTrue(cf.cancel(true));
-        Assert.isTrue(cf.isCompletedExceptionally());
-        Assert.isTrue("canceled message".equals(cf2.join()));
+//        CompletableFuture cf2 = cf.exceptionally(throwable -> "canceled message");
+//        Assert.isTrue(cf.cancel(true));
+//        Assert.isTrue(cf.isCompletedExceptionally());
+//        Assert.isTrue("canceled message".equals(cf2.join()));
     }
 
 
@@ -145,14 +145,14 @@ public class CompletableFutureDemo {
      */
     static void applyToEitherExample() {
         String original = "Message";
-        CompletableFuture cf1 = CompletableFuture.completedFuture(original)
-                .thenApplyAsync(String::toUpperCase, CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS));
-
-        CompletableFuture cf2 = cf1.applyToEither(
-                CompletableFuture.completedFuture(original).thenApplyAsync(String::toUpperCase, CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS)),
-                s -> s + " from applyToEither");
-
-        Assert.isTrue(((String) cf2.join()).endsWith(" from applyToEither"));
+//        CompletableFuture cf1 = CompletableFuture.completedFuture(original)
+//                .thenApplyAsync(String::toUpperCase, CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS));
+//
+//        CompletableFuture cf2 = cf1.applyToEither(
+//                CompletableFuture.completedFuture(original).thenApplyAsync(String::toUpperCase, CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS)),
+//                s -> s + " from applyToEither");
+//
+//        Assert.isTrue(((String) cf2.join()).endsWith(" from applyToEither"));
     }
 
     static void runAfterBothExample() {
