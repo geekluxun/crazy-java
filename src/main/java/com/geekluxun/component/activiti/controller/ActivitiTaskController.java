@@ -29,7 +29,7 @@ import java.util.Map;
 @Slf4j
 public class ActivitiTaskController extends BaseController {
 
-    @Autowired
+    //@Autowired
     private TaskService taskService;
 
 

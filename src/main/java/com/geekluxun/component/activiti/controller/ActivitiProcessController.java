@@ -23,7 +23,7 @@ import java.util.Map;
 @RequestMapping("/activiti/process")
 public class ActivitiProcessController {
 
-    @Autowired
+    //@Autowired
     private RuntimeService runtimeService;
 
 

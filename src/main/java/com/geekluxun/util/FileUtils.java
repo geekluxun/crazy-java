@@ -91,6 +91,27 @@ public class FileUtils {
 
     }
 
+    /**
+     * 获取某一个目录下所有文件名
+     *
+     * @param fileDir
+     * @return
+     */
+    public static List<String> getFileNames(String fileDir) {
+        List<String> fileNames = new ArrayList<>();
+        File root = new File(fileDir);
+
+        for (File file : root.listFiles()) {
+            if (file.isDirectory()) {
+                fileNames.addAll(getFileNames((file.getAbsolutePath())));
+            } else {
+                fileNames.add(file.getAbsolutePath());
+            }
+        }
+
+        return fileNames;
+    }
+
 
     @Data
     public static class LineValue {
