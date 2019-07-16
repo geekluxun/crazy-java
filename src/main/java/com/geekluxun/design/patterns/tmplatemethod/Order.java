@@ -19,6 +19,10 @@ public abstract class Order {
     public void order(String productName) {
         reduceStock(productName);
         packageProduct(productName);
+        // 算法的可选步骤,可以由子类灵活决定是否执行此步骤
+        if (isNotifyUser()) {
+            notifyUser();
+        }
         tranfer(productName);
     }
 
@@ -31,4 +35,17 @@ public abstract class Order {
     }
 
     public abstract void tranfer(String productName);
+
+    private void notifyUser() {
+        System.out.println("通知用户");
+    }
+
+    /**
+     * 钩子
+     *
+     * @return
+     */
+    public boolean isNotifyUser() {
+        return false;
+    }
 }

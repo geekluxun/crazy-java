@@ -14,4 +14,9 @@ public class PlainOrder extends Order {
     public void tranfer(String productName) {
         System.out.println("使用飞机运输商品" + productName);
     }
+    
+    @Override
+    public boolean isNotifyUser() {
+        return true;
+    }
 }

@@ -10,7 +10,7 @@ package com.geekluxun.design.patterns.factorymethod;
  */
 public class DemoClient {
     public static void main(String[] argc) {
-        ConcretePizzaCreator productCreator = new ConcretePizzaCreator();
+        PizzaCreator productCreator = new ConcretePizzaCreator();
         Pizza pizza = productCreator.orderProduct("haixian");
         System.out.println("我是：" + pizza.getName());
 

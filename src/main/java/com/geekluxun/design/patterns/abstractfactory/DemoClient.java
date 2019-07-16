@@ -10,7 +10,7 @@ package com.geekluxun.design.patterns.abstractfactory;
  */
 public class DemoClient {
     public static void main(String[] argc) {
-        ConcretePizzaFactory factory = new ConcretePizzaFactory();
+        PizzaFactory factory = new ConcretePizzaFactory();
         Pizza pizza = new CheesePizza(factory);
         System.out.println("披萨:" + pizza);
     }

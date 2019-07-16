@@ -12,6 +12,12 @@ package com.geekluxun.design.patterns.factorymethod;
 public abstract class PizzaCreator {
     abstract Pizza createProduct(String type);
 
+    /**
+     * 工厂方法
+     *
+     * @param type
+     * @return
+     */
     public Pizza orderProduct(String type) {
         // 需要很多步骤才能真正完成整个披萨的制作过程
         Pizza pizza = createProduct(type);

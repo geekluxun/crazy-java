@@ -1,4 +1,4 @@
-package com.geekluxun.design.patterns.adapter;
+package com.geekluxun.design.patterns.adapter.demo1;
 
 /**
  * @Author: luxun
