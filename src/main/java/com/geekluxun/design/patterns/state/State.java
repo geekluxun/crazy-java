@@ -9,6 +9,10 @@ package com.geekluxun.design.patterns.state;
  * @Other:
  */
 public interface State {
+    /**
+     * 每一个状态收到一个单词时，都会根据输入决定状态机的下一个状态是什么
+     * @param word
+     */
     void inputWord(Character word);
 
     String getStateName();

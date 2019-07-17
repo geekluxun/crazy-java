@@ -9,6 +9,9 @@ package com.geekluxun.design.patterns.state;
  * @Other:
  */
 public class CFoundState implements State {
+    /**
+     * 每一个状态都持有状态机实例
+     */
     private WordStateMachine stateMachine;
 
     public CFoundState(WordStateMachine machine) {

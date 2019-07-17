@@ -9,6 +9,9 @@ package com.geekluxun.design.patterns.state;
  * @Other:
  */
 public class WordStateMachine {
+    /**
+     * 状态机拥有的所有的状态
+     */
     private State startState;
     private State nFoundState;
     private State iFoundState;
@@ -16,9 +19,15 @@ public class WordStateMachine {
     private State successState;
     private State errorState;
 
+    /**
+     * 当前的状态
+     */
     private State state;
 
     public WordStateMachine() {
+        /**
+         * 每一个状态都持有状态机实例
+         */
         startState = new StartState(this);
         nFoundState = new NFoundState(this);
         iFoundState = new IFoundState(this);
