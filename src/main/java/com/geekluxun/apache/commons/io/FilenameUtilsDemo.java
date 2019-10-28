@@ -6,6 +6,8 @@ import org.springframework.util.Assert;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Copyright,2018-2019,geekluxun Co.,Ltd.
@@ -22,6 +24,7 @@ public class FilenameUtilsDemo {
         demo.demo2();
         demo.demo3();
         demo.demo4();
+        demo.demoPrefix();
     }
 
     private void demo1() {
@@ -82,5 +85,35 @@ public class FilenameUtilsDemo {
         boolean match = FilenameUtils.wildcardMatch("c.txt", "*.txt");
         match = FilenameUtils.wildcardMatch("c.txt", "*.????");
         System.out.println();
+    }
+
+
+    public void demoPrefix(){
+        String basepath = "/usr";
+        String prefix;
+        String fullpath;
+        String path;
+        prefix = FilenameUtils.getPrefix("./tmp/data.txt");
+        fullpath  = FilenameUtils.concat(basepath, "./tmp/data.txt");
+
+        prefix = FilenameUtils.getPrefix("/tmp/data.txt");
+        fullpath  = FilenameUtils.concat(basepath, "/tmp/data.txt");
+
+        prefix = FilenameUtils.getPrefix("../tmp/data.txt");
+        fullpath  = FilenameUtils.concat(basepath, "../tmp/data.txt");
+
+        prefix = FilenameUtils.getPrefix("~/tmp/data.txt");
+        fullpath  = FilenameUtils.concat(basepath, "~/tmp/data.txt");
+
+        prefix = FilenameUtils.getPrefix("~luxun/tmp/data.txt");
+        fullpath  = FilenameUtils.concat(basepath, "~luxun/tmp/data.txt");
+
+        prefix = FilenameUtils.getPrefix("tmp/data.txt");
+        fullpath  = FilenameUtils.concat(basepath, "tmp/data.txt");
+
+        prefix = FilenameUtils.getPrefix("tmp/data.txt");
+        fullpath  = FilenameUtils.concat(basepath, prefix);
+
+        System.out.println(prefix);
     }
 }
