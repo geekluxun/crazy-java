@@ -14,7 +14,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Copyright,2019-2020,meituan Co.,Ltd.
+ * Copyright,2019-2020,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2019/10/20 2:05 下午
