@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.lang.management.ManagementFactory;
 
 /**
- * Copyright,2019-2020,meituan Co.,Ltd.
+ * Copyright,2019-2020,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2019/10/19 8:34 下午
